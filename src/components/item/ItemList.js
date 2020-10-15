@@ -10,7 +10,7 @@ export const ItemList = () => {
 	
     useEffect(() => {
         getItemsByCosplay(id)
-    }, [])
+    }, [items])
 
     const history = useHistory()
     const getid = () => {

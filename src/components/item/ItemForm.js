@@ -31,7 +31,6 @@ export const ItemForm = (props) => {
     }
 
     const setCompletionStatus = (event) => {
-        console.log("item: ", item);
         const newItem = { ...item } // spread operator, spreads an object into separate arguments
 
         // evaluate whatever is in the [], accesses .task dynamically
@@ -41,7 +40,6 @@ export const ItemForm = (props) => {
     }
 
     const setMakingStatus = (event) => {
-        console.log("item: ", item);
         const newItem = { ...item } // spread operator, spreads an object into separate arguments
 
         // evaluate whatever is in the [], accesses .task dynamically

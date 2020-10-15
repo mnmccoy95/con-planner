@@ -6,6 +6,8 @@ import { ItemContext } from "./ItemProvider";
 
 export const ItemCard = ({ item }) => {
     const { deleteItem } = useContext(ItemContext)
+    
+
     const history = useHistory()
     const Complete = () => {
         if(item.complete === true){
@@ -38,7 +40,7 @@ export const ItemCard = ({ item }) => {
                 history.push(`/cosplays/items/edit/${item.id}`)
             }}>Edit Item</button>
             <button onClick={() => {
-                deleteItem(item, item.cosplayId)
+                deleteItem(item)
             }}>Delete Item</button>
         </div>
         <div className="item__details">
