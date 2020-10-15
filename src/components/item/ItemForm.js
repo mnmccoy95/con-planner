@@ -66,10 +66,9 @@ export const ItemForm = (props) => {
     const addButton = () => {
         if(!item.id){
             return (
-                <button onClick={event => {
+                <button disabled={isLoading} onClick={event => {
                     event.preventDefault() // Prevent browser from submitting the form
-                    constructItemObject()
-                    .then(() => history.push(`/cosplays/items/create/${cosplayId}`))
+                    constructItemObject2()
                 }}>Save and Add More</button>
             )
         }
@@ -100,7 +99,42 @@ export const ItemForm = (props) => {
                 })
                 .then(() => history.push(`/cosplays/detail/${cosplayId}`))
             }
-        }
+    }
+
+    const constructItemObject2 = () => {
+        //disable the button - no extra clicks
+        setIsLoading(true);
+        addItem({
+            cosplayId: parseInt(cosplayId),
+            name: item.name,
+            complete: item.complete,
+            making: item.making,
+            cost: item.cost
+        })
+        .then(() => {
+            // Clear the message input after sending message
+            const clearer1 = document.querySelector("#itemName")
+            const clearer2 = document.querySelector("#itemCost")
+            const clearer3 = document.querySelector("#check--complete")
+            const clearer4 = document.querySelector("#check--making")
+
+            clearer1.value = ""
+            clearer2.value = ""
+            clearer3.value= false
+            clearer4.value = false
+            clearer3.checked = false
+            clearer4.checked = false
+
+            item.name = ""
+            item.cost = ""
+            item.complete = false
+            item.making = false
+            setIsLoading(false);
+        })
+
+    }
+
+
     
     return (
         <form className="ItemForm">
@@ -124,10 +158,10 @@ export const ItemForm = (props) => {
                 </div>
             </fieldset>
             <fieldset>
-                <label htmlFor="itemComplete">Complete: </label>
+                <label htmlFor="check--complete">Complete: </label>
                 <input 
                     type="checkbox" 
-                    id={`check--complete`} 
+                    id="check--complete"
                     name="complete" 
                     defaultValue={`${item.complete}`}
                     checked={item.complete}
@@ -139,10 +173,10 @@ export const ItemForm = (props) => {
                     }}/>
             </fieldset>
             <fieldset>
-                <label htmlFor="itemMaking">Making: </label>
+                <label htmlFor="check--making">Making: </label>
                 <input 
                     type="checkbox" 
-                    id={`check--making`} 
+                    id="check--making"
                     name="making" 
                     defaultValue={`${item.making}`}
                     checked={item.making}
