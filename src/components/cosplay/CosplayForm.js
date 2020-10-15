@@ -9,7 +9,7 @@ export const CosplayForm = (props) => {
     const { addCosplay, getCosplayById, editCosplay } = useContext(CosplayContext)
     const userId = parseInt(localStorage.getItem("cosplayerId"))
 
-    //for edit, hold on to state of animal in this view
+    //for edit, hold on to state of cosplay in this view
     const [cosplay, setCosplay] = useState({})
     //wait for data before button is active
     const [isLoading, setIsLoading] = useState(true);
@@ -23,7 +23,7 @@ export const CosplayForm = (props) => {
         //When changing a state object or array, 
         //always create a copy make changes, and then set state.
         const newCosplay = { ...cosplay }
-        //animal is an object with properties. 
+        //cosplay is an object with properties. 
         //set the property to the new value
         newCosplay[event.target.name] = event.target.value
         //update state
@@ -32,14 +32,13 @@ export const CosplayForm = (props) => {
     
     const setCompletionStatus = (event) => {
         const newCosplay = { ...cosplay } // spread operator, spreads an object into separate arguments
-
-        // evaluate whatever is in the [], accesses .task dynamically
+        // evaluate whatever is in the [], accesses cosplay dynamically
         newCosplay[event.target.name] = cosplay.complete ? false : true; // what is in the form, named exactly like it is in state
         //update state with each keystroke
         setCosplay(newCosplay) //  causes re-render
     }
 
-    // Get customers and locations. If animalId is in the URL, getAnimalById
+    //If cosplayId is in the URL, getCosplayById
     useEffect(() => {
         if (cosplayId){
             getCosplayById(cosplayId)
@@ -111,9 +110,9 @@ export const CosplayForm = (props) => {
                     checked={cosplay.complete}
                     onChange={(e) => {
                         // pressing the check box here will set the 
-                        // task status from 'uncompleted' (false) to 
+                        // cosplay status from 'uncompleted' (false) to 
                         // 'completed' (true)
-                        setCompletionStatus(e); // change task status
+                        setCompletionStatus(e); // change cosplay status
                     }}/>
             </fieldset>
             <button className="btn btn-primary"

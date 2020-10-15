@@ -1,19 +1,15 @@
-//add form and save for item completion status/making
-
-
 import React, { useContext, useState, useEffect } from "react"
 import { ItemContext } from "./ItemProvider"
 import { useHistory, useParams } from 'react-router-dom';
 
 export const ItemEdit = (props) => {
-    const { addItem, getItemById, editItem } = useContext(ItemContext)
+    const { getItemById, editItem } = useContext(ItemContext)
 
     //for edit, hold on to state of item in this view
     const [item, setItem] = useState({})
     //wait for data before button is active
     const [isLoading, setIsLoading] = useState(true);
 
-    //gotta figure this out for edit
     const {itemId} = useParams()
     const history = useHistory();
 
@@ -23,7 +19,7 @@ export const ItemEdit = (props) => {
         //When changing a state object or array, 
         //always create a copy make changes, and then set state.
         const newItem = { ...item }
-        //animal is an object with properties. 
+        //item is an object with properties. 
         //set the property to the new value
         newItem[event.target.name] = event.target.value
         //update state
@@ -31,54 +27,43 @@ export const ItemEdit = (props) => {
     }
 
     const setCompletionStatus = (event) => {
-        console.log("item: ", item);
         const newItem = { ...item } // spread operator, spreads an object into separate arguments
-
-        // evaluate whatever is in the [], accesses .task dynamically
+        // evaluate whatever is in the [], accesses item dynamically
         newItem[event.target.name] = item.complete ? false : true; // what is in the form, named exactly like it is in state
         //update state with each keystroke
         setItem(newItem) //  causes re-render
     }
 
     const setMakingStatus = (event) => {
-        console.log("item: ", item);
         const newItem = { ...item } // spread operator, spreads an object into separate arguments
-
-        // evaluate whatever is in the [], accesses .task dynamically
+        // evaluate whatever is in the [], accesses item dynamically
         newItem[event.target.name] = item.making ? false : true; // what is in the form, named exactly like it is in state
         //update state with each keystroke
         setItem(newItem) //  causes re-render
     }
     
-    // Get customers and locations. If animalId is in the URL, getAnimalById
     useEffect(() => {
-        if (itemId){
-            getItemById(itemId)
-            .then(item => {
-                setItem(item)
-                setIsLoading(false)
-                })
-        } else {
+        getItemById(itemId)
+        .then(item => {
+            setItem(item)
             setIsLoading(false)
-        }
+        })
     }, [])
     
 
     const constructItemObject = () => {
-            //disable the button - no extra clicks
-            setIsLoading(true);
-            if (itemId){
-                //PUT - update
-                editItem({
-                    id: itemId,
-                    cosplayId: item.cosplayId,
-                    name: item.name,
-                    complete: item.complete,
-                    making: item.making,
-                    cost: item.cost
-                })
-                .then(() => history.push(`/cosplays/detail/${item.cosplayId}`))
-            }
+        //disable the button - no extra clicks
+        setIsLoading(true);
+        //PUT - edit
+        editItem({
+            id: itemId,
+            cosplayId: item.cosplayId,
+            name: item.name,
+            complete: item.complete,
+            making: item.making,
+            cost: item.cost
+        })
+        .then(() => history.push(`/cosplays/detail/${item.cosplayId}`))    
     }
     
     return (
@@ -112,9 +97,9 @@ export const ItemEdit = (props) => {
                     checked={item.complete}
                     onChange={(e) => {
                         // pressing the check box here will set the 
-                        // task status from 'uncompleted' (false) to 
+                        // item status from 'uncompleted' (false) to 
                         // 'completed' (true)
-                        setCompletionStatus(e); // change task status
+                        setCompletionStatus(e); // change item status
                     }}/>
             </fieldset>
             <fieldset>
@@ -127,9 +112,9 @@ export const ItemEdit = (props) => {
                     checked={item.making}
                     onChange={(e) => {
                         // pressing the check box here will set the 
-                        // task status from 'uncompleted' (false) to 
+                        // making status from 'uncompleted' (false) to 
                         // 'completed' (true)
-                        setMakingStatus(e); // change task status
+                        setMakingStatus(e); // change making status
                     }}/>
             </fieldset>
             <button className="btn btn-primary"
@@ -137,8 +122,7 @@ export const ItemEdit = (props) => {
                 onClick={event => {
                     event.preventDefault() // Prevent browser from submitting the form
                     constructItemObject()
-                }}>
-            {itemId ? <>Save Item</> : <>Add Item</>}</button>
+                }}>Save Item</button>
         </form>
     )
 }

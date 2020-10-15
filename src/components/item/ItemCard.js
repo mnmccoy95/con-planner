@@ -2,8 +2,6 @@ import React, { useContext, useParams } from "react"
 import { useHistory} from 'react-router-dom';
 import { ItemContext } from "./ItemProvider";
 
-
-
 export const ItemCard = ({ item }) => {
     const { deleteItem } = useContext(ItemContext)
     

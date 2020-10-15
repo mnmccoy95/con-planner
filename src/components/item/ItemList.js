@@ -25,7 +25,7 @@ export const ItemList = () => {
 
     return (
         <div className="items">
-            <h2>Cosplay Pieces</h2>
+            <div>Cosplay Pieces</div>
             {getid()}
             {
                 items.map(item => {
