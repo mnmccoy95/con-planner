@@ -6,7 +6,7 @@ import { CosplayContext } from "./CosplayProvider"
 import { useHistory, useParams } from 'react-router-dom';
 
 export const CosplayForm = (props) => {
-    const { addCosplay, getCosplayById, updateCosplay } = useContext(CosplayContext)
+    const { addCosplay, getCosplayById, editCosplay } = useContext(CosplayContext)
     const userId = parseInt(localStorage.getItem("cosplayerId"))
 
     //for edit, hold on to state of animal in this view
@@ -50,7 +50,7 @@ export const CosplayForm = (props) => {
             if (cosplayId){
                 //PUT - update
                 //ref pic could go here
-                updateCosplay({
+                editCosplay({
                     id: cosplay.id,
                     userId: userId,
                     character: cosplay.character,

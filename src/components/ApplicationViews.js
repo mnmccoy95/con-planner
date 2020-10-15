@@ -8,6 +8,7 @@ import { CosplayDetail } from "./cosplay/CosplayDetail"
 import { ItemProvider } from "./item/ItemProvider"
 import { ItemList } from "./item/ItemList"
 import { ItemForm } from "./item/ItemForm"
+import { ItemEdit } from "./item/ItemEdit"
 
 export const ApplicationViews = (props) => {
     return (
@@ -32,6 +33,9 @@ export const ApplicationViews = (props) => {
                     </Route>
                     <Route exact path="/cosplays/items/create/:cosplayId(\d+)">
                         <ItemForm />
+                    </Route>
+                    <Route exact path="/cosplays/items/edit/:itemId(\d+)">
+                        <ItemEdit />
                     </Route>
                 </ItemProvider>
                 <Route path="/cosplays/edit/:cosplayId(\d+)">

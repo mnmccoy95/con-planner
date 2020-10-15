@@ -35,13 +35,14 @@ export const ItemCard = ({ item }) => {
         <div className="item__name">
             { item.name }
             <button onClick={() => {
-                history.push(`/cosplays/items/edit/${item.cosplayId}&${item.id}`)
+                history.push(`/cosplays/items/edit/${item.id}`)
             }}>Edit Item</button>
             <button onClick={() => {
                 deleteItem(item, item.cosplayId)
             }}>Delete Item</button>
         </div>
         <div className="item__details">
+            Cost: ${item.cost}
             {Complete()}
             {Making()}
         </div>
