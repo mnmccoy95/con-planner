@@ -108,7 +108,7 @@ export const ItemForm = (props) => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="itemCost">Cost: </label>
-                    <input type="text" id="itemCost" name="cost" required autoFocus className="form-control" 
+                    <input type="text" id="itemCost" name="cost" required className="form-control" 
                     placeholder="Item Cost" 
                     onChange={handleControlledInputChange} 
                     defaultValue={item.cost}/>

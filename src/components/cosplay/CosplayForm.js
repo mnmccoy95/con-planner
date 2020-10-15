@@ -1,6 +1,3 @@
-//add form and save for cosplay completion status
-
-
 import React, { useContext, useState, useEffect } from "react"
 import { CosplayContext } from "./CosplayProvider"
 import { useHistory, useParams } from 'react-router-dom';
