@@ -16,6 +16,7 @@ import { EventDetail } from "./event/EventDetail"
 import { EssentialProvider } from "./essential/EssProvider"
 import { EssentialList } from "./essential/EssList"
 import { EssentialForm } from "./essential/EssForm"
+import { ECProvider } from "./eventCosplay/ECProvider"
 
 export const ApplicationViews = (props) => {
     return (
@@ -26,10 +27,13 @@ export const ApplicationViews = (props) => {
             </Route>
 
             <CosplayProvider>
-
-                <Route exact path="/cosplays">
-                    <CosplayList />
-                </Route>
+                <EventProvider>
+                    <ECProvider>
+                        <Route exact path="/cosplays">
+                            <CosplayList />
+                        </Route>
+                    </ECProvider>
+                </EventProvider>
 
                 <Route exact path="/cosplays/create">
                     <CosplayForm />
