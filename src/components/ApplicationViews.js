@@ -9,6 +9,10 @@ import { ItemProvider } from "./item/ItemProvider"
 import { ItemList } from "./item/ItemList"
 import { ItemForm } from "./item/ItemForm"
 import { ItemEdit } from "./item/ItemEdit"
+import { EventProvider } from "./event/EventProvider"
+import { EventList } from "./event/EventList"
+import { EventForm } from "./event/EventForm"
+import { EventDetail } from "./event/EventDetail"
 
 export const ApplicationViews = (props) => {
     return (
@@ -18,30 +22,58 @@ export const ApplicationViews = (props) => {
                 <Home />
             </Route>
 
-
             <CosplayProvider>
+
                 <Route exact path="/cosplays">
                     <CosplayList />
                 </Route>
+
                 <Route exact path="/cosplays/create">
                     <CosplayForm />
                 </Route>
+
                 <ItemProvider>
+
                     <Route exact path="/cosplays/detail/:id">
                         <CosplayDetail />
                         <ItemList />
                     </Route>
+
                     <Route exact path="/cosplays/items/create/:cosplayId(\d+)">
                         <ItemForm />
                     </Route>
+
                     <Route exact path="/cosplays/items/edit/:itemId(\d+)">
                         <ItemEdit />
                     </Route>
+
                 </ItemProvider>
+
                 <Route path="/cosplays/edit/:cosplayId(\d+)">
                     <CosplayForm />
                 </Route>
+
             </CosplayProvider>
+
+            <EventProvider>
+
+                <Route exact path="/events">
+                    <EventList />
+                </Route>
+
+                <Route path="/events/edit/:eventId(\d+)">
+                    <EventForm />
+                </Route>
+
+                <Route exact path="/events/create">
+                    <EventForm />
+                </Route>
+
+                <Route exact path="/events/detail/:id">
+                    <EventDetail />
+                </Route>
+
+            </EventProvider>
 
         </>
     )
