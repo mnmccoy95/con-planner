@@ -28,6 +28,15 @@ export const EventForm = (props) => {
         //update state
         setEvent(newEvent)
     }
+
+    const setBadgeStatus = (evt) => {
+        const newEvent = { ...event } // spread operator, spreads an object into separate arguments
+
+        // evaluate whatever is in the [], accesses .task dynamically
+        newEvent[evt.target.name] = event.badgeStatus ? false : true; // what is in the form, named exactly like it is in state
+        //update state with each keystroke
+        setEvent(newEvent) //  causes re-render
+    }
     
     //*** This code is copyright 2002-2016 by Gavin Kistner, !@phrogz.net
     //*** It is covered under the license viewable at http://phrogz.net/JS/_ReuseLicense.txt
@@ -81,11 +90,14 @@ export const EventForm = (props) => {
                     id: event.id,
                     name: event.name,
                     userId: userId,
+                    eventAddress: event.eventAddress,
                     eventCity: event.eventCity,
                     eventState: event.eventState,
                     eventZip: event.eventZip,
                     startDate: start,
-                    endDate: end
+                    endDate: end,
+                    badgeStatus: event.badgeStatus,
+                    badgePrice: event.badgePrice
                 })
                 .then(() => history.push(`/events/detail/${event.id}`))
             }else {
@@ -93,11 +105,14 @@ export const EventForm = (props) => {
                 addEvent({
                     name: event.name,
                     userId: userId,
+                    eventAddress: event.eventAddress,
                     eventCity: event.eventCity,
                     eventState: event.eventState,
                     eventZip: event.eventZip,
                     startDate: start,
-                    endDate: end
+                    endDate: end,
+                    badgeStatus: event.badgeStatus,
+                    badgePrice: event.badgePrice
                 })
                 .then(() => history.push("/events"))
             }
@@ -113,6 +128,15 @@ export const EventForm = (props) => {
                     placeholder="Event name" 
                     onChange={handleControlledInputChange} 
                     defaultValue={event.name}/>
+                </div>
+            </fieldset>
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="eventAddress">Event Address: </label>
+                    <input type="text" id="eventAddress" name="eventAddress" required className="form-control" 
+                    placeholder="Event Address" 
+                    onChange={handleControlledInputChange} 
+                    defaultValue={event.eventAddress}/>
                 </div>
             </fieldset>
             <fieldset>
@@ -158,6 +182,30 @@ export const EventForm = (props) => {
                     placeholder="Event End" 
                     onChange={handleControlledInputChange} 
                     defaultValue={event.endDate}/>
+                </div>
+            </fieldset>
+            <fieldset>
+                <label htmlFor="eventBadgeStatus">Badges Purchased: </label>
+                <input 
+                    type="checkbox" 
+                    id={`check--complete`} 
+                    name="badgeStatus" 
+                    defaultValue={`${event.badgeStatus}`}
+                    checked={event.badgeStatus}
+                    onChange={(e) => {
+                        // pressing the check box here will set the 
+                        // task status from 'uncompleted' (false) to 
+                        // 'completed' (true)
+                        setBadgeStatus(e); // change task status
+                    }}/>
+            </fieldset>
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="eventBadgePrice">Badge Price: </label>
+                    <input type="text" id="eventBadgePrice" name="badgePrice" required className="form-control" 
+                    placeholder="Badge Price" 
+                    onChange={handleControlledInputChange} 
+                    defaultValue={event.badgePrice}/>
                 </div>
             </fieldset>
 

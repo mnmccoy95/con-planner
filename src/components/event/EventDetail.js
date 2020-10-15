@@ -17,13 +17,30 @@ export const EventDetail = () => {
 		})
 	}, [])
 
+    const badgeStatus = () => {
+        if(event.badgeStatus === true){
+            return(
+                <>Badge: Purchased<br></br>
+                Badge Price: ${event.badgePrice}
+                </>
+            )
+        } else {
+            return (
+                <>Badge: Not Yet Purchased<br></br>
+                Badge Price: ${event.badgePrice}
+                </>
+            )
+        }
+    }
+
     return (
         <section className="eventDetail">
             <h3 className="event__name">{event.name}</h3>
             <div className="event__times">{new Date(event.startDate).toLocaleDateString('en-US')}
                 - {new Date(event.endDate).toLocaleDateString('en-US')}
             </div>
-            <div className="event__location">{event.eventCity}, {event.eventState} {event.eventZip}</div>
+            <div className="event__location">{event.eventAddress}<br></br>{event.eventCity}, {event.eventState} {event.eventZip}</div>
+            <div className="event__badge">{badgeStatus()}</div>
 
             <button onClick={
                 () => {
