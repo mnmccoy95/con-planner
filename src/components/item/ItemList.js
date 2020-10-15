@@ -9,18 +9,11 @@ export const ItemList = () => {
     const {id} = useParams();
 	
     useEffect(() => {
-        console.log(id)
         getItemsByCosplay(id)
-        .then(() => {
-            console.log(id)
-        })
-    }, [])
+    }, [items])
 
     const history = useHistory()
-    console.log(id)
     const getid = () => {
-        
-        console.log(id)
         if(id){
             return (
                 <button onClick={() => {history.push(`/cosplays/items/create/${id}`)}}>
@@ -32,7 +25,7 @@ export const ItemList = () => {
 
     return (
         <div className="items">
-            <h2>Cosplay Pieces</h2>
+            <div>Cosplay Pieces</div>
             {getid()}
             {
                 items.map(item => {

@@ -34,11 +34,11 @@ export const ItemProvider = (props) => {
             .then(res => res.json())
     }
 
-    const deleteItem = (item, cosplayId) => {
+    const deleteItem = (item) => {
         return fetch(`http://localhost:8088/items/${item.id}`, {
             method: "DELETE"
         })
-            .then(getItemsByCosplay(cosplayId))
+            .then(getItemsByCosplay)
     }
 
     const editItem = item => {

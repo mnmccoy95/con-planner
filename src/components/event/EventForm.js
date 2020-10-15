@@ -24,15 +24,13 @@ export const EventForm = (props) => {
         //event is an object with properties. 
         //set the property to the new value
         newEvent[evt.target.name] = evt.target.value
-
         //update state
         setEvent(newEvent)
     }
 
     const setBadgeStatus = (evt) => {
         const newEvent = { ...event } // spread operator, spreads an object into separate arguments
-
-        // evaluate whatever is in the [], accesses .task dynamically
+        // evaluate whatever is in the [], accesses event dynamically
         newEvent[evt.target.name] = event.badgeStatus ? false : true; // what is in the form, named exactly like it is in state
         //update state with each keystroke
         setEvent(newEvent) //  causes re-render
@@ -82,6 +80,7 @@ export const EventForm = (props) => {
             //disable the button - no extra clicks
             setIsLoading(true);
             //javascript saves dates weird so I add a few hours to adjust time zone for proper displaying
+            //if depolying app, I'd have to change this based on the user's timezone
             let start = Date.parse(event.startDate)+21600000
             let end = Date.parse(event.endDate)+21600000
             if (eventId){
@@ -194,9 +193,9 @@ export const EventForm = (props) => {
                     checked={event.badgeStatus}
                     onChange={(e) => {
                         // pressing the check box here will set the 
-                        // task status from 'uncompleted' (false) to 
+                        // badge status from 'uncompleted' (false) to 
                         // 'completed' (true)
-                        setBadgeStatus(e); // change task status
+                        setBadgeStatus(e); // change badge status
                     }}/>
             </fieldset>
             <fieldset>
