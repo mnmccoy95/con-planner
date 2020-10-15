@@ -24,7 +24,7 @@ export const CosplayDetail = () => {
 
             <button onClick={
                 () => {
-                    removeCosplay(cosplay.id)
+                    removeCosplay(cosplay)
                         .then(() => {
                             history.push("/cosplays")
                         })
