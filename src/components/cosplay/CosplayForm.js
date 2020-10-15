@@ -30,6 +30,15 @@ export const CosplayForm = (props) => {
         setCosplay(newCosplay)
     }
     
+    const setCompletionStatus = (event) => {
+        const newCosplay = { ...cosplay } // spread operator, spreads an object into separate arguments
+
+        // evaluate whatever is in the [], accesses .task dynamically
+        newCosplay[event.target.name] = cosplay.complete ? false : true; // what is in the form, named exactly like it is in state
+        //update state with each keystroke
+        setCosplay(newCosplay) //  causes re-render
+    }
+
     // Get customers and locations. If animalId is in the URL, getAnimalById
     useEffect(() => {
         if (cosplayId){
@@ -55,6 +64,7 @@ export const CosplayForm = (props) => {
                     userId: userId,
                     character: cosplay.character,
                     series: cosplay.series,
+                    complete: cosplay.complete
                 })
                 .then(() => history.push(`/cosplays/detail/${cosplay.id}`))
             }else {
@@ -64,6 +74,7 @@ export const CosplayForm = (props) => {
                     userId: userId,
                     character: cosplay.character,
                     series: cosplay.series,
+                    complete: cosplay.complete
                 })
                 .then(() => history.push("/cosplays"))
             }
@@ -89,6 +100,21 @@ export const CosplayForm = (props) => {
                     onChange={handleControlledInputChange} 
                     defaultValue={cosplay.series}/>
                 </div>
+            </fieldset>
+            <fieldset>
+                <label htmlFor="cosplayComplete">Complete: </label>
+                <input 
+                    type="checkbox" 
+                    id={`check--complete`} 
+                    name="complete" 
+                    defaultValue={`${cosplay.complete}`}
+                    checked={cosplay.complete}
+                    onChange={(e) => {
+                        // pressing the check box here will set the 
+                        // task status from 'uncompleted' (false) to 
+                        // 'completed' (true)
+                        setCompletionStatus(e); // change task status
+                    }}/>
             </fieldset>
             <button className="btn btn-primary"
                 disabled={isLoading}

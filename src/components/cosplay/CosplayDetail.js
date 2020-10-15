@@ -17,11 +17,23 @@ export const CosplayDetail = () => {
         })
 	}, [])
 
+    const completionStatus = () => {
+        if(cosplay.complete === true){
+            return(
+                <>Completion Status: Complete</>
+            )
+        } else {
+            return(
+                <>Completion Status: Incomplete</>
+            )
+        }
+    }
+
     return (
         <section className="cosplayDetail">
             <div className="cosplay-detail-character">{cosplay.character}</div>
             <div className="cosplay-detail-series">{cosplay.series}</div>
-
+        <div className="cosplay-detail-completion">{completionStatus()}</div>
             <button onClick={
                 () => {
                     removeCosplay(cosplay)
