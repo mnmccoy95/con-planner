@@ -18,6 +18,8 @@ import { EssentialList } from "./essential/EssList"
 import { EssentialForm } from "./essential/EssForm"
 import { ECProvider } from "./eventCosplay/ECProvider"
 import { ECList } from "./eventCosplay/ECList"
+import { EEProvider } from "./eventEssential/EEProvider"
+import { EEList } from "./eventEssential/EEList"
 
 export const ApplicationViews = (props) => {
     return (
@@ -77,22 +79,31 @@ export const ApplicationViews = (props) => {
                     <EventForm />
                 </Route>
 
-                <CosplayProvider>
-                    <ECProvider>
-                        <Route exact path="/events/detail/:id">
-                            <EventDetail />
-                            <ECList />
-                        </Route>
-                    </ECProvider>
-                </CosplayProvider>
+                <EssentialProvider>
+                    <CosplayProvider>
+                        <ECProvider>
+                            <EEProvider>
+                                <Route exact path="/events/detail/:id">
+                                    <EventDetail />
+                                    <ECList />
+                                    <EEList />
+                                </Route>
+                            </EEProvider>
+                        </ECProvider>
+                    </CosplayProvider>
+                </EssentialProvider>
 
             </EventProvider>
 
             <EssentialProvider>
 
-                <Route exact path="/essentials">
-                    <EssentialList />
-                </Route>
+                <EventProvider>
+                    <EEProvider>
+                        <Route exact path="/essentials">
+                            <EssentialList />
+                        </Route>
+                    </EEProvider>
+                </EventProvider>
 
                 <Route path="/essentials/edit/:essentialId(\d+)">
                     <EssentialForm />
