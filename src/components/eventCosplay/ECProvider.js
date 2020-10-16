@@ -16,6 +16,11 @@ export const ECProvider = (props) => {
         return fetch(`http://localhost:8088/eventCosplays?eventId=${parseInt(eventId)}&_expand=cosplay`)
             .then(res => res.json())
             .then(setECs)
+            .then(() => {
+                if(ECs.length === 0){
+                    setECs([])
+                }
+            })
     }
 
     const addEC = EC => {

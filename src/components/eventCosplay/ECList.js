@@ -3,10 +3,12 @@ import { ECContext } from "./ECProvider"
 import { ECCard } from "./ECCard"
 import { useParams } from 'react-router-dom';
 import { CosplayContext } from "../cosplay/CosplayProvider"
+import { EventContext } from "../event/EventProvider"
 
 export const ECList = () => {
-    const { ECs, getECs } = useContext(ECContext)
+    const { ECs, getECs, } = useContext(ECContext)
     const { getCosplayByIdWithItems } = useContext(CosplayContext)
+    const { events, getEvents, addEvent } = useContext(EventContext)
     const [cosplayEvents, setCosplayEvents] = useState([])
     const {id} = useParams();
     let url = ""
@@ -14,7 +16,7 @@ export const ECList = () => {
     useEffect(() => {
         getECs(parseInt(id))
         url = ""
-    }, [])
+    }, [addEvent])
 
     useEffect(() => {
         url = ""
@@ -33,7 +35,7 @@ export const ECList = () => {
             setCosplayEvents([])
         }
         
-    }, [getECs])
+    }, [getECs, ECs])
 
     return (
         <>
