@@ -33,9 +33,15 @@ export const ECProvider = (props) => {
         fetch(`http://localhost:8088/eventCosplays?cosplayId=${cosplayId}&eventId=${eventId}`)
         .then(res => res.json())
         .then((response) => {
+            if(response.length === 1){
             return fetch(`http://localhost:8088/eventCosplays/${response[0].id}`, {
             method: "DELETE"
-            })
+            })}
+            else{
+                const match = response.find(EC => { return EC.eventId === eventId && EC.cosplayId === cosplayId})
+                return fetch(`http://localhost:8088/eventCosplays/${match.id}`, {
+                method: "DELETE"
+            })}
         }).then(()=>{getECs(eventId)})
     }
 
