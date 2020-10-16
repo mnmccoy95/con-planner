@@ -11,10 +11,9 @@ export const ECContext = createContext()
  */
 export const ECProvider = (props) => {
     const [ECs, setECs] = useState([])
-    const userId = parseInt(localStorage.getItem("cosplayerId"))
 
-    const getECs = () => {
-        return fetch(`http://localhost:8088/eventCosplays?userId=${userId}&_expand=event&_expand=cosplay`)
+    const getECs = (eventId) => {
+        return fetch(`http://localhost:8088/eventCosplays?eventId=${eventId}&_expand=cosplay`)
             .then(res => res.json())
             .then(setECs)
     }
@@ -55,7 +54,7 @@ export const ECProvider = (props) => {
 
     return (
         <ECContext.Provider value={{
-            ECs, getECs, addEC, getECById, removeEC, editEC
+            ECs, getECs, addEC, getECById, removeEC, editEC, setECs
         }}>
             {props.children}
         </ECContext.Provider>

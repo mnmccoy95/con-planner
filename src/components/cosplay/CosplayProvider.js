@@ -35,6 +35,11 @@ export const CosplayProvider = (props) => {
             .then(res => res.json())
     }
 
+    const getCosplayByIdWithItems = (id) => {
+        return fetch(`http://localhost:8088/cosplays/${id}?_embed=items`)
+            .then(res => res.json())
+    }
+
     const removeCosplay = cosplay => {
         return fetch(`http://localhost:8088/cosplays/${cosplay.id}`, {
             method: "DELETE"
@@ -55,7 +60,7 @@ export const CosplayProvider = (props) => {
 
     return (
         <CosplayContext.Provider value={{
-            cosplays, getCosplays, addCosplay, getCosplayById, removeCosplay, editCosplay
+            cosplays, getCosplays, addCosplay, getCosplayById, removeCosplay, editCosplay, getCosplayByIdWithItems
         }}>
             {props.children}
         </CosplayContext.Provider>

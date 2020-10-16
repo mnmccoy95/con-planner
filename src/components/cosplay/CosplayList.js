@@ -33,7 +33,7 @@ export const CosplayList = () => {
     return (
         <div className="cosplays">
           <div id="myModal" className="modal">
-            <div class="modal-content">
+            <div className="modal-content">
               <button id="close" onClick={() => {
                 document.querySelector("#myModal").style.display = "none"
               }}>&times;</button>
