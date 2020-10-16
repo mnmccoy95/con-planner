@@ -31,7 +31,7 @@ export const ECProvider = (props) => {
             },
             body: JSON.stringify(EC)
         })
-            .then(getECs)
+            .then(getECs(EC.eventId))
     }
 
     const removeEC = (cosplayId, eventId) => {
