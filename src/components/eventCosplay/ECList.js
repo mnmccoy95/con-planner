@@ -7,40 +7,43 @@ import { CosplayContext } from "../cosplay/CosplayProvider"
 export const ECList = () => {
     const { ECs, getECs } = useContext(ECContext)
     const { getCosplayByIdWithItems } = useContext(CosplayContext)
+    const [cosplayEvents, setCosplayEvents] = useState([])
     const {id} = useParams();
-    let items
+    let url = ""
 
     useEffect(() => {
-        getECs(id)
+        getECs(parseInt(id))
+        url = ""
     }, [])
-    //try generating string to use in url for cosplay and item get
-    //then set cosplays to that and use it as state
-    //then map over that to get proper render
-    //hope that works
 
+    useEffect(() => {
+        url = ""
+        const cosplayIds = ECs.map((EC) => {
+            return EC.cosplayId
+        })
+        url = cosplayIds.map((cosplay) => {
+            return `id=${cosplay}`
+        }).join("&")
 
-    const getCosplayItems = () => {
-        if(ECs){
-            ECs.map( EC => {
-                getCosplayByIdWithItems(EC.cosplayId)
-                .then((response) => {
-                    EC.items = response.items
-                    return response.items.map(item => {
-                        return <div key={item.id}>{item.name}</div>
-                    })
-                })
-
-            })
-            console.log(ECs)
-            items = ECs
-            return items.map(EC => {
-                return <ECCard key={EC.id} EC={EC} />
-            })
-        } else {
-            return (<>dog</>)
+        if(url !== ""){
+        getCosplayByIdWithItems(url)
+        .then((response) => {
+                setCosplayEvents(response)
+        })} else {
+            setCosplayEvents([])
         }
-    }
+        
+    }, [getECs])
 
-    return (<>{getCosplayItems()}</>)
+    return (
+        <>
+        <div className="suitcase-container">
+            <div className="suitcase-header">Suitcase</div>
+            {cosplayEvents.map(cosplay => {
+                return <ECCard key={cosplay.id} cosplay={cosplay} />
+            })}
+        </div>
+        </>
+    )
 }
 

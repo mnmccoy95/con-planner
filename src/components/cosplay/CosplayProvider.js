@@ -35,8 +35,8 @@ export const CosplayProvider = (props) => {
             .then(res => res.json())
     }
 
-    const getCosplayByIdWithItems = (id) => {
-        return fetch(`http://localhost:8088/cosplays/${id}?_embed=items`)
+    const getCosplayByIdWithItems = (url) => {
+        return fetch(`http://localhost:8088/cosplays?${url}&_embed=items`)
             .then(res => res.json())
     }
 

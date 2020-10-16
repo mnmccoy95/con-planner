@@ -9,14 +9,15 @@ export const ItemList = () => {
     const {id} = useParams();
 	
     useEffect(() => {
-        getItemsByCosplay(id)
-    }, [items])
+        getItemsByCosplay(parseInt(id))
+    }, [])
 
     const history = useHistory()
     const getid = () => {
         if(id){
+            const newId = parseInt(id)
             return (
-                <button onClick={() => {history.push(`/cosplays/items/create/${id}`)}}>
+                <button onClick={() => {history.push(`/cosplays/items/create/${newId}`)}}>
                     Add New Piece
                 </button>
             )

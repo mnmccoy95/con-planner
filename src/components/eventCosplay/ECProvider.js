@@ -13,7 +13,7 @@ export const ECProvider = (props) => {
     const [ECs, setECs] = useState([])
 
     const getECs = (eventId) => {
-        return fetch(`http://localhost:8088/eventCosplays?eventId=${eventId}&_expand=cosplay`)
+        return fetch(`http://localhost:8088/eventCosplays?eventId=${parseInt(eventId)}&_expand=cosplay`)
             .then(res => res.json())
             .then(setECs)
     }
@@ -29,32 +29,19 @@ export const ECProvider = (props) => {
             .then(getECs)
     }
 
-    const getECById = (id) => {
-        return fetch(`http://localhost:8088/eventCosplays/${id}`)
-            .then(res => res.json())
-    }
-
-    const removeEC = EC => {
-        return fetch(`http://localhost:8088/eventCosplays/${EC.id}`, {
+    const removeEC = (cosplayId, eventId) => {
+        fetch(`http://localhost:8088/eventCosplays?cosplayId=${cosplayId}&eventId=${eventId}`)
+        .then(res => res.json())
+        .then((response) => {
+            return fetch(`http://localhost:8088/eventCosplays/${response[0].id}`, {
             method: "DELETE"
-        })
-            .then(getECs)
-    }
-
-    const editEC = EC => {
-        return fetch(`http://localhost:8088/eventCosplays/${EC.id}`, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(EC)
-        })
-            .then(getECs)
+            })
+        }).then(()=>{getECs(eventId)})
     }
 
     return (
         <ECContext.Provider value={{
-            ECs, getECs, addEC, getECById, removeEC, editEC, setECs
+            ECs, getECs, addEC, removeEC, setECs
         }}>
             {props.children}
         </ECContext.Provider>
