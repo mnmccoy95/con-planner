@@ -13,7 +13,7 @@ export const ItemProvider = (props) => {
     const [items, setItems] = useState([])
 
     const getItemsByCosplay = (cosplayId) => {
-        return fetch(`http://localhost:8088/items?cosplayId=${cosplayId}`)
+        return fetch(`http://localhost:8088/items?cosplayId=${parseInt(cosplayId)}`)
             .then(res => res.json())
             .then(setItems)
     }
@@ -38,7 +38,7 @@ export const ItemProvider = (props) => {
         return fetch(`http://localhost:8088/items/${item.id}`, {
             method: "DELETE"
         })
-            .then(getItemsByCosplay)
+            .then(getItemsByCosplay(item.cosplayId))
     }
 
     const editItem = item => {
