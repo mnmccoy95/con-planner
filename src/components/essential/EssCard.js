@@ -5,6 +5,12 @@ import { useHistory } from 'react-router-dom';
 export const EssentialCard = ({ essential }) => {
     const { removeEssential } = useContext(EssentialContext)
     const history = useHistory()
+
+    const modalDisplay = () => {
+        const modal = document.querySelector("#myModal")
+        modal.style.display = "block"
+        modal.value = essential.id
+    }
     
     return(
     <section className="essential">
@@ -18,7 +24,9 @@ export const EssentialCard = ({ essential }) => {
         <button onClick={() => {
             history.push(`/essentials/edit/${essential.id}`)
         }}>Edit Essential</button>
-        <button>Add to Event</button>
+        <button onClick={() => {
+            modalDisplay()
+        }}>Add to Event</button>
     </section>
     )
 }
