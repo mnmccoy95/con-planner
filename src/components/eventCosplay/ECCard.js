@@ -4,9 +4,18 @@ import { useParams } from 'react-router-dom';
 
 export const ECCard = ({ cosplay }) => {
     const { removeEC } = useContext(ECContext)
-    const {id} = useParams()
+    let {id} = useParams()
+    
+    const homeGrabber = () => {
+        if(typeof(id) === "string"){
+        } else {
+            id = document.querySelector(".hidden").innerHTML
+        }
+    }
 
     return (
+        <>
+        {homeGrabber()}
         <section className="cosplayEvent">
             <div className="character__name">
             <button className="deleteCosplayEvent" onClick={() => {
@@ -22,5 +31,6 @@ export const ECCard = ({ cosplay }) => {
                 }
             </ul>
         </section>
+        </>
     )
 }

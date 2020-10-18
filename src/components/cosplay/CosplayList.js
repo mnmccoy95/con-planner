@@ -10,7 +10,7 @@ export const CosplayList = () => {
 
     const { cosplays, getCosplays } = useContext(CosplayContext)
     const { events, getEvents } = useContext(EventContext)
-    const { ECs, addEC, getAllECs } = useContext(ECContext)
+    const { addEC, getAllECs } = useContext(ECContext)
 
     const event = useRef(null)
     const existDialog = useRef()

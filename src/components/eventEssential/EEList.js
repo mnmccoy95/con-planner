@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState, useRef } from "react"
+import React, { useContext, useEffect, useRef } from "react"
 import { EEContext } from "./EEProvider"
 import { EECard } from "./EECard"
 import { useParams } from 'react-router-dom';
@@ -7,18 +7,32 @@ import { EventContext } from "../event/EventProvider"
 // import "./EE.css"
 
 export const EEList = () => {
-    const { EEs, getEEs, addEE, removeEE, getAllEEs } = useContext(EEContext)
+    const { EEs, getEEs, addEE, getAllEEs } = useContext(EEContext)
     const { essentials, getEssentials } = useContext(EssentialContext)
-    const { events, getEvents, addEvent } = useContext(EventContext)
+    const { events } = useContext(EventContext)
     
-    const {id} = useParams();
+    let {id} = useParams();
 
     const essential = useRef(null)
     const existDialog = useRef()
 
+    const homeGrabber = () => {
+      if(typeof(id) === "string"){
+      } else {
+          const futureEvents = events.filter(event =>{
+              if(event.startDate >= Date.now()){
+                  return event }
+          })
+          if(futureEvents){
+          id = futureEvents[0].id
+          }
+      }
+    }
+
     useEffect(() => {
         getEEs(id)
         getEssentials()
+        homeGrabber()
     }, [])
 
     const EESaver = () => {
@@ -48,6 +62,7 @@ export const EEList = () => {
 
     return (
         <>
+        {homeGrabber()}
         <div id="myModalEssential" className="modal">
             <div className="modal-content">
               <button id="close" onClick={() => {

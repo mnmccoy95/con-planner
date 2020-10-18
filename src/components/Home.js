@@ -1,12 +1,12 @@
 import React, {useContext, useEffect} from "react"
 import {EventContext} from "./event/EventProvider"
-import {EventCard} from "./event/EventCard"
+import {ECList} from "./eventCosplay/ECList"
+import "./Home.css"
 
 
 export const Home = () => {
     // This state changes when `getEvents()` is invoked below
     const { events, getEvents } = useContext(EventContext)
-
 	//useEffect - reach out to the world for something
     useEffect(() => {
       getEvents()
@@ -46,9 +46,10 @@ export const Home = () => {
                     </div>
                     <div className="event__location">{futureEvents[0].eventAddress}<br></br>{futureEvents[0].eventCity}, {futureEvents[0].eventState} {futureEvents[0].eventZip}</div>
                     <div className="event__badge">{badgeStatus()}</div>
-                    
                 </section>
+                <div className="hidden">{futureEvents[0].id}</div>
                 </div>
+                <ECList/>
                 </>
             )
         }

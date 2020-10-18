@@ -19,16 +19,24 @@ import { EssentialForm } from "./essential/EssForm"
 import { ECProvider } from "./eventCosplay/ECProvider"
 import { ECList } from "./eventCosplay/ECList"
 import { EEProvider } from "./eventEssential/EEProvider"
-import { EEList } from "./eventEssential/EEList"
 
 export const ApplicationViews = (props) => {
     return (
         <>
             {/* Render the location list when http://localhost:3000/ */}
+            
             <EventProvider>
-                <Route exact path="/">
-                    <Home />
-                </Route>
+                <EssentialProvider>
+                    <CosplayProvider>
+                        <ECProvider>
+                            <EEProvider>
+                                <Route exact path="/">
+                                    <Home />
+                                </Route>
+                            </EEProvider>
+                        </ECProvider>
+                    </CosplayProvider>
+                </EssentialProvider>
             </EventProvider>
 
             <CosplayProvider>
