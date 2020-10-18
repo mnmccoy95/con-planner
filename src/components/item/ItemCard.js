@@ -3,7 +3,7 @@ import { useHistory} from 'react-router-dom';
 import { ItemContext } from "./ItemProvider";
 
 export const ItemCard = ({ item }) => {
-    const { deleteItem, getItemsByCosplay } = useContext(ItemContext)
+    const { deleteItem } = useContext(ItemContext)
     
 
     const history = useHistory()

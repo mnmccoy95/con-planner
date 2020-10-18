@@ -1,0 +1,29 @@
+.tasks {
+    border: solid 1px;
+    padding: 1em;
+    width: 300px;
+}
+
+.taskHeader {
+    display: flex;
+    flex-direction: row;
+    font-size: 1.3em;
+    text-align: center;
+    border-bottom: solid 1px;
+    justify-content: center;
+}
+
+.addNewTask {
+    margin-left: 1em;
+}
+
+.taskObj {
+    margin-bottom: 0.5em;
+    flex-basis: 50%;
+}
+
+.allTasks {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}

@@ -19,6 +19,10 @@ import { EssentialForm } from "./essential/EssForm"
 import { ECProvider } from "./eventCosplay/ECProvider"
 import { ECList } from "./eventCosplay/ECList"
 import { EEProvider } from "./eventEssential/EEProvider"
+import { TaskProvider } from"./task/TaskProvider"
+import { TaskList } from "./task/TaskList"
+import { TaskForm } from "./task/TaskForm"
+import { TaskEdit } from "./task/TaskEdit"
 
 export const ApplicationViews = (props) => {
     return (
@@ -51,23 +55,34 @@ export const ApplicationViews = (props) => {
                 <Route exact path="/cosplays/create">
                     <CosplayForm />
                 </Route>
+                
+                <TaskProvider>
+                    <ItemProvider>
 
-                <ItemProvider>
+                        <Route exact path="/cosplays/detail/:id">
+                            <CosplayDetail />
+                            <ItemList />
+                            <TaskList />
+                        </Route>
 
-                    <Route exact path="/cosplays/detail/:id">
-                        <CosplayDetail />
-                        <ItemList />
-                    </Route>
+                        <Route exact path="/cosplays/items/create/:cosplayId(\d+)">
+                            <ItemForm />
+                        </Route>
 
-                    <Route exact path="/cosplays/items/create/:cosplayId(\d+)">
-                        <ItemForm />
-                    </Route>
+                        <Route exact path="/cosplays/tasks/create/:cosplayId(\d+)">
+                            <TaskForm />
+                        </Route>
 
-                    <Route exact path="/cosplays/items/edit/:itemId(\d+)">
-                        <ItemEdit />
-                    </Route>
+                        <Route exact path="/cosplays/items/edit/:itemId(\d+)">
+                            <ItemEdit />
+                        </Route>
 
-                </ItemProvider>
+                        <Route exact path="/cosplays/tasks/edit/:taskId(\d+)">
+                            <TaskEdit />
+                        </Route>
+
+                    </ItemProvider>
+                </TaskProvider>
 
                 <Route path="/cosplays/edit/:cosplayId(\d+)">
                     <CosplayForm />
