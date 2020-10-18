@@ -7,13 +7,14 @@ import { EventContext } from "../event/EventProvider"
 // import "./EE.css"
 
 export const EEList = () => {
-    const { EEs, getEEs, addEE, removeEE } = useContext(EEContext)
+    const { EEs, getEEs, addEE, removeEE, getAllEEs } = useContext(EEContext)
     const { essentials, getEssentials } = useContext(EssentialContext)
     const { events, getEvents, addEvent } = useContext(EventContext)
     
     const {id} = useParams();
 
     const essential = useRef(null)
+    const existDialog = useRef()
 
     useEffect(() => {
         getEEs(id)
@@ -21,16 +22,27 @@ export const EEList = () => {
     }, [])
 
     const EESaver = () => {
+      if(parseInt(essential.current.value) !== 0) {
         const modal = document.querySelector("#myModalEssential")
         modal.style.display = "block"
         modal.value = parseInt(id)
-        
-        addEE({
-          essentialId: parseInt(essential.current.value),
-          eventId: parseInt(modal.value)
+        getAllEEs()
+        .then((response) => {
+          const existing = response.find(relationship => {
+            return relationship.eventId === parseInt(modal.value) && relationship.essentialId === parseInt(essential.current.value)
+          })
+          if(existing) {
+            existDialog.current.showModal()
+          }
+          else {
+            addEE({
+              eventId: parseInt(modal.value),
+              essentialId: parseInt(essential.current.value)
+            }).then(() => {modal.style.display = "none"})
+            .then(getEEs(id))
+          }
         })
-        .then(() => {modal.style.display = "none"})
-        .then(getEEs(parseInt(id)))
+      }
     }
     
 
@@ -57,6 +69,10 @@ export const EEList = () => {
               <button onClick={() => {
                 EESaver()
               }}type="button" id="event-form-submit">Save to Event</button>
+              <dialog className="dialog dialog--auth" ref={existDialog}>
+                <div>You're already bringing that!</div>
+                <button className="button--close" onClick={e => existDialog.current.close()}>Close</button>
+              </dialog>
             </div>
           </div>
           <div className="event-essential-all">
