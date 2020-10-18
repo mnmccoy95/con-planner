@@ -119,12 +119,12 @@ export const EventForm = (props) => {
     
     return (
         <form className="eventForm">
-            <h2 className="eventForm__title">{eventId ? <>Save Event</> : <>Add Event</>}</h2>
+            <h2 className="eventForm__title">{eventId ? <>Save Event</> : <>Add New Event</>}</h2>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="eventName">Event name: </label>
                     <input type="text" id="eventName" name="name" required autoFocus className="form-control" 
-                    placeholder="Event name" 
+                    placeholder="Title" 
                     onChange={handleControlledInputChange} 
                     defaultValue={event.name}/>
                 </div>
@@ -133,7 +133,7 @@ export const EventForm = (props) => {
                 <div className="form-group">
                     <label htmlFor="eventAddress">Event Address: </label>
                     <input type="text" id="eventAddress" name="eventAddress" required className="form-control" 
-                    placeholder="Event Address" 
+                    placeholder="Street Address" 
                     onChange={handleControlledInputChange} 
                     defaultValue={event.eventAddress}/>
                 </div>
@@ -142,7 +142,7 @@ export const EventForm = (props) => {
                 <div className="form-group">
                     <label htmlFor="eventCity">Event City: </label>
                     <input type="text" id="eventCity" name="eventCity" required className="form-control" 
-                    placeholder="Event City" 
+                    placeholder="City" 
                     onChange={handleControlledInputChange} 
                     defaultValue={event.eventCity}/>
                 </div>
@@ -151,7 +151,7 @@ export const EventForm = (props) => {
                 <div className="form-group">
                     <label htmlFor="eventState">Event State: </label>
                     <input type="text" id="eventState" name="eventState" required className="form-control" 
-                    placeholder="Event State" 
+                    placeholder="State" 
                     onChange={handleControlledInputChange} 
                     defaultValue={event.eventState}/>
                 </div>
@@ -160,7 +160,7 @@ export const EventForm = (props) => {
                 <div className="form-group">
                     <label htmlFor="eventZip">Event Zipcode: </label>
                     <input type="text" id="eventZip" name="eventZip" required className="form-control" 
-                    placeholder="Event Zipcode" 
+                    placeholder="Zip" 
                     onChange={handleControlledInputChange} 
                     defaultValue={event.eventZip}/>
                 </div>
@@ -184,7 +184,8 @@ export const EventForm = (props) => {
                 </div>
             </fieldset>
             <fieldset>
-                <label htmlFor="eventBadgeStatus">Badges Purchased: </label>
+                <div className="form-group">
+                <label htmlFor="eventBadgeStatus">Badge Purchased? </label>
                 <input 
                     type="checkbox" 
                     id={`check--complete`} 
@@ -197,12 +198,13 @@ export const EventForm = (props) => {
                         // 'completed' (true)
                         setBadgeStatus(e); // change badge status
                     }}/>
+                    </div>
             </fieldset>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="eventBadgePrice">Badge Price: </label>
                     <input type="text" id="eventBadgePrice" name="badgePrice" required className="form-control" 
-                    placeholder="Badge Price" 
+                    placeholder="Price" 
                     onChange={handleControlledInputChange} 
                     defaultValue={event.badgePrice}/>
                 </div>

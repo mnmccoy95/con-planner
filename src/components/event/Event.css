@@ -1,0 +1,94 @@
+.eventsContainer {
+    width: 100%;
+}
+
+.allEvents{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.event-head {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-event {
+    margin-left: 1em;
+    margin-top: 10px;
+}
+
+.events__future {
+    margin-right: 1.5em;
+}
+
+.eventTitle {
+    font-size: 2em;
+}
+
+.event-head {
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+}
+
+.event-list-head {
+    font-size: 1.3em;
+    text-decoration: underline;
+    text-align: center;
+}
+
+.event {
+    margin-top: 10px;
+    border: solid black 1px;
+    padding: 10px;
+}
+
+.eventForm__title {
+    text-align: center;
+    margin-bottom: 2px;
+}
+
+.form-group {
+    width: 300px;
+    margin: 2px auto;
+}
+
+.btn-primary {
+    margin: 0 auto;
+}
+
+fieldset {
+    padding: 0px;
+}
+
+.eventForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 2em;
+}
+
+.btn-primary{
+    padding: 10px;
+}
+
+.deleteEvent {
+    margin-left: 1em;
+}
+
+.event__name__detail {
+    display: flex;
+    flex-direction: row;
+    font-size: 1.3em;
+    text-align: center;
+    border-bottom: solid 1px;
+    justify-content: center;
+}
+.eventDetail {
+    border: solid 1px;
+    height: 140px;
+    width: 300px;
+    padding: 1em;
+}

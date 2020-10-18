@@ -11,14 +11,14 @@ export const CosplayCard = ({ cosplay }) => {
     return (
     <section className="cosplay">
         
-        <h3 className="character__name">
+        <div className="character__name">
             <Link to={`/cosplays/detail/${cosplay.id}`}>
                 { cosplay.character }
             </Link>
-        </h3>
-        <button onClick={() => {
+        </div>
+        <button className="addCosplayToEvent" onClick={() => {
             modalDisplay()
-        }}>Add to Event</button>
+        }}>📅</button>
     </section>
     )
 }

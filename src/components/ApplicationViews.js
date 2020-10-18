@@ -86,7 +86,6 @@ export const ApplicationViews = (props) => {
                                 <Route exact path="/events/detail/:id">
                                     <EventDetail />
                                     <ECList />
-                                    <EEList />
                                 </Route>
                             </EEProvider>
                         </ECProvider>

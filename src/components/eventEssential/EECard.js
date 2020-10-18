@@ -7,13 +7,13 @@ export const EECard = ({ EE }) => {
 
     return (
         <section className="essentialEvent">
-            <h3 className="essential__name">
-                { EE.essential.name }
-                <button onClick={() => {
+            <div className="essential__name">
+            <button className="deleteEssentialEvent" onClick={() => {
                 removeEE(EE)
                 getEEs(EE.eventId)
-              }}>Remove</button>
-            </h3>
+              }}>🗑️</button>
+                { EE.essential.name }
+            </div>
         </section>
     )
 }

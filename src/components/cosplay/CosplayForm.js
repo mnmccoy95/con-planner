@@ -78,7 +78,7 @@ export const CosplayForm = (props) => {
     
     return (
         <form className="cosplayForm">
-            <h2 className="cosplayForm__title">{cosplayId ? <>Save Event</> : <>Add Event</>}</h2>
+            <h2 className="cosplayForm__title">{cosplayId ? <>Save Cosplay</> : <>Add New Cosplay</>}</h2>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="cosplayName">Character name: </label>
@@ -98,7 +98,7 @@ export const CosplayForm = (props) => {
                 </div>
             </fieldset>
             <fieldset>
-                <label htmlFor="cosplayComplete">Complete: </label>
+                <label htmlFor="cosplayComplete">Complete? </label>
                 <input 
                     type="checkbox" 
                     id={`check--complete`} 

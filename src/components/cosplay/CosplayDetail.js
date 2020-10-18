@@ -31,21 +31,23 @@ export const CosplayDetail = () => {
 
     return (
         <section className="cosplayDetail">
-            <div className="cosplay-detail-character">{cosplay.character}</div>
-            <div className="cosplay-detail-series">{cosplay.series}</div>
-        <div className="cosplay-detail-completion">{completionStatus()}</div>
-            <button onClick={
+            <div className="cosplay-detail-character">{cosplay.character}
+            <button className="deleteCosplay" onClick={
                 () => {
                     removeCosplay(cosplay)
                         .then(() => {
                             history.push("/cosplays")
                         })
                 }
-            }>Delete Cosplay</button>
+            }>🗑️</button>
             
             <button onClick={() => {
                 history.push(`/cosplays/edit/${cosplay.id}`)
-            }}>Edit Cosplay</button>
+            }}>✏️</button>
+            </div>
+            <div className="cosplay-detail-series">{cosplay.series}</div>
+        <div className="cosplay-detail-completion">{completionStatus()}</div>
+            
         </section>
     )
 }

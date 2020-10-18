@@ -4,6 +4,7 @@ import { EECard } from "./EECard"
 import { useParams } from 'react-router-dom';
 import { EssentialContext } from "../essential/EssProvider"
 import { EventContext } from "../event/EventProvider"
+// import "./EE.css"
 
 export const EEList = () => {
     const { EEs, getEEs, addEE, removeEE } = useContext(EEContext)
@@ -35,14 +36,14 @@ export const EEList = () => {
 
     return (
         <>
-        <div className="suitcase-container"><div id="myModalEssential" className="modal">
+        <div id="myModalEssential" className="modal">
             <div className="modal-content">
               <button id="close" onClick={() => {
                 document.querySelector("#myModalEssential").style.display = "none"
               }}>&times;</button>
               <fieldset>
                 <div className="form-group">
-                    <label htmlFor="eventEssential">Choose Essential: </label>
+                    <label htmlFor="eventEssential">Bringing: </label>
                     <select defaultValue="" name="eventEssential" ref={essential} id="eventEssential" className="form-control" >
                         <option value="0">Select a Essential</option>
                         {essentials.map(l => (
@@ -55,20 +56,23 @@ export const EEList = () => {
               </fieldset>
               <button onClick={() => {
                 EESaver()
-              }}type="button" id="event-form-submit">Save Essential</button>
+              }}type="button" id="event-form-submit">Save to Event</button>
             </div>
           </div>
+          <div className="event-essential-all">
             <div className="suitcase-header">Essentials
-            <button onClick={() => {
-                const modal = document.querySelector("#myModalEssential")
-                modal.style.display = "block"
-                modal.value = parseInt(id)
-              }}>+</button>
+              <button className="addEssentialEvent" onClick={() => {
+                  const modal = document.querySelector("#myModalEssential")
+                  modal.style.display = "block"
+                  modal.value = parseInt(id)
+                }}>+</button>
             </div>
-            {EEs.map(EE => {
-                return <EECard key={EE.id} EE={EE} />
-            })}
-        </div>
+            <div className="event-essential-list">
+              {EEs.map(EE => {
+                  return <EECard key={EE.id} EE={EE} />
+              })}
+            </div>
+          </div>
         </>
     )
 }

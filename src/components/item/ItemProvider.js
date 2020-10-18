@@ -38,7 +38,7 @@ export const ItemProvider = (props) => {
         return fetch(`http://localhost:8088/items/${item.id}`, {
             method: "DELETE"
         })
-            .then(getItemsByCosplay(item.cosplayId))
+            .then(()=>{getItemsByCosplay(item.cosplayId)})
     }
 
     const editItem = item => {
@@ -49,7 +49,7 @@ export const ItemProvider = (props) => {
             },
             body: JSON.stringify(item)
         })
-            .then(getItemsByCosplay)
+        .then(()=>{getItemsByCosplay(item.cosplayId)})
     }
 
     return (

@@ -14,19 +14,21 @@ export const EssentialCard = ({ essential }) => {
     
     return(
     <section className="essential">
-        <h3 className="essential__name">
+        <div className="essential__name">
             { essential.name }
-        </h3>
+        </div>
+        <div className="buttons">
         <button onClick={() => {
             removeEssential(essential)
-        }}>Delete Essential</button>
+        }}>🗑️</button>
             
         <button onClick={() => {
             history.push(`/essentials/edit/${essential.id}`)
-        }}>Edit Essential</button>
+        }}>✏️</button>
         <button onClick={() => {
             modalDisplay()
-        }}>Add to Event</button>
+        }}>📅</button>
+        </div>
     </section>
     )
 }
