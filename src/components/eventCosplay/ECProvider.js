@@ -23,6 +23,11 @@ export const ECProvider = (props) => {
             })
     }
 
+    const getAllECs = () => {
+        return fetch(`http://localhost:8088/eventCosplays`)
+            .then(res => res.json())
+    }
+
     const addEC = EC => {
         return fetch("http://localhost:8088/eventCosplays", {
             method: "POST",
@@ -52,7 +57,7 @@ export const ECProvider = (props) => {
 
     return (
         <ECContext.Provider value={{
-            ECs, getECs, addEC, removeEC, setECs
+            ECs, getECs, addEC, removeEC, setECs, getAllECs
         }}>
             {props.children}
         </ECContext.Provider>

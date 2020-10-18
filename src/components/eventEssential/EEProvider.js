@@ -18,6 +18,11 @@ export const EEProvider = (props) => {
             .then(setEEs)
     }
 
+    const getAllEEs = () => {
+        return fetch(`http://localhost:8088/eventEssentials`)
+            .then(res => res.json())
+    }
+
     const addEE = EE => {
         return fetch("http://localhost:8088/eventEssentials", {
             method: "POST",
@@ -36,7 +41,7 @@ export const EEProvider = (props) => {
 
     return (
         <EEContext.Provider value={{
-            EEs, getEEs, addEE, removeEE, setEEs
+            EEs, getEEs, addEE, removeEE, setEEs, getAllEEs
         }}>
             {props.children}
         </EEContext.Provider>

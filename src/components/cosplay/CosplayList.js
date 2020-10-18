@@ -10,24 +10,37 @@ export const CosplayList = () => {
 
     const { cosplays, getCosplays } = useContext(CosplayContext)
     const { events, getEvents } = useContext(EventContext)
-    const { ECs, addEC } = useContext(ECContext)
+    const { ECs, addEC, getAllECs } = useContext(ECContext)
 
     const event = useRef(null)
+    const existDialog = useRef()
 	
     useEffect(() => {
-    getCosplays()
-    getEvents()
+      getCosplays()
+      getEvents()
     }, [])
 
     const history = useHistory()
 
     const ECSaver = () => {
-      const modal = document.querySelector("#myModal")
-      addEC({
-        cosplayId: parseInt(modal.value),
-        eventId: parseInt(event.current.value)
-      })
-      .then(() => {modal.style.display = "none"})
+      if(parseInt(event.current.value) !== 0) {
+        const modal = document.querySelector("#myModal")
+        getAllECs()
+        .then((response) => {
+          const existing = response.find(relationship => {
+            return relationship.cosplayId === parseInt(modal.value) && relationship.eventId === parseInt(event.current.value)
+          })
+          if(existing) {
+            existDialog.current.showModal()
+          }
+          else {
+            addEC({
+              cosplayId: parseInt(modal.value),
+              eventId: parseInt(event.current.value)
+            }).then(() => {modal.style.display = "none"})
+          }
+        })
+      }
     }
 
     return (
@@ -53,6 +66,10 @@ export const CosplayList = () => {
               <button onClick={() => {
                 ECSaver()
               }}type="button" id="event-form-submit">Save to Event</button>
+              <dialog className="dialog dialog--auth" ref={existDialog}>
+                <div>You're already bringing that!</div>
+                <button className="button--close" onClick={e => existDialog.current.close()}>Close</button>
+              </dialog>
             </div>
           </div>
           <div className="cosplays">

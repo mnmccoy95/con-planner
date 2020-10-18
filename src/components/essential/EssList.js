@@ -10,9 +10,10 @@ import "./Ess.css"
 export const EssentialList = () => {
     const { essentials, getEssentials } = useContext(EssentialContext)
 	const { events, getEvents } = useContext(EventContext)
-    const { EEs, addEE } = useContext(EEContext)
+    const { EEs, addEE, getAllEEs } = useContext(EEContext)
 
     const event = useRef(null)
+    const existDialog = useRef()
 
     useEffect(() => {
         getEssentials()
@@ -22,12 +23,24 @@ export const EssentialList = () => {
     const history = useHistory()
 
     const EESaver = () => {
-        const modal = document.querySelector("#myModal")
-        addEE({
-          essentialId: parseInt(modal.value),
-          eventId: parseInt(event.current.value)
-        })
-        .then(() => {modal.style.display = "none"})
+        if(parseInt(event.current.value) !== 0) {
+            const modal = document.querySelector("#myModal")
+            getAllEEs()
+            .then((response) => {
+              const existing = response.find(relationship => {
+                return relationship.essentialId === parseInt(modal.value) && relationship.eventId === parseInt(event.current.value)
+              })
+              if(existing) {
+                existDialog.current.showModal()
+              }
+              else {
+                addEE({
+                  essentialId: parseInt(modal.value),
+                  eventId: parseInt(event.current.value)
+                }).then(() => {modal.style.display = "none"})
+              }
+            })
+        }
     }
 
     return (
@@ -53,6 +66,10 @@ export const EssentialList = () => {
                 <button onClick={() => {
                     EESaver()
                 }}type="button" id="event-form-submit">Save to Event</button>
+                <dialog className="dialog dialog--auth" ref={existDialog}>
+                <div>You're already bringing that!</div>
+                <button className="button--close" onClick={e => existDialog.current.close()}>Close</button>
+                </dialog>
                 </div>
             </div>
             <div className="essHeader">

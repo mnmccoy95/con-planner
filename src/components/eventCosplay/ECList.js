@@ -8,7 +8,7 @@ import { EEList } from "../eventEssential/EEList"
 import "./EC.css"
 
 export const ECList = () => {
-    const { ECs, getECs, addEC } = useContext(ECContext)
+    const { ECs, getECs, addEC, getAllECs } = useContext(ECContext)
     const { cosplays, getCosplays, getCosplayByIdWithItems } = useContext(CosplayContext)
     const { events, getEvents, addEvent } = useContext(EventContext)
     const [cosplayEvents, setCosplayEvents] = useState([])
@@ -16,6 +16,7 @@ export const ECList = () => {
     let url = ""
 
     const cosplay = useRef(null)
+    const existDialog = useRef()
 
     useEffect(() => {
         getECs(parseInt(id))
@@ -43,16 +44,25 @@ export const ECList = () => {
     }, [getECs, ECs])
 
     const ECSaver = () => {
-        const modal = document.querySelector("#myModal")
-        modal.style.display = "block"
-        modal.value = parseInt(id)
-        
-        addEC({
-          cosplayId: parseInt(cosplay.current.value),
-          eventId: parseInt(modal.value)
-        })
-        .then(() => {modal.style.display = "none"})
-        .then(getECs(parseInt(id)))
+        if(parseInt(cosplay.current.value) !== 0) {
+            const modal = document.querySelector("#myModal")
+            getAllECs()
+            .then((response) => {
+              const existing = response.find(relationship => {
+                return relationship.eventId === parseInt(modal.value) && relationship.cosplayId === parseInt(cosplay.current.value)
+              })
+              if(existing) {
+                existDialog.current.showModal()
+              }
+              else {
+                addEC({
+                  eventId: parseInt(modal.value),
+                  cosplayId: parseInt(cosplay.current.value)
+                }).then(() => {modal.style.display = "none"})
+                .then(getECs(id))
+              }
+            })
+        }
     }
 
     return (
@@ -78,6 +88,10 @@ export const ECList = () => {
                 <button onClick={() => {
                     ECSaver()
                 }}type="button" id="event-form-submit">Save to Event</button>
+                <dialog className="dialog dialog--auth" ref={existDialog}>
+                <div>You're already bringing that!</div>
+                <button className="button--close" onClick={e => existDialog.current.close()}>Close</button>
+              </dialog>
             </div>
         </div>
         <div className="suitcase-container">
