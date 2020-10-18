@@ -1,10 +1,29 @@
 .navbar {
     display: flex;
     flex-wrap: nowrap;
-    justify-content: left;
+    justify-content: space-around;
+    background-color: rgba(226, 125, 43, 0.733);
+    margin: 0em;
+    padding: 0px;
+    height: 5em;
+    align-content: center;
+    position: relative;
+    width: 100%;
+    list-style-type: none;
 }
 
 .navbar__item {
-    flex-basis: 20%;
     list-style-type: none;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.navbar__link {
+    text-decoration: none;
+    color: white;
+}
+
+.navbar__link:hover {
+    background-color: rgba(226, 125, 43, 0.884);
 }

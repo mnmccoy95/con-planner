@@ -12,6 +12,14 @@ code {
     monospace;
 }
 
+#root {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+
 /* The Modal (background) */
 .modal {
   display: none; /* Hidden by default */
@@ -49,3 +57,4 @@ code {
   text-decoration: none;
   cursor: pointer;
 }
+

@@ -4,6 +4,7 @@ import { EssentialCard } from "./EssCard"
 import { useHistory } from 'react-router-dom';
 import {EventContext} from "../event/EventProvider"
 import {EEContext} from "../eventEssential/EEProvider"
+import "./Ess.css"
 
 
 export const EssentialList = () => {
@@ -38,7 +39,7 @@ export const EssentialList = () => {
                 }}>&times;</button>
                 <fieldset>
                     <div className="form-group">
-                        <label htmlFor="eventEssential">Choose Event: </label>
+                        <label htmlFor="eventEssential">Bring to: </label>
                         <select defaultValue="" name="eventEssential" ref={event} id="eventEssential" className="form-control" >
                             <option value="0">Select an Event</option>
                             {events.map(l => (
@@ -51,18 +52,22 @@ export const EssentialList = () => {
                 </fieldset>
                 <button onClick={() => {
                     EESaver()
-                }}type="button" id="event-form-submit">Save Event</button>
+                }}type="button" id="event-form-submit">Save to Event</button>
                 </div>
             </div>
-            <h2>Your Saved Essentials</h2>
-            <button onClick={() => {history.push("/essentials/create")}}>
-                    Add New Essential
+            <div className="essHeader">
+            <div className="essTitle">Essentials</div>
+            <button  className="addEss" onClick={() => {history.push("/essentials/create")}}>
+                    +
             </button>
+            </div>
+            <div className="allEss">
             {
             essentials.map(essential => {
                 return <EssentialCard key={essential.id} essential={essential} />
             })
             }
+            </div>
         </div>
     )
 }

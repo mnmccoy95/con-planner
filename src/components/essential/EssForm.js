@@ -99,7 +99,7 @@ export const EssentialForm = (props) => {
                 }}>
             {essentialId ? <>Save Essential</> : <>Add and Return</>}</button>
             {essentialId ? <></> :
-            <button disabled={isLoading} onClick={event => {
+            <button className="btn btn-primary" disabled={isLoading} onClick={event => {
                 event.preventDefault() // Prevent browser from submitting the form
                 constructEssentialObject2()
             }}>Save and Add More</button>}

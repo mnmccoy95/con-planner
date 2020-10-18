@@ -4,6 +4,8 @@ import { ECCard } from "./ECCard"
 import { useParams } from 'react-router-dom';
 import { CosplayContext } from "../cosplay/CosplayProvider"
 import { EventContext } from "../event/EventProvider"
+import { EEList } from "../eventEssential/EEList"
+import "./EC.css"
 
 export const ECList = () => {
     const { ECs, getECs, addEC } = useContext(ECContext)
@@ -55,39 +57,43 @@ export const ECList = () => {
 
     return (
         <>
-        <div className="suitcase-container"><div id="myModal" className="modal">
+        <div id="myModal" className="modal">
             <div className="modal-content">
-              <button id="close" onClick={() => {
-                document.querySelector("#myModal").style.display = "none"
-              }}>&times;</button>
-              <fieldset>
-                <div className="form-group">
-                    <label htmlFor="eventCosplay">Choose Cosplay: </label>
-                    <select defaultValue="" name="eventCosplay" ref={cosplay} id="eventCosplay" className="form-control" >
-                        <option value="0">Select a Cosplay</option>
-                        {cosplays.map(l => (
-                            <option key={l.id} value={l.id}>
-                                {l.character}
-                            </option>
-                        ))}
-                    </select>
-                </div>
-              </fieldset>
-              <button onClick={() => {
-                ECSaver()
-              }}type="button" id="event-form-submit">Save Event</button>
+                <button id="close" onClick={() => {
+                    document.querySelector("#myModal").style.display = "none"
+                }}>&times;</button>
+                <fieldset>
+                    <div className="form-group">
+                        <label htmlFor="eventCosplay">Bringing: </label>
+                        <select defaultValue="" name="eventCosplay" ref={cosplay} id="eventCosplay" className="form-control" >
+                            <option value="0">Select a Cosplay</option>
+                            {cosplays.map(l => (
+                                <option key={l.id} value={l.id}>
+                                    {l.character}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                </fieldset>
+                <button onClick={() => {
+                    ECSaver()
+                }}type="button" id="event-form-submit">Save to Event</button>
             </div>
-          </div>
-            <div className="suitcase-header">Suitcase
-            <button onClick={() => {
-                const modal = document.querySelector("#myModal")
-                modal.style.display = "block"
-                modal.value = parseInt(id)
-              }}>+</button>
+        </div>
+        <div className="suitcase-container">
+            <div className="suitcase-header">Cosplays
+                <button  className="addEventCosplay" onClick={() => {
+                    const modal = document.querySelector("#myModal")
+                    modal.style.display = "block"
+                    modal.value = parseInt(id)
+                }}>+</button>
             </div>
-            {cosplayEvents.map(cosplay => {
-                return <ECCard key={cosplay.id} cosplay={cosplay} />
-            })}
+            <div className="allEventCosplays">
+                {cosplayEvents.map(cosplay => {
+                    return <ECCard key={cosplay.id} cosplay={cosplay} />
+                })}
+            </div>
+            <EEList />
         </div>
         </>
     )

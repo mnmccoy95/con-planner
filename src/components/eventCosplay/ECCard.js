@@ -8,16 +8,16 @@ export const ECCard = ({ cosplay }) => {
 
     return (
         <section className="cosplayEvent">
-            <h3 className="character__name">
-                { cosplay.character }
-                <button onClick={() => {
+            <div className="character__name">
+            <button className="deleteCosplayEvent" onClick={() => {
                 removeEC(cosplay.id, parseInt(id))
-              }}>Remove</button>
-            </h3>
-            <ul>
+              }}>🗑️</button>
+                { cosplay.character }
+            </div>
+            <ul className="item__list">
                 {
                     cosplay.items.map(item => {
-                        return <li key={item.id}>{item.name}</li>
+                        return <li key={item.id}>- {item.name}</li>
                     })
                 }
             </ul>

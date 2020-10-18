@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react"
 import { ItemContext } from "./ItemProvider"
 import { ItemCard } from "./ItemCard"
 import { useHistory, useParams } from 'react-router-dom';
+import "./Item.css"
 
 export const ItemList = () => {
 
@@ -17,8 +18,8 @@ export const ItemList = () => {
         if(id){
             const newId = parseInt(id)
             return (
-                <button onClick={() => {history.push(`/cosplays/items/create/${newId}`)}}>
-                    Add New Piece
+                <button className="addNewItem" onClick={() => {history.push(`/cosplays/items/create/${newId}`)}}>
+                    +
                 </button>
             )
         }
@@ -26,13 +27,17 @@ export const ItemList = () => {
 
     return (
         <div className="items">
+            <div className="itemHeader">
             <div>Cosplay Pieces</div>
             {getid()}
+            </div>
+            <div className="allItems">
             {
                 items.map(item => {
                     return <ItemCard key={item.id} item={item} />
                 })
             }
+            </div>
         </div>
     )
 }

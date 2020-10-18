@@ -1,0 +1,45 @@
+.essHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+}
+
+.essTitle {
+    font-size: 2em;
+}
+
+.addEss {
+    margin-left: 1em;
+    margin-top: 10px;
+}
+
+.essentials {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.allEss {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    max-width: 475px;
+}
+
+.essential {
+    margin: 5px;
+    border: solid black 1px;
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.buttons {
+    align-self: flex-end;
+}

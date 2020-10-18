@@ -115,6 +115,7 @@ export const ItemForm = (props) => {
                 </div>
             </fieldset>
             <fieldset>
+                <div className="form-group">
                 <label htmlFor="check--complete">Complete: </label>
                 <input 
                     type="checkbox" 
@@ -128,8 +129,10 @@ export const ItemForm = (props) => {
                         // 'completed' (true)
                         setCompletionStatus(e); // change item status
                     }}/>
+                </div>
             </fieldset>
             <fieldset>
+                <div className="form-group">
                 <label htmlFor="check--making">Making: </label>
                 <input 
                     type="checkbox" 
@@ -143,6 +146,7 @@ export const ItemForm = (props) => {
                         // 'completed' (true)
                         setMakingStatus(e); // change making status
                     }}/>
+                </div>
             </fieldset>
             <button className="btn btn-primary"
                 disabled={isLoading}
@@ -150,7 +154,7 @@ export const ItemForm = (props) => {
                     event.preventDefault() // Prevent browser from submitting the form
                     constructItemObject()
                 }}>Save and Return</button>
-            <button disabled={isLoading} onClick={event => {
+            <button className="btn btn-primary" disabled={isLoading} onClick={event => {
                 event.preventDefault() // Prevent browser from submitting the form
                 constructItemObject2()
             }}>Save and Add More</button>

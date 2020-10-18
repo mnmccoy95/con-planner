@@ -31,7 +31,7 @@ export const CosplayList = () => {
     }
 
     return (
-        <div className="cosplays">
+      <>
           <div id="myModal" className="modal">
             <div className="modal-content">
               <button id="close" onClick={() => {
@@ -39,7 +39,7 @@ export const CosplayList = () => {
               }}>&times;</button>
               <fieldset>
                 <div className="form-group">
-                    <label htmlFor="eventCosplay">Choose Event: </label>
+                    <label htmlFor="eventCosplay"> Bring to: </label>
                     <select defaultValue="" name="eventCosplay" ref={event} id="eventCosplay" className="form-control" >
                         <option value="0">Select an Event</option>
                         {events.map(l => (
@@ -52,18 +52,24 @@ export const CosplayList = () => {
               </fieldset>
               <button onClick={() => {
                 ECSaver()
-              }}type="button" id="event-form-submit">Save Event</button>
+              }}type="button" id="event-form-submit">Save to Event</button>
             </div>
           </div>
-          <h2>Your Saved Cosplays</h2>
-          <button onClick={() => {history.push("/cosplays/create")}}>
-                    Add New Cosplay
-              </button>
+          <div className="cosplays">
+          <div className="cosplayHeader">
+            <div className="cosplayTitle">Cosplays</div>
+            <button className="addNewCosplay" onClick={() => {history.push("/cosplays/create")}}>
+                      +
+                </button>
+          </div>
+          <div className="allCosplays">
             {
           cosplays.map(cosplay => {
             return <CosplayCard key={cosplay.id} cosplay={cosplay} />
           })
             }
+          </div>
         </div>
+      </>
     )
 }

@@ -35,25 +35,27 @@ export const EventDetail = () => {
 
     return (
         <section className="eventDetail">
-            <h3 className="event__name">{event.name}</h3>
-            <div className="event__times">{new Date(event.startDate).toLocaleDateString('en-US')}
-                - {new Date(event.endDate).toLocaleDateString('en-US')}
-            </div>
-            <div className="event__location">{event.eventAddress}<br></br>{event.eventCity}, {event.eventState} {event.eventZip}</div>
-            <div className="event__badge">{badgeStatus()}</div>
-
-            <button onClick={
+            <div className="event__name__detail">{event.name}
+            <button className="deleteEvent" onClick={
                 () => {
                     deleteEvent(event.id)
                         .then(() => {
                             history.push("/events")
                         })
                 }
-            }>Delete Event</button>
+            }>🗑️</button>
             
             <button onClick={() => {
                 history.push(`/events/edit/${event.id}`)
-            }}>Edit</button>
+            }}>✏️</button>
+            </div>
+            <div className="event__times__detail">{new Date(event.startDate).toLocaleDateString('en-US')}
+                - {new Date(event.endDate).toLocaleDateString('en-US')}
+            </div>
+            <div className="event__location">{event.eventAddress}<br></br>{event.eventCity}, {event.eventState} {event.eventZip}</div>
+            <div className="event__badge">{badgeStatus()}</div>
+
+            
         </section>
     )
 }

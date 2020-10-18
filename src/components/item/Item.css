@@ -1,0 +1,35 @@
+.items {
+    border: solid 1px;
+    padding: 1em;
+    width: 300px;
+}
+
+.itemHeader {
+    display: flex;
+    flex-direction: row;
+    font-size: 1.3em;
+    text-align: center;
+    border-bottom: solid 1px;
+    justify-content: center;
+}
+
+.addNewItem {
+    margin-left: 1em;
+}
+
+.item__name {
+    font-size: 1.1em;
+    font-weight: thick;
+    text-decoration: underline;
+}
+
+.item {
+    margin-bottom: 0.5em;
+    flex-basis: 50%;
+}
+
+.allItems {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}

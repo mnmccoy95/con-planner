@@ -3,7 +3,7 @@ import { useHistory} from 'react-router-dom';
 import { ItemContext } from "./ItemProvider";
 
 export const ItemCard = ({ item }) => {
-    const { deleteItem } = useContext(ItemContext)
+    const { deleteItem, getItemsByCosplay } = useContext(ItemContext)
     
 
     const history = useHistory()
@@ -33,18 +33,18 @@ export const ItemCard = ({ item }) => {
     return(
     <section className="item">
         <div className="item__name">
-            { item.name }
-            <button onClick={() => {
-                history.push(`/cosplays/items/edit/${item.id}`)
-            }}>Edit Item</button>
-            <button onClick={() => {
-                deleteItem(item)
-            }}>Delete Item</button>
+            { item.name } 
         </div>
         <div className="item__details">
             Cost: ${item.cost}
             {Complete()}
             {Making()}
         </div>
+        <button onClick={() => {
+                history.push(`/cosplays/items/edit/${item.id}`)
+            }}>✏️</button>
+            <button onClick={() => {
+                deleteItem(item)
+            }}>🗑️</button>
     </section>
 )}
