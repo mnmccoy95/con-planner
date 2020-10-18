@@ -20,13 +20,13 @@ export const EventDetail = () => {
     const badgeStatus = () => {
         if(event.badgeStatus === true){
             return(
-                <>Badge: Purchased<br></br>
+                <>Badge Purchased: ✔️<br></br>
                 Badge Price: ${event.badgePrice}
                 </>
             )
         } else {
             return (
-                <>Badge: Not Yet Purchased<br></br>
+                <>Badge Purchased: ❌<br></br>
                 Badge Price: ${event.badgePrice}
                 </>
             )

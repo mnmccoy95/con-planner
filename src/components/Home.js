@@ -22,19 +22,20 @@ export const Home = () => {
             const badgeStatus = () => {
                 if(futureEvents[0].badgeStatus === true){
                     return(
-                        <>Badge: Purchased<br></br>
+                        <>Badge Purchased: ✔️<br></br>
                         Badge Price: ${futureEvents[0].badgePrice}
                         </>
                     )
                 } else {
                     return (
-                        <>Badge: Not Yet Purchased<br></br>
+                        <>Badge Purchased: ❌<br></br>
                         Badge Price: ${futureEvents[0].badgePrice}
                         </>
                     )
                 }
             }
 
+            if(futureEvents.length !== 0){
             return (
                 <>
                 <div className="homeEvent">
@@ -50,6 +51,19 @@ export const Home = () => {
                 <div className="hidden">{futureEvents[0].id}</div>
                 </div>
                 <ECList/>
+                </>
+            )} else {
+                return (
+                    <>
+                    <h2>No upcoming events :(</h2>
+                    </>
+                )
+            }
+            
+        } else {
+            return (
+                <>
+                <h2>Welcome to Con Planner!</h2>
                 </>
             )
         }
