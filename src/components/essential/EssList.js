@@ -10,7 +10,7 @@ import "./Ess.css"
 export const EssentialList = () => {
     const { essentials, getEssentials } = useContext(EssentialContext)
 	const { events, getEvents } = useContext(EventContext)
-    const { EEs, addEE, getAllEEs } = useContext(EEContext)
+    const { addEE, getAllEEs } = useContext(EEContext)
 
     const event = useRef(null)
     const existDialog = useRef()

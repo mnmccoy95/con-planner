@@ -10,17 +10,32 @@ import "./EC.css"
 export const ECList = () => {
     const { ECs, getECs, addEC, getAllECs } = useContext(ECContext)
     const { cosplays, getCosplays, getCosplayByIdWithItems } = useContext(CosplayContext)
-    const { events, getEvents, addEvent } = useContext(EventContext)
+    const { events, addEvent } = useContext(EventContext)
     const [cosplayEvents, setCosplayEvents] = useState([])
-    const {id} = useParams();
+    let {id} = useParams()
     let url = ""
 
+    const homeGrabber = () => {
+        if(typeof(id) === "string"){
+        } else {
+            const futureEvents = events.filter(event =>{
+                if(event.startDate >= Date.now()){
+                    return event }
+            })
+            if(futureEvents){
+            id = futureEvents[0].id
+            }
+        }
+    }
+    
     const cosplay = useRef(null)
     const existDialog = useRef()
 
     useEffect(() => {
         getECs(parseInt(id))
         getCosplays()
+        homeGrabber()
+    
         url = ""
     }, [addEvent])
 
@@ -67,6 +82,7 @@ export const ECList = () => {
 
     return (
         <>
+        {homeGrabber()}
         <div id="myModal" className="modal">
             <div className="modal-content">
                 <button id="close" onClick={() => {
