@@ -38,6 +38,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    min-width: 50px;
 }
 
 .buttons {

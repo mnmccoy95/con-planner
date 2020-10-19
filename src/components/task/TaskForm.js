@@ -39,15 +39,7 @@ export const TaskForm = (props) => {
     }, [])
     
     const constructTaskObject = () => {
-        //disable the button - no extra clicks
-        setIsLoading(true);
-        //POST - add
-        addTask({
-            cosplayId: parseInt(cosplayId),
-            name: task.name,
-            complete: task.complete
-        })
-        .then(() => history.push(`/cosplays/detail/${cosplayId}`))    
+      history.push(`/cosplays/detail/${cosplayId}`)
     }
 
     const constructTaskObject2 = () => {
@@ -81,7 +73,7 @@ export const TaskForm = (props) => {
                 <div className="form-group">
                     <label htmlFor="taskName">Task: </label>
                     <input type="text" id="taskName" name="name" required autoFocus className="form-control" 
-                    placeholder="task" 
+                    placeholder="Task" 
                     onChange={handleControlledInputChange} 
                     defaultValue={task.name}/>
                 </div>
@@ -103,16 +95,17 @@ export const TaskForm = (props) => {
                     }}/>
                 </div>
             </fieldset>
+            <button className="btn btn-primary" disabled={isLoading} onClick={event => {
+                event.preventDefault() // Prevent browser from submitting the form
+                constructTaskObject2()
+            }}>Save</button>
             <button className="btn btn-primary"
                 disabled={isLoading}
                 onClick={event => {
                     event.preventDefault() // Prevent browser from submitting the form
                     constructTaskObject()
-                }}>Save and Return</button>
-            <button className="btn btn-primary" disabled={isLoading} onClick={event => {
-                event.preventDefault() // Prevent browser from submitting the form
-                constructTaskObject2()
-            }}>Save and Add More</button>
+                }}>Return</button>
+            
         </form>
     )
 }
