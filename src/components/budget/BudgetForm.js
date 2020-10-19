@@ -1,11 +1,9 @@
 import React, { useContext, useState, useEffect } from "react"
 import { BudgetContext } from "./BudgetProvider"
 import { useHistory, useParams } from 'react-router-dom';
-import { HotelContext } from "../hotel/HotelProvider"
 
 export const BudgetForm = (props) => {
     const { addBudget, getBudgetByEventId, editBudget } = useContext(BudgetContext)
-    const { hotel, getHotelByEvent } = useContext(HotelContext)
 
     //for edit, hold on to state of budget in this view
     const [budget, setBudget] = useState({})
@@ -31,7 +29,6 @@ export const BudgetForm = (props) => {
 
     //getBudgetByEvent
     useEffect(() => {
-        getHotelByEvent(eventId)
         if (window.location.href.includes("edit")){
             if(eventId){
             getBudgetByEventId(eventId)
@@ -77,7 +74,6 @@ export const BudgetForm = (props) => {
                 editBudget({
                     id: budget.id,
                     eventId: parseInt(eventId),
-                    hotelId: hotel.id,
                     allowance: parseInt(budget.allowance),
                     foodExpenses: parseInt(budget.foodExpenses),
                     merchExpenses: parseInt(budget.merchExpenses),
@@ -91,7 +87,6 @@ export const BudgetForm = (props) => {
                 //POST - add
                 addBudget({
                     eventId: parseInt(eventId),
-                    hotelId: hotel.id,
                     allowance: parseInt(budget.allowance),
                     foodExpenses: parseInt(budget.foodExpenses),
                     merchExpenses: parseInt(budget.merchExpenses),

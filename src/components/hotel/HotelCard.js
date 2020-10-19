@@ -53,13 +53,13 @@ export const HotelCard = () => {
         if(hotel[0].purchased === true){
             return(
                 <>Room Purchased: ✔️<br></br>
-                Room Price: ${hotel[0].cost}
+                Room Price: ${hotel[0].price}
                 </>
                 )
         } else {
             return (
                 <>Room Purchased: ❌<br></br>
-                Room Price: ${hotel[0].cost}
+                Room Price: ${hotel[0].price}
                 </>
             )
         }

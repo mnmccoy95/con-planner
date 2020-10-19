@@ -8,7 +8,6 @@
 
 .budget {
     border: solid black 1px;
-    height: 170px;
     width: 300px;
     padding: 1em;
 }
@@ -44,4 +43,24 @@
 
 .addNewBudget {
     margin-left: 1em;
+}
+
+.budgetDetail {
+    display: flex;
+    flex-direction: column;
+}
+
+.budgetDetail >* {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.number {
+    justify-self: flex-end;
+}
+
+.budgetCosplay {
+    border-bottom: solid 1px;
 }

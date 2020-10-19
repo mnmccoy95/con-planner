@@ -13,7 +13,7 @@ export const BudgetProvider = (props) => {
     const [budget, setBudget] = useState({})
 
     const getBudgetByEvent = (eventId) => {
-        return fetch(`http://localhost:8088/budgets?eventId=${eventId}&_embed=event&embed=hotel`)
+        return fetch(`http://localhost:8088/budgets?eventId=${eventId}&_expand=event`)
             .then(res => res.json())
             .then(setBudget)
     }

@@ -203,7 +203,7 @@ export const EventForm = (props) => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="eventBadgePrice">Badge Price: </label>
-                    <input type="text" id="eventBadgePrice" name="badgePrice" required className="form-control" 
+                    <input type="text" id="eventBadgePrice" name="badgePrice" className="form-control" 
                     placeholder="Price" 
                     onChange={handleControlledInputChange} 
                     defaultValue={event.badgePrice}/>
