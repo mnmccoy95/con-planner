@@ -1,7 +1,6 @@
 import React, { useContext, useState, useEffect } from "react"
 import { HotelContext } from "./HotelProvider"
 import { useHistory, useParams } from 'react-router-dom';
-import { isCompositeComponent } from "react-dom/test-utils";
 
 export const HotelForm = (props) => {
     const { addHotel, getHotelByEventId, editHotel } = useContext(HotelContext)
@@ -60,12 +59,12 @@ export const HotelForm = (props) => {
                     id: hotel.id,
                     eventId: parseInt(eventId),
                     name: hotel.name,
-                    cost: hotel.cost,
                     address: hotel.address,
                     city: hotel.city,
                     state: hotel.state,
                     zip: hotel.zip,
                     purchased: hotel.purchased,
+                    price: parseInt(hotel.price),
                     people: parseInt(hotel.people)
                 })
                 .then(() => history.push(`/events/detail/${eventId}`))
@@ -74,12 +73,12 @@ export const HotelForm = (props) => {
                 addHotel({
                     eventId: parseInt(eventId),
                     name: hotel.name,
-                    cost: hotel.cost,
                     address: hotel.address,
                     city: hotel.city,
                     state: hotel.state,
                     zip: hotel.zip,
                     purchased: hotel.purchased,
+                    price: parseInt(hotel.price),
                     people: parseInt(hotel.people)
                 })
                 .then(() => history.push(`/events/detail/${eventId}`))
@@ -146,7 +145,7 @@ export const HotelForm = (props) => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="hotelPrice">Total Price: </label>
-                    <input type="text" id="hotelPrice" name="cost" className="form-control" 
+                    <input type="text" id="hotelPrice" name="price" className="form-control" 
                     placeholder="Price of Stay" 
                     onChange={handleControlledInputChange} 
                     defaultValue={hotel?.price}/>

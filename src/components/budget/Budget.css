@@ -1,0 +1,66 @@
+.budgetHeader {
+    margin-bottom: 0.5em;
+    display: flex;
+    flex-direction: row;
+    border-bottom: solid 1px;
+    justify-content: center;
+}
+
+.budget {
+    border: solid black 1px;
+    width: 300px;
+    padding: 1em;
+}
+
+.budgetForm__title {
+    text-align: center;
+    margin-bottom: 2px;
+}
+
+.budgetForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 2em;
+}
+
+.deleteBudget {
+    margin-left: 1em;
+}
+
+/* .hotel__name__detail {
+    display: flex;
+    flex-direction: row;
+    font-size: 1.1em;
+    text-align: center;
+    border-bottom: solid 1px;
+    justify-content: center;
+} */
+
+.yourBudget {
+    font-size: 1.3em;
+}
+
+.addNewBudget {
+    margin-left: 1em;
+}
+
+.budgetDetail {
+    display: flex;
+    flex-direction: column;
+}
+
+.budgetDetail >* {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.number {
+    justify-self: flex-end;
+}
+
+.budgetCosplay {
+    border-bottom: solid 1px;
+}

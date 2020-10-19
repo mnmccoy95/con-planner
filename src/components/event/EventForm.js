@@ -96,7 +96,7 @@ export const EventForm = (props) => {
                     startDate: start,
                     endDate: end,
                     badgeStatus: event.badgeStatus,
-                    badgePrice: event.badgePrice
+                    badgePrice: parseInt(event.badgePrice)
                 })
                 .then(() => history.push(`/events/detail/${event.id}`))
             }else {
@@ -111,7 +111,7 @@ export const EventForm = (props) => {
                     startDate: start,
                     endDate: end,
                     badgeStatus: event.badgeStatus,
-                    badgePrice: event.badgePrice
+                    badgePrice: parseInt(event.badgePrice)
                 })
                 .then(() => history.push("/events"))
             }
@@ -203,7 +203,7 @@ export const EventForm = (props) => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="eventBadgePrice">Badge Price: </label>
-                    <input type="text" id="eventBadgePrice" name="badgePrice" required className="form-control" 
+                    <input type="text" id="eventBadgePrice" name="badgePrice" className="form-control" 
                     placeholder="Price" 
                     onChange={handleControlledInputChange} 
                     defaultValue={event.badgePrice}/>

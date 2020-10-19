@@ -49,7 +49,7 @@ export const HotelProvider = (props) => {
             },
             body: JSON.stringify(hotel)
         })
-            .then(getHotelByEvent)
+            .then(getHotelByEvent(hotel.eventId))
     }
 
     return (
