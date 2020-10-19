@@ -20,11 +20,11 @@ export const CosplayDetail = () => {
     const completionStatus = () => {
         if(cosplay.complete === true){
             return(
-                <>Completion Status: Complete</>
+                <>Complete: ✔️</>
             )
         } else {
             return(
-                <>Completion Status: Incomplete</>
+                <>Complete: ❌</>
             )
         }
     }

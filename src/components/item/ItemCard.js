@@ -3,29 +3,29 @@ import { useHistory} from 'react-router-dom';
 import { ItemContext } from "./ItemProvider";
 
 export const ItemCard = ({ item }) => {
-    const { deleteItem, getItemsByCosplay } = useContext(ItemContext)
+    const { deleteItem } = useContext(ItemContext)
     
 
     const history = useHistory()
     const Complete = () => {
         if(item.complete === true){
             return (
-                <div className="itemCompletion">Complete: Yes</div>
+                <div className="itemCompletion">Complete: ✔️</div>
             )
         } else {
             return (
-                <div className="itemCompletion">Complete: No</div>
+                <div className="itemCompletion">Complete: ❌</div>
             )
         }
     }
     const Making = () => {
         if(item.making === true){
             return (
-                <div className="itemCompletion">Self Made: Yes</div>
+                <div className="itemCompletion">Self Made: ✔️</div>
             )
         } else {
             return (
-                <div className="itemCompletion">Self Made: No</div>
+                <div className="itemCompletion">Self Made: ❌</div>
             )
         }
     }

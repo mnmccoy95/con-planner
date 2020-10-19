@@ -9,7 +9,7 @@ import { EventContext } from "../event/EventProvider"
 export const EEList = () => {
     const { EEs, getEEs, addEE, getAllEEs } = useContext(EEContext)
     const { essentials, getEssentials } = useContext(EssentialContext)
-    const { events } = useContext(EventContext)
+    const { events, getEvents } = useContext(EventContext)
     
     let {id} = useParams();
 
@@ -33,7 +33,7 @@ export const EEList = () => {
         getEEs(id)
         getEssentials()
         homeGrabber()
-    }, [])
+    }, [getEvents])
 
     const EESaver = () => {
       if(parseInt(essential.current.value) !== 0) {
