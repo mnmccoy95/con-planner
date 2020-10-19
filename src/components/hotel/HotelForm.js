@@ -1,7 +1,6 @@
 import React, { useContext, useState, useEffect } from "react"
 import { HotelContext } from "./HotelProvider"
 import { useHistory, useParams } from 'react-router-dom';
-import { isCompositeComponent } from "react-dom/test-utils";
 
 export const HotelForm = (props) => {
     const { addHotel, getHotelByEventId, editHotel } = useContext(HotelContext)

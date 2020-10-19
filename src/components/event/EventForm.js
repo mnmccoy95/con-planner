@@ -96,7 +96,7 @@ export const EventForm = (props) => {
                     startDate: start,
                     endDate: end,
                     badgeStatus: event.badgeStatus,
-                    badgePrice: event.badgePrice
+                    badgePrice: parseInt(event.badgePrice)
                 })
                 .then(() => history.push(`/events/detail/${event.id}`))
             }else {
@@ -111,7 +111,7 @@ export const EventForm = (props) => {
                     startDate: start,
                     endDate: end,
                     badgeStatus: event.badgeStatus,
-                    badgePrice: event.badgePrice
+                    badgePrice: parseInt(event.badgePrice)
                 })
                 .then(() => history.push("/events"))
             }

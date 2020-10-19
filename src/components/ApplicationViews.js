@@ -26,6 +26,9 @@ import { TaskEdit } from "./task/TaskEdit"
 import { HotelProvider } from "./hotel/HotelProvider"
 import { HotelForm } from "./hotel/HotelForm"
 import { HotelCard } from "./hotel/HotelCard"
+import { BudgetProvider } from "./budget/BudgetProvider"
+import { BudgetForm } from "./budget/BudgetForm"
+import { BudgetCard } from "./budget/BudgetCard"
 
 export const ApplicationViews = (props) => {
     return (
@@ -112,11 +115,14 @@ export const ApplicationViews = (props) => {
                         <ECProvider>
                             <EEProvider>
                                 <HotelProvider>
-                                    <Route exact path="/events/detail/:id">
-                                        <EventDetail />
-                                        <ECList />
-                                        <HotelCard />
-                                    </Route>
+                                    <BudgetProvider>
+                                        <Route exact path="/events/detail/:id">
+                                            <EventDetail />
+                                            <ECList />
+                                            <HotelCard />
+                                            <BudgetCard />
+                                        </Route>
+                                    </BudgetProvider>
                                 </HotelProvider>
                             </EEProvider>
                         </ECProvider>
@@ -131,6 +137,17 @@ export const ApplicationViews = (props) => {
                         <HotelForm />
                     </Route>
                 </HotelProvider>
+
+                <BudgetProvider>
+                    <HotelProvider>
+                        <Route exact path="/events/budget/edit/:eventId(\d+)">
+                            <BudgetForm />
+                        </Route>
+                        <Route exact path="/events/budget/create/:eventId(\d+)">
+                            <BudgetForm />
+                        </Route>
+                    </HotelProvider>
+                </BudgetProvider>
 
             </EventProvider>
 
