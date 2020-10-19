@@ -23,6 +23,9 @@ import { TaskProvider } from"./task/TaskProvider"
 import { TaskList } from "./task/TaskList"
 import { TaskForm } from "./task/TaskForm"
 import { TaskEdit } from "./task/TaskEdit"
+import { HotelProvider } from "./hotel/HotelProvider"
+import { HotelForm } from "./hotel/HotelForm"
+import { HotelCard } from "./hotel/HotelCard"
 
 export const ApplicationViews = (props) => {
     return (
@@ -108,14 +111,26 @@ export const ApplicationViews = (props) => {
                     <CosplayProvider>
                         <ECProvider>
                             <EEProvider>
-                                <Route exact path="/events/detail/:id">
-                                    <EventDetail />
-                                    <ECList />
-                                </Route>
+                                <HotelProvider>
+                                    <Route exact path="/events/detail/:id">
+                                        <EventDetail />
+                                        <ECList />
+                                        <HotelCard />
+                                    </Route>
+                                </HotelProvider>
                             </EEProvider>
                         </ECProvider>
                     </CosplayProvider>
                 </EssentialProvider>
+
+                <HotelProvider>
+                    <Route exact path="/events/hotel/edit/:eventId(\d+)">
+                        <HotelForm />
+                    </Route>
+                    <Route exact path="/events/hotel/create/:eventId(\d+)">
+                        <HotelForm />
+                    </Route>
+                </HotelProvider>
 
             </EventProvider>
 
