@@ -47,17 +47,7 @@ export const ItemForm = (props) => {
     }, [])
     
     const constructItemObject = () => {
-        //disable the button - no extra clicks
-        setIsLoading(true);
-        //POST - add
-        addItem({
-            cosplayId: parseInt(cosplayId),
-            name: item.name,
-            complete: item.complete,
-            making: item.making,
-            cost: item.cost
-        })
-        .then(() => history.push(`/cosplays/detail/${cosplayId}`))    
+        history.push(`/cosplays/detail/${cosplayId}`)
     }
 
     const constructItemObject2 = () => {
@@ -100,7 +90,7 @@ export const ItemForm = (props) => {
                 <div className="form-group">
                     <label htmlFor="itemName">Item: </label>
                     <input type="text" id="itemName" name="name" required autoFocus className="form-control" 
-                    placeholder="item name" 
+                    placeholder="Item name" 
                     onChange={handleControlledInputChange} 
                     defaultValue={item.name}/>
                 </div>
@@ -148,16 +138,17 @@ export const ItemForm = (props) => {
                     }}/>
                 </div>
             </fieldset>
+            <button className="btn btn-primary" disabled={isLoading} onClick={event => {
+                event.preventDefault() // Prevent browser from submitting the form
+                constructItemObject2()
+            }}>Save</button>
             <button className="btn btn-primary"
                 disabled={isLoading}
                 onClick={event => {
                     event.preventDefault() // Prevent browser from submitting the form
                     constructItemObject()
-                }}>Save and Return</button>
-            <button className="btn btn-primary" disabled={isLoading} onClick={event => {
-                event.preventDefault() // Prevent browser from submitting the form
-                constructItemObject2()
-            }}>Save and Add More</button>
+                }}>Return</button>
+            
         </form>
     )
 }

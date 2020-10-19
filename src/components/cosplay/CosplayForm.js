@@ -40,7 +40,6 @@ export const CosplayForm = (props) => {
         if (cosplayId){
             getCosplayById(cosplayId)
             .then(cosplay => {
-                console.log(cosplay)
                 setCosplay(cosplay)
                 setIsLoading(false)
                 })

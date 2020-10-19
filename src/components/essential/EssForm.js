@@ -43,6 +43,8 @@ export const EssentialForm = (props) => {
     const constructEssentialObject = () => {
             //disable the button - no extra clicks
             setIsLoading(true);
+            const clearer = document.querySelector("#essentialName")
+            if(clearer.value !== "" && essential.name !== ""){
             if (essentialId){
                 //PUT - update
                 editEssential({
@@ -58,7 +60,8 @@ export const EssentialForm = (props) => {
                     name: essential.name
                 })
                 .then(() => history.push("/essentials"))
-            }
+            }}
+            history.push("/essentials")
     }
 
     const constructEssentialObject2 = () => {
@@ -91,18 +94,19 @@ export const EssentialForm = (props) => {
                     defaultValue={essential.name}/>
                 </div>
             </fieldset>
+            {essentialId ? <></> :
+            <button className="btn btn-primary" disabled={isLoading} onClick={event => {
+                event.preventDefault() // Prevent browser from submitting the form
+                constructEssentialObject2()
+            }}>Save</button>}
             <button className="btn btn-primary"
                 disabled={isLoading}
                 onClick={event => {
                     event.preventDefault() // Prevent browser from submitting the form
                     constructEssentialObject()
                 }}>
-            {essentialId ? <>Save Essential</> : <>Add and Return</>}</button>
-            {essentialId ? <></> :
-            <button className="btn btn-primary" disabled={isLoading} onClick={event => {
-                event.preventDefault() // Prevent browser from submitting the form
-                constructEssentialObject2()
-            }}>Save and Add More</button>}
+            {essentialId ? <>Save</> : <>Return</>}</button>
+            
         </form>
     )
 }
