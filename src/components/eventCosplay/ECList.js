@@ -75,6 +75,7 @@ export const ECList = () => {
                   cosplayId: parseInt(cosplay.current.value)
                 }).then(() => {modal.style.display = "none"})
                 .then(getECs(id))
+                .then(cosplay.current.value = "0")
               }
             })
         }

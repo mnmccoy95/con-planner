@@ -54,6 +54,7 @@ export const EEList = () => {
               essentialId: parseInt(essential.current.value)
             }).then(() => {modal.style.display = "none"})
             .then(getEEs(id))
+            .then(essential.current.value = "0")
           }
         })
       }

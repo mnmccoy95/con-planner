@@ -43,7 +43,8 @@ export const TaskEdit = (props) => {
     }, [])
     
 
-    const constructTaskObject = () => {
+    const constructTaskObject = (evt) => {
+        evt.preventDefault()
         //disable the button - no extra clicks
         setIsLoading(true);
         //PUT - edit
@@ -57,7 +58,7 @@ export const TaskEdit = (props) => {
     }
     
     return (
-        <form className="TaskForm">
+        <form className="TaskForm" onSubmit={constructTaskObject}>
             <h2 className="TaskForm__title">{taskId ? <>Save Task</> : <>Add Task</>}</h2>
             <fieldset>
                 <div className="form-group">
@@ -85,10 +86,7 @@ export const TaskEdit = (props) => {
             </fieldset>
             <button className="btn btn-primary"
                 disabled={isLoading}
-                onClick={event => {
-                    event.preventDefault() // Prevent browser from submitting the form
-                    constructTaskObject()
-                }}>Save Task</button>
+                >Save Task</button>
         </form>
     )
 }

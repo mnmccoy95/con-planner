@@ -37,12 +37,9 @@ export const TaskForm = (props) => {
     useEffect(() => {
         setIsLoading(false)
     }, [])
-    
-    const constructTaskObject = () => {
-      history.push(`/cosplays/detail/${cosplayId}`)
-    }
 
-    const constructTaskObject2 = () => {
+    const constructTaskObject = (evt) => {
+        evt.preventDefault()
         //disable the button - no extra clicks
         setIsLoading(true);
         addTask({
@@ -67,7 +64,7 @@ export const TaskForm = (props) => {
     }
 
     return (
-        <form className="TaskForm">
+        <form className="TaskForm" onSubmit={constructTaskObject}>
             <h2 className="TaskForm__title">Add Task</h2>
             <fieldset>
                 <div className="form-group">
@@ -95,15 +92,11 @@ export const TaskForm = (props) => {
                     }}/>
                 </div>
             </fieldset>
-            <button className="btn btn-primary" disabled={isLoading} onClick={event => {
-                event.preventDefault() // Prevent browser from submitting the form
-                constructTaskObject2()
-            }}>Save</button>
+            <button className="btn btn-primary" type="submit" disabled={isLoading}>Save</button>
             <button className="btn btn-primary"
                 disabled={isLoading}
                 onClick={event => {
-                    event.preventDefault() // Prevent browser from submitting the form
-                    constructTaskObject()
+                    history.push(`/cosplays/detail/${cosplayId}`)
                 }}>Return</button>
             
         </form>

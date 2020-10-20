@@ -49,7 +49,8 @@ export const CosplayForm = (props) => {
     }, [])
     
 
-    const constructCosplayObject = () => {
+    const constructCosplayObject = (evt) => {
+        evt.preventDefault()
             //disable the button - no extra clicks
             setIsLoading(true);
             if (cosplayId){
@@ -77,7 +78,7 @@ export const CosplayForm = (props) => {
         }
     
     return (
-        <form className="cosplayForm">
+        <form className="cosplayForm" onSubmit={constructCosplayObject}>
             <h2 className="cosplayForm__title">{cosplayId ? <>Save Cosplay</> : <>Add New Cosplay</>}</h2>
             <fieldset>
                 <div className="form-group">
@@ -91,7 +92,7 @@ export const CosplayForm = (props) => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="cosplaySeries">Series: </label>
-                    <input type="text" id="cosplaySeries" name="series" required autoFocus className="form-control" 
+                    <input type="text" id="cosplaySeries" name="series" className="form-control" 
                     placeholder="Series name" 
                     onChange={handleControlledInputChange} 
                     defaultValue={cosplay.series}/>
@@ -113,11 +114,8 @@ export const CosplayForm = (props) => {
                     }}/>
             </fieldset>
             <button className="btn btn-primary"
-                disabled={isLoading}
-                onClick={event => {
-                    event.preventDefault() // Prevent browser from submitting the form
-                    constructCosplayObject()
-                }}>
+                type="submit"
+                disabled={isLoading}>
             {cosplayId ? <>Save Cosplay</> : <>Add Cosplay</>}</button>
         </form>
     )
