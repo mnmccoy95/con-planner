@@ -50,6 +50,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     flex-basis: 50%;
+    padding-bottom: 1em;
 }
 
 .essentialEvent {
@@ -57,5 +58,5 @@
 }
 
 .allEventCosplays {
-    margin-bottom: 3em;
+    margin-bottom: 2em;
 }
