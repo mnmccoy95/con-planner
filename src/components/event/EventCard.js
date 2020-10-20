@@ -26,9 +26,6 @@ export const EventCard = ({ event }) => {
                 }
             }>🗑️</button>
             
-            <button onClick={() => {
-                history.push(`/events/edit/${event.id}`)
-            }}>✏️</button>
         </div>
         <div className="event__times">{new Date(event.startDate).toLocaleDateString('en-US')}
          - {new Date(event.endDate).toLocaleDateString('en-US')}

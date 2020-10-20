@@ -85,6 +85,8 @@ export const CosplayList = () => {
             return <CosplayCard key={cosplay.id} cosplay={cosplay} />
           })
             }
+            <div className="placeHolder"></div>
+            <div className="placeHolder"></div>
           </div>
         </div>
       </>

@@ -32,10 +32,6 @@ export const CosplayCard = ({ cosplay }) => {
                         })
                 }
             }>🗑️</button>
-            
-            <button onClick={() => {
-                history.push(`/cosplays/edit/${cosplay.id}`)
-            }}>✏️</button>
         <button className="addCosplayToEvent" onClick={() => {
             modalDisplay()
         }}>📅</button>
