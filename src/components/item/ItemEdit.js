@@ -51,7 +51,8 @@ export const ItemEdit = (props) => {
     }, [])
     
 
-    const constructItemObject = () => {
+    const constructItemObject = (evt) => {
+        evt.preventDefault()
         //disable the button - no extra clicks
         setIsLoading(true);
         //PUT - edit
@@ -67,7 +68,7 @@ export const ItemEdit = (props) => {
     }
     
     return (
-        <form className="ItemForm">
+        <form className="ItemForm" onSubmit={constructItemObject}>
             <h2 className="ItemForm__title">{itemId ? <>Save Item</> : <>Add Item</>}</h2>
             <fieldset>
                 <div className="form-group">
@@ -81,7 +82,7 @@ export const ItemEdit = (props) => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="itemCost">Cost: </label>
-                    <input type="text" id="itemCost" name="cost" required autoFocus className="form-control" 
+                    <input type="text" id="itemCost" name="cost" pattern="^^\d+(\.\d{2})?$" className="form-control" 
                     placeholder="Item Cost" 
                     onChange={handleControlledInputChange} 
                     defaultValue={item.cost}/>
@@ -118,11 +119,9 @@ export const ItemEdit = (props) => {
                     }}/>
             </fieldset>
             <button className="btn btn-primary"
+                type="submit"
                 disabled={isLoading}
-                onClick={event => {
-                    event.preventDefault() // Prevent browser from submitting the form
-                    constructItemObject()
-                }}>Save Item</button>
+                >Save Item</button>
         </form>
     )
 }

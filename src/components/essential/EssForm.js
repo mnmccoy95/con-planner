@@ -40,7 +40,8 @@ export const EssentialForm = (props) => {
         }
     }, [])
     
-    const constructEssentialObject = () => {
+    const constructEssentialObject = (evt) => {
+        evt.preventDefault()
             //disable the button - no extra clicks
             setIsLoading(true);
             const clearer = document.querySelector("#essentialName")
@@ -52,38 +53,28 @@ export const EssentialForm = (props) => {
                     userId: userId,
                     name: essential.name
                 })
-                .then(() => history.push(`/essentials`))
+                
+                .then(() => history.push("/essentials"))
             }else {
                 //POST - add
                 addEssential({
                     userId: userId,
                     name: essential.name
                 })
-                .then(() => history.push("/essentials"))
+                .then(() => {
+                    // Clear inputs after save
+                    const clearer = document.querySelector("#essentialName")
+                    clearer.value = ""
+                    essential.name = ""
+        
+                    setIsLoading(false);
+                })
             }}
-            history.push("/essentials")
-    }
-
-    const constructEssentialObject2 = () => {
-        //disable the button - no extra clicks
-        setIsLoading(true);
-        addEssential({
-            userId: userId,
-            name: essential.name
-        })
-        .then(() => {
-            // Clear inputs after save
-            const clearer = document.querySelector("#essentialName")
-            clearer.value = ""
-            essential.name = ""
-
-            setIsLoading(false);
-        })
-
+            
     }
     
     return (
-        <form className="essentialForm">
+        <form className="essentialForm" onSubmit={constructEssentialObject}>
             <h2 className="essentialForm__title">{essentialId ? <>Save Essential</> : <>Add Essential</>}</h2>
             <fieldset>
                 <div className="form-group">
@@ -94,18 +85,12 @@ export const EssentialForm = (props) => {
                     defaultValue={essential.name}/>
                 </div>
             </fieldset>
-            {essentialId ? <></> :
-            <button className="btn btn-primary" disabled={isLoading} onClick={event => {
-                event.preventDefault() // Prevent browser from submitting the form
-                constructEssentialObject2()
-            }}>Save</button>}
+            <button className="btn btn-primary" disabled={isLoading} type="submit"> Save</button>
             <button className="btn btn-primary"
-                disabled={isLoading}
                 onClick={event => {
-                    event.preventDefault() // Prevent browser from submitting the form
-                    constructEssentialObject()
+                    history.push("/essentials")
                 }}>
-            {essentialId ? <>Save</> : <>Return</>}</button>
+            Return</button>
             
         </form>
     )

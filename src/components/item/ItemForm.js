@@ -46,11 +46,8 @@ export const ItemForm = (props) => {
         setIsLoading(false)
     }, [])
     
-    const constructItemObject = () => {
-        history.push(`/cosplays/detail/${cosplayId}`)
-    }
-
-    const constructItemObject2 = () => {
+    const constructItemObject = (evt) => {
+        evt.preventDefault()
         //disable the button - no extra clicks
         setIsLoading(true);
         addItem({
@@ -84,12 +81,12 @@ export const ItemForm = (props) => {
     }
 
     return (
-        <form className="ItemForm">
+        <form className="ItemForm" onSubmit={constructItemObject}>
             <h2 className="ItemForm__title">Add Item</h2>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="itemName">Item: </label>
-                    <input type="text" id="itemName" name="name" required autoFocus className="form-control" 
+                    <input type="text" id="itemName" name="name" autoFocus required autoFocus className="form-control" 
                     placeholder="Item name" 
                     onChange={handleControlledInputChange} 
                     defaultValue={item.name}/>
@@ -98,7 +95,7 @@ export const ItemForm = (props) => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="itemCost">Cost: </label>
-                    <input type="text" id="itemCost" name="cost" required className="form-control" 
+                    <input type="text" id="itemCost" name="cost" pattern="^^\d+(\.\d{2})?$" className="form-control" 
                     placeholder="Item Cost" 
                     onChange={handleControlledInputChange} 
                     defaultValue={item.cost}/>
@@ -138,16 +135,15 @@ export const ItemForm = (props) => {
                     }}/>
                 </div>
             </fieldset>
-            <button className="btn btn-primary" disabled={isLoading} onClick={event => {
-                event.preventDefault() // Prevent browser from submitting the form
-                constructItemObject2()
-            }}>Save</button>
+            <button className="btn btn-primary" disabled={isLoading} 
+                type="submit"
+                >Save</button>
             <button className="btn btn-primary"
                 disabled={isLoading}
                 onClick={event => {
-                    event.preventDefault() // Prevent browser from submitting the form
-                    constructItemObject()
-                }}>Return</button>
+                    history.push(`/cosplays/detail/${cosplayId}`)
+                    }}
+                >Return</button>
             
         </form>
     )
