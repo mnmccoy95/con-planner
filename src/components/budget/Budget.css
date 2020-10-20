@@ -10,6 +10,7 @@
     border: solid black 1px;
     width: 300px;
     padding: 1em;
+    max-height: 190px;
 }
 
 .budgetForm__title {
@@ -27,15 +28,6 @@
 .deleteBudget {
     margin-left: 1em;
 }
-
-/* .hotel__name__detail {
-    display: flex;
-    flex-direction: row;
-    font-size: 1.1em;
-    text-align: center;
-    border-bottom: solid 1px;
-    justify-content: center;
-} */
 
 .yourBudget {
     font-size: 1.3em;
@@ -61,6 +53,6 @@
     justify-self: flex-end;
 }
 
-.budgetCosplay {
+.budgetBadge {
     border-bottom: solid 1px;
 }

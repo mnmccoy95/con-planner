@@ -76,7 +76,8 @@ export const EventForm = (props) => {
         })
     }, [])
 
-    const constructEventObject = () => {
+    const constructEventObject = (evt) => {
+            evt.preventDefault()
             //disable the button - no extra clicks
             setIsLoading(true);
             //javascript saves dates weird so I add a few hours to adjust time zone for proper displaying
@@ -96,7 +97,7 @@ export const EventForm = (props) => {
                     startDate: start,
                     endDate: end,
                     badgeStatus: event.badgeStatus,
-                    badgePrice: parseInt(event.badgePrice)
+                    badgePrice: parseFloat(event.badgePrice)
                 })
                 .then(() => history.push(`/events/detail/${event.id}`))
             }else {
@@ -111,14 +112,14 @@ export const EventForm = (props) => {
                     startDate: start,
                     endDate: end,
                     badgeStatus: event.badgeStatus,
-                    badgePrice: parseInt(event.badgePrice)
+                    badgePrice: parseFloat(event.badgePrice)
                 })
                 .then(() => history.push("/events"))
             }
         }
     
     return (
-        <form className="eventForm">
+        <form className="eventForm" onSubmit={constructEventObject}>
             <h2 className="eventForm__title">{eventId ? <>Save Event</> : <>Add New Event</>}</h2>
             <fieldset>
                 <div className="form-group">
@@ -132,7 +133,7 @@ export const EventForm = (props) => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="eventAddress">Event Address: </label>
-                    <input type="text" id="eventAddress" name="eventAddress" required className="form-control" 
+                    <input type="text" id="eventAddress" name="eventAddress" className="form-control" 
                     placeholder="Street Address" 
                     onChange={handleControlledInputChange} 
                     defaultValue={event.eventAddress}/>
@@ -159,7 +160,7 @@ export const EventForm = (props) => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="eventZip">Event Zipcode: </label>
-                    <input type="text" id="eventZip" name="eventZip" required className="form-control" 
+                    <input type="text" id="eventZip" name="eventZip" pattern="[0-9]{5}" required className="form-control" 
                     placeholder="Zip" 
                     onChange={handleControlledInputChange} 
                     defaultValue={event.eventZip}/>
@@ -203,7 +204,7 @@ export const EventForm = (props) => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="eventBadgePrice">Badge Price: </label>
-                    <input type="text" id="eventBadgePrice" name="badgePrice" className="form-control" 
+                    <input type="text" id="eventBadgePrice" pattern="^\d+(\.\d{2})?$" name="badgePrice" className="form-control" 
                     placeholder="Price" 
                     onChange={handleControlledInputChange} 
                     defaultValue={event.badgePrice}/>
@@ -211,11 +212,9 @@ export const EventForm = (props) => {
             </fieldset>
 
             <button className="btn btn-primary"
+                type="submit"
                 disabled={isLoading}
-                onClick={evt => {
-                    evt.preventDefault() // Prevent browser from submitting the form
-                    constructEventObject()
-                }}>
+                >
             {eventId ? <>Save Event</> : <>Add Event</>}</button>
         </form>
     )

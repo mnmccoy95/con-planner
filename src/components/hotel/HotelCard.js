@@ -49,17 +49,23 @@ export const HotelCard = () => {
         }
     }
 
+    const formatter = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 2
+    })
+
     const purchaseStatus = () => {
         if(hotel[0].purchased === true){
             return(
                 <>Room Purchased: ✔️<br></br>
-                Room Price: ${hotel[0].price}
+                Room Price: {formatter.format(hotel[0].price)}
                 </>
                 )
         } else {
             return (
                 <>Room Purchased: ❌<br></br>
-                Room Price: ${hotel[0].price}
+                Room Price: {formatter.format(hotel[0].price)}
                 </>
             )
         }

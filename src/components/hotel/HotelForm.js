@@ -50,7 +50,8 @@ export const HotelForm = (props) => {
     }, [])
     
 
-    const constructHotelObject = () => {
+    const constructHotelObject = (event) => {
+            event.preventDefault()
             //disable the button - no extra clicks
             setIsLoading(true);
             if (window.location.href.includes("edit")){
@@ -64,7 +65,7 @@ export const HotelForm = (props) => {
                     state: hotel.state,
                     zip: hotel.zip,
                     purchased: hotel.purchased,
-                    price: parseInt(hotel.price),
+                    price: parseFloat(hotel.price),
                     people: parseInt(hotel.people)
                 })
                 .then(() => history.push(`/events/detail/${eventId}`))
@@ -78,7 +79,7 @@ export const HotelForm = (props) => {
                     state: hotel.state,
                     zip: hotel.zip,
                     purchased: hotel.purchased,
-                    price: parseInt(hotel.price),
+                    price: parseFloat(hotel.price),
                     people: parseInt(hotel.people)
                 })
                 .then(() => history.push(`/events/detail/${eventId}`))
@@ -86,7 +87,7 @@ export const HotelForm = (props) => {
         }
     
     return (
-        <form className="hotelForm">
+        <form className="hotelForm" onSubmit={constructHotelObject}>
             <h2 className="hotelForm__title">Event Hotel Info</h2>
             <fieldset>
                 <div className="form-group">
@@ -100,7 +101,7 @@ export const HotelForm = (props) => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="hotelAddress">Address: </label>
-                    <input type="text" id="hotelAddress" name="address" className="form-control" 
+                    <input type="text" id="hotelAddress" name="address" required className="form-control" 
                     placeholder="Street Address" 
                     onChange={handleControlledInputChange} 
                     defaultValue={hotel?.address}/>
@@ -109,7 +110,7 @@ export const HotelForm = (props) => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="hotelCity">City: </label>
-                    <input type="text" id="hotelCity" name="city" className="form-control" 
+                    <input type="text" id="hotelCity" name="city" required className="form-control" 
                     placeholder="City" 
                     onChange={handleControlledInputChange} 
                     defaultValue={hotel?.city}/>
@@ -118,7 +119,7 @@ export const HotelForm = (props) => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="hotelState">State: </label>
-                    <input type="text" id="hotelState" name="state" className="form-control" 
+                    <input type="text" id="hotelState" name="state" required className="form-control" 
                     placeholder="State" 
                     onChange={handleControlledInputChange} 
                     defaultValue={hotel?.state}/>
@@ -127,7 +128,7 @@ export const HotelForm = (props) => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="hotelZip">Zip: </label>
-                    <input type="text" id="hotelZip" name="zip" className="form-control" 
+                    <input type="text" id="hotelZip" name="zip" pattern="[0-9]{5}" required className="form-control" 
                     placeholder="Zipcode" 
                     onChange={handleControlledInputChange} 
                     defaultValue={hotel?.zip}/>
@@ -136,7 +137,7 @@ export const HotelForm = (props) => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="hotelPeople">Number of People in Room: </label>
-                    <input type="text" id="hotelPeople" name="people" className="form-control" 
+                    <input type="text" id="hotelPeople" name="people" pattern="^[0-9]*$" className="form-control" 
                     placeholder="# People (for budgeting purposes)" 
                     onChange={handleControlledInputChange} 
                     defaultValue={hotel?.people}/>
@@ -145,7 +146,7 @@ export const HotelForm = (props) => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="hotelPrice">Total Price: </label>
-                    <input type="text" id="hotelPrice" name="price" className="form-control" 
+                    <input type="text" id="hotelPrice" name="price" pattern="^\d+(\.\d{2})?$" className="form-control" 
                     placeholder="Price of Stay" 
                     onChange={handleControlledInputChange} 
                     defaultValue={hotel?.price}/>
@@ -168,10 +169,7 @@ export const HotelForm = (props) => {
             </fieldset>
             <button className="btn btn-primary"
                 disabled={isLoading}
-                onClick={event => {
-                    event.preventDefault() // Prevent browser from submitting the form
-                    constructHotelObject()
-                }}>Save Hotel</button>
+                >Save Hotel</button>
         </form>
     )
 }

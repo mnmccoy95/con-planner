@@ -60,7 +60,6 @@ export const BudgetCard = () => {
                 <div className="budgetTravel">Travel: <div className="number">- {formatter.format(budget[0].travelExpenses)}</div></div>
                 <div className="budgetHotel">{hotelAddInfo()}</div>
                 <div className="budgetBadge">{badgeAddInfo()}</div>
-                <div className="budgetCosplay">Cosplay: {cosplayAddInfo()}</div>
                 <div className="budgetNet">{getTotal()}</div>
         </section>)
         }
@@ -129,10 +128,6 @@ export const BudgetCard = () => {
                 </>
             )
         }}
-    }
-
-    const cosplayAddInfo = () => {
-        
     }
 
     const getTotal = () => {

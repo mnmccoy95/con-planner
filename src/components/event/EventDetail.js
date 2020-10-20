@@ -17,17 +17,23 @@ export const EventDetail = () => {
 		})
 	}, [])
 
+    const formatter = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 2
+    })
+
     const badgeStatus = () => {
         if(event.badgeStatus === true){
             return(
                 <>Badge Purchased: ✔️<br></br>
-                Badge Price: ${event.badgePrice}
+                Badge Price: {formatter.format(event.badgePrice)}
                 </>
             )
         } else {
             return (
                 <>Badge Purchased: ❌<br></br>
-                Badge Price: ${event.badgePrice}
+                Badge Price: {formatter.format(event.badgePrice)}
                 </>
             )
         }
