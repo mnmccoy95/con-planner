@@ -47,7 +47,7 @@ export const CosplayList = () => {
       <>
           <div id="myModal" className="modal">
             <div className="modal-content">
-              <button id="close" onClick={() => {
+              <button id="close" className="delete" onClick={() => {
                 document.querySelector("#myModal").style.display = "none"
               }}>&times;</button>
               <fieldset>
@@ -63,7 +63,7 @@ export const CosplayList = () => {
                     </select>
                 </div>
               </fieldset>
-              <button onClick={() => {
+              <button className="addEC add" onClick={() => {
                 ECSaver()
               }}type="button" id="event-form-submit">Save to Event</button>
               <dialog className="dialog dialog--auth" ref={existDialog}>
@@ -75,7 +75,7 @@ export const CosplayList = () => {
           <div className="cosplays">
           <div className="cosplayHeader">
             <div className="cosplayTitle">Cosplays</div>
-            <button className="addNewCosplay" onClick={() => {history.push("/cosplays/create")}}>
+            <button className="addNewCosplay add" onClick={() => {history.push("/cosplays/create")}}>
                       +
                 </button>
           </div>

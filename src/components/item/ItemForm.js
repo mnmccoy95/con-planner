@@ -135,10 +135,10 @@ export const ItemForm = (props) => {
                     }}/>
                 </div>
             </fieldset>
-            <button className="btn btn-primary" disabled={isLoading} 
+            <button className="btn btn-primary add" disabled={isLoading} 
                 type="submit"
                 >Save</button>
-            <button className="btn btn-primary"
+            <button className="btn btn-primary delete"
                 disabled={isLoading}
                 onClick={event => {
                     history.push(`/cosplays/detail/${cosplayId}`)

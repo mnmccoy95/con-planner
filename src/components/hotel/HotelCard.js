@@ -16,14 +16,14 @@ export const HotelCard = () => {
     const getid = () => {
         if(hotel.length === 0){
             return (
-                <button className="addNewHotel" onClick={() => {history.push(`/events/hotel/create/${id}`)}}>
+                <button className="addNewHotel add" onClick={() => {history.push(`/events/hotel/create/${id}`)}}>
                     +
                 </button>
             )
         } else {
             return ( 
                 <>
-                <button className="deleteHotel" onClick={
+                <button className="deleteHotel delete" onClick={
                     () => {
                         removeHotel(hotel[0])
                             .then(() => {
@@ -31,7 +31,7 @@ export const HotelCard = () => {
                             })
                     }
                 }>🗑️</button>
-                <button className="editHotel" onClick={() => { history.push(`/events/hotel/edit/${id}`) }}>✏️</button>
+                <button className="editHotel edit" onClick={() => { history.push(`/events/hotel/edit/${id}`) }}>✏️</button>
                 </>
             )
         }

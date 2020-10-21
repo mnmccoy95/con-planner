@@ -8,9 +8,11 @@
 
 .budget {
     border: solid black 1px;
+    border-radius: 20px;
     width: 300px;
     padding: 1em;
     max-height: 190px;
+    background-color: rgba(255, 255, 255, 0.877);
 }
 
 .budgetForm__title {
@@ -30,7 +32,7 @@
 }
 
 .yourBudget {
-    font-size: 1.3em;
+    font-size: 1.7em;
 }
 
 .addNewBudget {

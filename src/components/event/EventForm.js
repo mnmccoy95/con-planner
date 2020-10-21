@@ -211,7 +211,7 @@ export const EventForm = (props) => {
                 </div>
             </fieldset>
 
-            <button className="btn btn-primary"
+            <button className="btn btn-primary add"
                 type="submit"
                 disabled={isLoading}
                 >

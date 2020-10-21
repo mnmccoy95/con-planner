@@ -8,9 +8,11 @@
 
 .hotel {
     border: solid black 1px;
+    border-radius: 20px;
     height: 170px;
     width: 300px;
     padding: 1em;
+    background-color: rgba(255, 255, 255, 0.877);
 }
 
 .hotelForm__title {
@@ -39,7 +41,7 @@
 }
 
 .yourHotel {
-    font-size: 1.3em;
+    font-size: 1.7em;
 }
 
 .addNewHotel {

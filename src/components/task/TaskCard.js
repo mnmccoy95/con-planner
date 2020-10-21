@@ -43,22 +43,23 @@ export const TaskCard = ({ taskObj }) => {
             <label htmlFor={`taskObj${taskObj.id}`}>{`${taskObj.name}`}</label>
             <div className="taskActions">
             <button 
+                    type="button" 
+                    className="taskBtn-delete delete" 
+                    id={`deleteTask--${taskObj.id}`} 
+                    onClick={
+                        () => {
+                            deleteTask(taskObj)
+                    }}>🗑️</button>
+            <button 
                 type="button" 
-                className="taskBtn-edit" 
+                className="taskBtn-edit edit" 
                 id={`editTask--${taskObj.id}`}
                 onClick={
                     () => {
                         history.push(`/cosplays/tasks/edit/${taskObj.id}`)
                 }}>✏️</button>
 
-                <button 
-                    type="button" 
-                    className="taskBtn-delete" 
-                    id={`deleteTask--${taskObj.id}`} 
-                    onClick={
-                        () => {
-                            deleteTask(taskObj)
-                    }}>🗑️</button>      
+                     
             </div>   
         </section>
     )

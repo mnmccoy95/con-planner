@@ -86,7 +86,7 @@ export const ECList = () => {
         {homeGrabber()}
         <div id="myModal" className="modal">
             <div className="modal-content">
-                <button id="close" onClick={() => {
+                <button id="close" className="delete" onClick={() => {
                     document.querySelector("#myModal").style.display = "none"
                 }}>&times;</button>
                 <fieldset>
@@ -102,7 +102,7 @@ export const ECList = () => {
                         </select>
                     </div>
                 </fieldset>
-                <button onClick={() => {
+                <button className="createEC add" onClick={() => {
                     ECSaver()
                 }}type="button" id="event-form-submit">Save to Event</button>
                 <dialog className="dialog dialog--auth" ref={existDialog}>
@@ -113,7 +113,7 @@ export const ECList = () => {
         </div>
         <div className="suitcase-container">
             <div className="suitcase-header">Cosplays
-                <button  className="addEventCosplay" onClick={() => {
+                <button  className="addEventCosplay add" onClick={() => {
                     const modal = document.querySelector("#myModal")
                     modal.style.display = "block"
                     modal.value = parseInt(id)

@@ -85,8 +85,8 @@ export const EssentialForm = (props) => {
                     defaultValue={essential.name}/>
                 </div>
             </fieldset>
-            <button className="btn btn-primary" disabled={isLoading} type="submit"> Save</button>
-            <button className="btn btn-primary"
+            <button className="btn btn-primary add" disabled={isLoading} type="submit"> Save</button>
+            <button className="btn btn-primary delete"
                 onClick={event => {
                     history.push("/essentials")
                 }}>

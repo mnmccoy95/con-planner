@@ -18,7 +18,7 @@ export const ItemList = () => {
         if(id){
             const newId = parseInt(id)
             return (
-                <button className="addNewItem" onClick={() => {history.push(`/cosplays/items/create/${newId}`)}}>
+                <button className="addNewItem add" onClick={() => {history.push(`/cosplays/items/create/${newId}`)}}>
                     +
                 </button>
             )

@@ -40,11 +40,12 @@ export const ItemCard = ({ item }) => {
             {Complete()}
             {Making()}
         </div>
-        <button onClick={() => {
-                history.push(`/cosplays/items/edit/${item.id}`)
-            }}>✏️</button>
-            <button onClick={() => {
+        <button className="deleteItem delete" onClick={() => {
                 deleteItem(item)
             }}>🗑️</button>
+        <button className="itemEdit edit" onClick={() => {
+                history.push(`/cosplays/items/edit/${item.id}`)
+            }}>✏️</button>
+            
     </section>
 )}

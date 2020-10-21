@@ -84,7 +84,7 @@ export const TaskEdit = (props) => {
                         setCompletionStatus(e); // change task status
                     }}/>
             </fieldset>
-            <button className="btn btn-primary"
+            <button className="btn btn-primary add"
                 disabled={isLoading}
                 >Save Task</button>
         </form>

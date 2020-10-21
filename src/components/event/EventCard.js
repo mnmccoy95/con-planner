@@ -17,7 +17,7 @@ export const EventCard = ({ event }) => {
             </Link>
         </div>
         <div>
-        <button className="deleteEvent" onClick={
+        <button className="deleteEvent delete" onClick={
                 () => {
                     deleteEvent(event.id)
                         .then(() => {

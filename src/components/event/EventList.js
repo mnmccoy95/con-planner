@@ -24,7 +24,7 @@ export const EventList = () => {
           <div className="events">
             <div className="event-head">
               <div className="eventTitle">Events</div>
-              <button  className="add-event" onClick={() => {history.push("/events/create")}}>
+              <button  className="add-event add" onClick={() => {history.push("/events/create")}}>
                         +
               </button>
             </div>

@@ -92,8 +92,8 @@ export const TaskForm = (props) => {
                     }}/>
                 </div>
             </fieldset>
-            <button className="btn btn-primary" type="submit" disabled={isLoading}>Save</button>
-            <button className="btn btn-primary"
+            <button className="btn btn-primary add" type="submit" disabled={isLoading}>Save</button>
+            <button className="btn btn-primary delete"
                 disabled={isLoading}
                 onClick={event => {
                     history.push(`/cosplays/detail/${cosplayId}`)
