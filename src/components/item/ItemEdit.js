@@ -118,7 +118,7 @@ export const ItemEdit = (props) => {
                         setMakingStatus(e); // change making status
                     }}/>
             </fieldset>
-            <button className="btn btn-primary"
+            <button className="btn btn-primary add"
                 type="submit"
                 disabled={isLoading}
                 >Save Item</button>

@@ -47,7 +47,9 @@ export const EssentialList = () => {
         <div className="essentials">
             <div id="myModal" className="modal">
                 <div className="modal-content">
-                <button id="close" onClick={() => {
+                <button id="close" 
+                className="delete"
+                onClick={() => {
                     document.querySelector("#myModal").style.display = "none"
                 }}>&times;</button>
                 <fieldset>
@@ -63,7 +65,7 @@ export const EssentialList = () => {
                         </select>
                     </div>
                 </fieldset>
-                <button onClick={() => {
+                <button className="createEE add" onClick={() => {
                     EESaver()
                 }}type="button" id="event-form-submit">Save to Event</button>
                 <dialog className="dialog dialog--auth" ref={existDialog}>
@@ -74,7 +76,7 @@ export const EssentialList = () => {
             </div>
             <div className="essHeader">
             <div className="essTitle">Essentials</div>
-            <button  className="addEss" onClick={() => {history.push("/essentials/create")}}>
+            <button  className="addEss add" onClick={() => {history.push("/essentials/create")}}>
                     +
             </button>
             </div>

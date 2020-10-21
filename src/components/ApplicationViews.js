@@ -40,9 +40,13 @@ export const ApplicationViews = (props) => {
                     <CosplayProvider>
                         <ECProvider>
                             <EEProvider>
-                                <Route exact path="/">
-                                    <Home />
-                                </Route>
+                                <HotelProvider>
+                                    <BudgetProvider>
+                                        <Route exact path="/">
+                                            <Home />
+                                        </Route>
+                                    </BudgetProvider>
+                                </HotelProvider>
                             </EEProvider>
                         </ECProvider>
                     </CosplayProvider>
@@ -118,9 +122,9 @@ export const ApplicationViews = (props) => {
                                     <BudgetProvider>
                                         <Route exact path="/events/detail/:id">
                                             <EventDetail />
-                                            <ECList />
                                             <HotelCard />
                                             <BudgetCard />
+                                            <ECList />
                                         </Route>
                                     </BudgetProvider>
                                 </HotelProvider>

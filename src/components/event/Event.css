@@ -26,6 +26,7 @@
 
 .eventTitle {
     font-size: 2em;
+    color: rgba(255, 255, 255, 0.877);
 }
 
 .event-head {
@@ -37,12 +38,20 @@
     font-size: 1.3em;
     text-decoration: underline;
     text-align: center;
+    color: rgba(255, 255, 255, 0.877);
 }
 
 .event {
-    margin-top: 10px;
+    margin: 10px;
     border: solid black 1px;
+    border-radius: 20px;
     padding: 10px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    min-width: 110px;
+    background-color: rgba(255, 255, 255, 0.877);
 }
 
 .eventForm__title {
@@ -74,21 +83,22 @@ fieldset {
     padding: 10px;
 }
 
-.deleteEvent {
-    margin-left: 1em;
-}
-
 .event__name__detail {
     display: flex;
     flex-direction: row;
-    font-size: 1.3em;
+    font-size: 1.7em;
     text-align: center;
     border-bottom: solid 1px;
     justify-content: center;
 }
 .eventDetail {
     border: solid 1px;
+    border-radius: 20px;
     height: 170px;
     width: 300px;
     padding: 1em;
+}
+
+.event__name {
+    font-size: 1.5em;
 }

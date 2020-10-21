@@ -113,7 +113,7 @@ export const CosplayForm = (props) => {
                         setCompletionStatus(e); // change cosplay status
                     }}/>
             </fieldset>
-            <button className="btn btn-primary"
+            <button className="btn btn-primary add"
                 type="submit"
                 disabled={isLoading}>
             {cosplayId ? <>Save Cosplay</> : <>Add Cosplay</>}</button>

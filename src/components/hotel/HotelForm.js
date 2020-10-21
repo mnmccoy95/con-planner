@@ -167,7 +167,7 @@ export const HotelForm = (props) => {
                         setPurchaseStatus(e); // change hotel purchase status
                     }}/>
             </fieldset>
-            <button className="btn btn-primary"
+            <button className="btn btn-primary add"
                 disabled={isLoading}
                 >Save Hotel</button>
         </form>

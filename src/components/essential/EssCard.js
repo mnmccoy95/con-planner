@@ -18,14 +18,14 @@ export const EssentialCard = ({ essential }) => {
             { essential.name }
         </div>
         <div className="buttons">
-        <button onClick={() => {
+        <button className="deleteEssential delete" onClick={() => {
             removeEssential(essential)
         }}>🗑️</button>
             
-        <button onClick={() => {
+        <button className="essEdit edit" onClick={() => {
             history.push(`/essentials/edit/${essential.id}`)
         }}>✏️</button>
-        <button onClick={() => {
+        <button className="addEssEvent add" onClick={() => {
             modalDisplay()
         }}>📅</button>
         </div>

@@ -66,7 +66,7 @@ export const EEList = () => {
         {homeGrabber()}
         <div id="myModalEssential" className="modal">
             <div className="modal-content">
-              <button id="close" onClick={() => {
+              <button id="close" className="delete" onClick={() => {
                 document.querySelector("#myModalEssential").style.display = "none"
               }}>&times;</button>
               <fieldset>
@@ -82,7 +82,7 @@ export const EEList = () => {
                     </select>
                 </div>
               </fieldset>
-              <button onClick={() => {
+              <button className="createEE add" onClick={() => {
                 EESaver()
               }}type="button" id="event-form-submit">Save to Event</button>
               <dialog className="dialog dialog--auth" ref={existDialog}>
@@ -93,7 +93,7 @@ export const EEList = () => {
           </div>
           <div className="event-essential-all">
             <div className="suitcase-header">Essentials
-              <button className="addEssentialEvent" onClick={() => {
+              <button className="addEssentialEvent add" onClick={() => {
                   const modal = document.querySelector("#myModalEssential")
                   modal.style.display = "block"
                   modal.value = parseInt(id)

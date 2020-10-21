@@ -32,7 +32,7 @@ export const CosplayDetail = () => {
     return (
         <section className="cosplayDetail">
             <div className="cosplay-detail-character">{cosplay.character}
-            <button className="deleteCosplay" onClick={
+            <button className="deleteCosplay delete" onClick={
                 () => {
                     removeCosplay(cosplay)
                         .then(() => {
@@ -41,7 +41,7 @@ export const CosplayDetail = () => {
                 }
             }>🗑️</button>
             
-            <button onClick={() => {
+            <button className="editCosplay edit" onClick={() => {
                 history.push(`/cosplays/edit/${cosplay.id}`)
             }}>✏️</button>
             </div>

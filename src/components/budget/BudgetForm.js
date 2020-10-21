@@ -184,7 +184,7 @@ export const BudgetForm = (props) => {
                         setBadgeStatus(e); // change hotel purchase status
                     }}/>
             </fieldset>
-            <button className="btn btn-primary"
+            <button className="btn btn-primary add"
                 type="submit"
                 disabled={isLoading}
                 >Save Budget</button>

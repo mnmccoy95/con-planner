@@ -1,6 +1,7 @@
 import React, {useContext, useEffect} from "react"
 import {EventContext} from "./event/EventProvider"
 import {ECList} from "./eventCosplay/ECList"
+import {BudgetCard} from "./budget/BudgetCard"
 import "./Home.css"
 
 
@@ -39,7 +40,6 @@ export const Home = () => {
             return (
                 <>
                 <div className="homeEvent">
-                <h2>Your Next Event</h2>
                 <section className="eventDetail">
                     <div className="event__name__detail">{futureEvents[0].name}</div>
                     <div className="event__times__detail">{new Date(futureEvents[0].startDate).toLocaleDateString('en-US')}
@@ -51,6 +51,7 @@ export const Home = () => {
                 <div className="hidden">{futureEvents[0].id}</div>
                 </div>
                 <ECList/>
+                <BudgetCard />
                 </>
             )} else {
                 return (

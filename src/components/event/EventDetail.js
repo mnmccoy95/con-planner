@@ -42,7 +42,7 @@ export const EventDetail = () => {
     return (
         <section className="eventDetail">
             <div className="event__name__detail">{event.name}
-            <button className="deleteEvent" onClick={
+            <button className="deleteEvent delete" onClick={
                 () => {
                     deleteEvent(event.id)
                         .then(() => {
@@ -51,7 +51,7 @@ export const EventDetail = () => {
                 }
             }>🗑️</button>
             
-            <button onClick={() => {
+            <button className="editEvent edit" onClick={() => {
                 history.push(`/events/edit/${event.id}`)
             }}>✏️</button>
             </div>

@@ -9,6 +9,7 @@
 
 .essTitle {
     font-size: 2em;
+    color: rgba(255, 255, 255, 0.877);
 }
 
 .addEss {
@@ -25,22 +26,30 @@
 }
 
 .allEss {
-    display: grid;
-    grid-template-columns: 33% 33% 33%;
-    max-width: 475px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1000px;
 }
 
 .essential {
     margin: 5px;
     border: solid black 1px;
-    padding: 5px;
+    border-radius: 20px;
+    padding: 10px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
     min-width: 50px;
+    background-color: rgba(255, 255, 255, 0.877);
 }
 
 .buttons {
-    align-self: flex-end;
+    align-self: center;
+}
+
+.essential__name {
+    font-size: 1.5em;
 }

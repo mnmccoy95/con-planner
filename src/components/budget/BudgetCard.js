@@ -9,11 +9,26 @@ export const BudgetCard = () => {
 
     const { budget, getBudgetByEvent, removeBudget } = useContext(BudgetContext)
     const { hotel, getHotelByEvent } = useContext(HotelContext)
-    const { getEventById } = useContext(EventContext)
+    const { events, getEvents, getEventById } = useContext(EventContext)
     const [event, setEvent] = useState(EventContext)
-    const {id} = useParams();
-	
+    let {id} = useParams();
+
+    const homeGrabber = () => {
+        if(typeof(id) === "string"){
+        } else {
+            const futureEvents = events.filter(event =>{
+                if(event.startDate >= Date.now()){
+                    return event }
+            })
+            if(futureEvents){
+            id = futureEvents[0].id
+            }
+        }
+    }
+
     useEffect(() => {
+        homeGrabber()
+        getEvents()
         getBudgetByEvent(parseInt(id))
         getHotelByEvent(parseInt(id))
         getEventById(parseInt(id))
@@ -28,16 +43,17 @@ export const BudgetCard = () => {
 
     const history = useHistory()
     const getid = () => {
+        homeGrabber()
         if(budget.length === 0){
             return (
-                <button className="addNewBudget" onClick={() => {history.push(`/events/budget/create/${id}`)}}>
+                <button className="addNewBudget add" onClick={() => {history.push(`/events/budget/create/${id}`)}}>
                     +
                 </button>
             )
         } else {
             return ( 
                 <>
-                <button className="deleteBudget" onClick={
+                <button className="deleteBudget delete" onClick={
                     () => {
                         removeBudget(budget[0])
                             .then(() => {
@@ -45,7 +61,7 @@ export const BudgetCard = () => {
                             })
                     }
                 }>🗑️</button>
-                <button className="editBudget" onClick={() => { history.push(`/events/budget/edit/${id}`) }}>✏️</button>
+                <button className="editBudget edit" onClick={() => { history.push(`/events/budget/edit/${id}`) }}>✏️</button>
                 </>
             )
         }

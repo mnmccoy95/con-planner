@@ -23,8 +23,8 @@ export const CosplayCard = ({ cosplay }) => {
                 { cosplay.character }
             </Link>
         </div>
-        <div>
-        <button onClick={
+        <div className="buttons">
+        <button className="deleteCosplay delete"onClick={
                 () => {
                     removeCosplay(cosplay)
                         .then(() => {
@@ -32,7 +32,7 @@ export const CosplayCard = ({ cosplay }) => {
                         })
                 }
             }>🗑️</button>
-        <button className="addCosplayToEvent" onClick={() => {
+        <button className="addCosplayToEvent add" onClick={() => {
             modalDisplay()
         }}>📅</button>
         </div>

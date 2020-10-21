@@ -1,7 +1,9 @@
 .tasks {
     border: solid 1px;
+    border-radius: 20px;
     padding: 1em;
     width: 300px;
+    background-color: rgba(255, 255, 255, 0.877);
 }
 
 .taskHeader {
@@ -27,3 +29,4 @@
     flex-direction: row;
     flex-wrap: wrap;
 }
+
