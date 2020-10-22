@@ -39,6 +39,7 @@ export const Home = () => {
             if(futureEvents.length !== 0){
             return (
                 <>
+                <div className="homeContainer">
                 <div className="homeEvent">
                 <section className="eventDetail">
                     <div className="event__name__detail">{futureEvents[0].name}</div>
@@ -50,8 +51,9 @@ export const Home = () => {
                 </section>
                 <div className="hidden">{futureEvents[0].id}</div>
                 </div>
-                <ECList/>
                 <BudgetCard />
+                </div>
+                <ECList/>
                 </>
             )} else {
                 return (

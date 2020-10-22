@@ -59,7 +59,7 @@ export const TaskEdit = (props) => {
     
     return (
         <form className="TaskForm" onSubmit={constructTaskObject}>
-            <h2 className="TaskForm__title">{taskId ? <>Save Task</> : <>Add Task</>}</h2>
+            <h2 className="TaskForm__title">Edit Task</h2>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="taskName">Task: </label>

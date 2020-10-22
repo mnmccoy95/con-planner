@@ -17,6 +17,8 @@
 
 .addNewItem {
     margin-left: 1em;
+    height: 2em;
+    width: 2em;
 }
 
 .item__name {
@@ -35,3 +37,17 @@
     flex-direction: row;
     flex-wrap: wrap;
 }
+
+.deleteItem {
+    height: 2em;
+}
+
+.itemEdit {
+    height: 2em;
+}
+
+.ItemForm__title {
+    font-size: 1.8em;
+    text-decoration: underline;
+}
+

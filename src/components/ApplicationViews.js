@@ -71,8 +71,6 @@ export const ApplicationViews = (props) => {
 
                         <Route exact path="/cosplays/detail/:id">
                             <CosplayDetail />
-                            <ItemList />
-                            <TaskList />
                         </Route>
 
                         <Route exact path="/cosplays/items/create/:cosplayId(\d+)">
@@ -122,8 +120,6 @@ export const ApplicationViews = (props) => {
                                     <BudgetProvider>
                                         <Route exact path="/events/detail/:id">
                                             <EventDetail />
-                                            <HotelCard />
-                                            <BudgetCard />
                                             <ECList />
                                         </Route>
                                     </BudgetProvider>

@@ -17,6 +17,8 @@
 
 .addNewTask {
     margin-left: 1em;
+    height: 2em;
+    width: 2em;
 }
 
 .taskObj {
@@ -28,5 +30,19 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    align-content: space-between;
+}
+
+.taskBtn-delete {
+    height: 2em;
+}
+
+.taskBtn-edit {
+    height: 2em;
+}
+
+.TaskForm__title {
+    font-size: 1.8em;
+    text-decoration: underline;
 }
 

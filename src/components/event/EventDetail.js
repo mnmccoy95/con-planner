@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from "react"
 import { EventContext } from "./EventProvider"
 import { useParams, useHistory } from "react-router-dom"
+import { HotelCard } from "../hotel/HotelCard"
+import { BudgetCard } from "../budget/BudgetCard"
 
 export const EventDetail = () => {
     const { deleteEvent, getEventById } = useContext(EventContext)
@@ -40,9 +42,10 @@ export const EventDetail = () => {
     }
 
     return (
+        <div className="eventDetailPageContainer">
         <section className="eventDetail">
             <div className="event__name__detail">{event.name}
-            <button className="deleteEvent delete" onClick={
+            <button className="deleteEvent__detail delete" onClick={
                 () => {
                     deleteEvent(event.id)
                         .then(() => {
@@ -59,9 +62,10 @@ export const EventDetail = () => {
                 - {new Date(event.endDate).toLocaleDateString('en-US')}
             </div>
             <div className="event__location">{event.eventAddress}<br></br>{event.eventCity}, {event.eventState} {event.eventZip}</div>
-            <div className="event__badge">{badgeStatus()}</div>
-
-            
+            <div className="event__badge">{badgeStatus()}</div> 
         </section>
+        <HotelCard />
+        <BudgetCard />
+        </div>
     )
 }

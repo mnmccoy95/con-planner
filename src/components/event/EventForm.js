@@ -121,6 +121,7 @@ export const EventForm = (props) => {
     return (
         <form className="eventForm" onSubmit={constructEventObject}>
             <h2 className="eventForm__title">{eventId ? <>Save Event</> : <>Add New Event</>}</h2>
+            <div className="formContainer">
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="eventName">Event name: </label>
@@ -166,6 +167,8 @@ export const EventForm = (props) => {
                     defaultValue={event.eventZip}/>
                 </div>
             </fieldset>
+            </div>
+            <div className="formContainer">
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="eventStart">Event Start: </label>
@@ -210,12 +213,14 @@ export const EventForm = (props) => {
                     defaultValue={event.badgePrice}/>
                 </div>
             </fieldset>
-
+            </div>
+            <div className="eventAddSave">
             <button className="btn btn-primary add"
                 type="submit"
                 disabled={isLoading}
                 >
             {eventId ? <>Save Event</> : <>Add Event</>}</button>
+            </div>
         </form>
     )
 }

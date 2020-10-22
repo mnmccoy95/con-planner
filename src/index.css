@@ -1,10 +1,11 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'Manrope', sans-serif;
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  -moz-osx-font-smoothing: grayscale; */
   background: url(./imgs/1.jpg) no-repeat center center fixed;
   background-size: cover;
   min-width: 100%;
@@ -206,4 +207,30 @@ code {
 
 .TaskForm {
   color: rgba(255, 255, 255, 0.877);
+}
+
+label {
+  font-size: 1.1em;
+}
+
+label:not(.taskObj) {
+  font-size: 1.4em;
+}
+
+.cosplayDetailPageContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+input[type=checkbox]
+{
+  /* Double-sized Checkboxes */
+  -ms-transform: scale(2); /* IE */
+  -moz-transform: scale(2); /* FF */
+  -webkit-transform: scale(2); /* Safari and Chrome */
+  -o-transform: scale(2); /* Opera */
+  transform: scale(2);
+  padding: 10px;
+  margin: 10px
 }

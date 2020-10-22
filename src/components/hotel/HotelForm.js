@@ -89,6 +89,7 @@ export const HotelForm = (props) => {
     return (
         <form className="hotelForm" onSubmit={constructHotelObject}>
             <h2 className="hotelForm__title">Event Hotel Info</h2>
+            <div className="formContainer">
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="hotelName">Hotel name: </label>
@@ -125,6 +126,8 @@ export const HotelForm = (props) => {
                     defaultValue={hotel?.state}/>
                 </div>
             </fieldset>
+            </div>
+            <div className="formContainer">
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="hotelZip">Zip: </label>
@@ -167,9 +170,12 @@ export const HotelForm = (props) => {
                         setPurchaseStatus(e); // change hotel purchase status
                     }}/>
             </fieldset>
+            </div>
+            <div className="hotelAddSave">
             <button className="btn btn-primary add"
                 disabled={isLoading}
                 >Save Hotel</button>
+            </div>
         </form>
     )
 }

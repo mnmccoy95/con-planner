@@ -79,7 +79,7 @@ export const CosplayForm = (props) => {
     
     return (
         <form className="cosplayForm" onSubmit={constructCosplayObject}>
-            <h2 className="cosplayForm__title">{cosplayId ? <>Save Cosplay</> : <>Add New Cosplay</>}</h2>
+            <h2 className="cosplayForm__title">{cosplayId ? <>Edit Cosplay</> : <>Add New Cosplay</>}</h2>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="cosplayName">Character name: </label>

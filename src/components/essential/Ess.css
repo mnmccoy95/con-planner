@@ -8,13 +8,16 @@
 }
 
 .essTitle {
-    font-size: 2em;
+    font-size: 2.5em;
     color: rgba(255, 255, 255, 0.877);
+    font-weight: bold;
 }
 
 .addEss {
     margin-left: 1em;
     margin-top: 10px;
+    height: 2em;
+    width: 2em;
 }
 
 .essentials {
@@ -52,4 +55,21 @@
 
 .essential__name {
     font-size: 1.5em;
+}
+
+.deleteEssential {
+    height: 2em;
+}
+
+.essEdit {
+    height: 2em;
+}
+
+.addEssEvent {
+    height: 2em;
+}
+
+.essentialForm__title {
+    font-size: 1.8em;
+    text-decoration: underline;
 }
