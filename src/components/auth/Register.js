@@ -48,7 +48,7 @@ export const Register = (props) => {
     }
 
     return (
-        <main style={{ textAlign: "center" }}>
+        <main className="registerFormPage">
 
             <dialog className="dialog dialog--password" ref={passwordDialog}>
                 <div>Passwords do not match</div>
@@ -56,9 +56,9 @@ export const Register = (props) => {
             </dialog>
 
             <form className="form--login" onSubmit={handleRegister}>
-                <h1 className="h3 mb-3 font-weight-normal">Register for Con Planner!</h1>
+                <h1 className="h3 mb-3 font-weight-normal">Become a Pro of Cons!</h1>
                 <fieldset>
-                    <label htmlFor="firstName"> First Name </label>
+                    <label htmlFor="firstName" className="registerForm"> First Name </label>
                     <input ref={firstName} type="text"
                         name="firstName"
                         className="form-control"
@@ -66,7 +66,7 @@ export const Register = (props) => {
                         required autoFocus />
                 </fieldset>
                 <fieldset>
-                    <label htmlFor="lastName"> Last Name </label>
+                    <label htmlFor="lastName" className="registerForm"> Last Name </label>
                     <input ref={lastName} type="text"
                         name="lastName"
                         className="form-control"
@@ -74,7 +74,7 @@ export const Register = (props) => {
                         required />
                 </fieldset>
                 <fieldset>
-                    <label htmlFor="inputEmail"> Email address </label>
+                    <label htmlFor="inputEmail" className="registerForm"> Email address </label>
                     <input ref={email} type="email"
                         name="email"
                         className="form-control"
@@ -82,7 +82,7 @@ export const Register = (props) => {
                         required />
                 </fieldset>
                 <fieldset>
-                    <label htmlFor="inputPassword"> Password </label>
+                    <label htmlFor="inputPassword" className="registerForm"> Password </label>
                     <input ref={password} type="password"
                         name="password"
                         className="form-control"
@@ -90,7 +90,7 @@ export const Register = (props) => {
                         required />
                 </fieldset>
                 <fieldset>
-                    <label htmlFor="verifyPassword"> Verify Password </label>
+                    <label htmlFor="verifyPassword" className="registerForm"> Verify Password </label>
                     <input ref={verifyPassword} type="password"
                         name="verifyPassword"
                         className="form-control"
@@ -98,7 +98,7 @@ export const Register = (props) => {
                         required />
                 </fieldset>
                 <fieldset>
-                    <button type="submit">
+                    <button type="submit" className="add signin">
                         Sign in
                     </button>
                 </fieldset>

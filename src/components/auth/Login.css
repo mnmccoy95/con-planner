@@ -15,8 +15,7 @@ fieldset {
     text-align: left;
 }
 
-.form--login > fieldset > input[type="email"],
-.form--login > fieldset > input[type="password"] {
+.form--login > fieldset > input {
     width: 25em;
 }
 
@@ -44,16 +43,15 @@ fieldset {
 
 .container--login {
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-self: center;
+    width: 100%;
 }
 
 .form--login {
-    background-position-x: right;
-    z-index: 1;
-    min-height: 25rem;
-    min-width: 45rem;
-    background-color: hsla(0,0%,100%,0.40);
-    background-blend-mode: overlay;
-    background-repeat: no-repeat;
+    color:  rgba(255, 255, 255, 0.877);
 }
 
 .button--close {
@@ -66,3 +64,30 @@ fieldset {
     min-height: 5rem;
 }
 
+.registerLink {
+    color: rgba(255, 255, 255, 0.877);
+    font-size: 1.5em;
+}
+
+.signin {
+    height: 2em;
+}
+
+.registerForm {
+    background-color: rgba(0, 0, 0, 0.164);
+}
+
+.link--register {
+    flex-basis: 100%;
+}
+
+.loginscreen {
+    width: 100%;
+}
+
+.registerFormPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
