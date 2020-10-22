@@ -25,7 +25,7 @@
     margin: 0px;
 }
 
-.character__name {
+.character__name__EC {
     font-size: 1.1em;
     font-weight: thick;
     text-decoration: underline;
@@ -33,18 +33,22 @@
 
 .addEventCosplay {
     margin-left: 1em;
+    width: 2em;
 }
 
 .deleteCosplayEvent {
     margin-right: 0.5em;
+    height: 2em;
 }
 
 .deleteEssentialEvent {
     margin-right: 0.5em;
+    height: 2em;
 }
 
 .addEssentialEvent {
     margin-left: 1em;
+    width: 2em;
 }
 
 .event-essential-list {
@@ -60,5 +64,14 @@
 }
 
 .allEventCosplays {
-    margin-bottom: 2em;
+    margin-bottom: 1em;
+}
+
+.essential__name__EC {
+    font-size: 1.1em;
+    font-weight: thick;
+}
+
+.cosplayEvent {
+    margin-bottom: 10px;
 }

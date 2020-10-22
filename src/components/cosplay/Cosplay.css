@@ -12,12 +12,14 @@
 }
 
 .cosplayTitle {
-    font-size: 2em;
+    font-size: 2.5em;
 }
 
 .addNewCosplay {
     margin-left: 1em;
     margin-top: 10px;
+    width: 2em;
+    height: 2em;
 }
 
 .cosplays {
@@ -37,7 +39,7 @@
 }
 
 .cosplay {
-    margin: 10px;
+    margin: 5px;
     border: solid black 1px;
     border-radius: 20px;
     padding: 10px;
@@ -62,7 +64,6 @@
 .cosplayDetail {
     border: solid 1px;
     border-radius: 20px;
-    height: 140px;
     width: 300px;
     padding: 1em;
     background-color: rgba(255, 255, 255, 0.877);
@@ -74,4 +75,21 @@
 
 .cosplayTitle {
     color: rgba(255, 255, 255, 0.877);
+}
+
+.deleteCosplay {
+    height: 2em;
+}
+
+.addCosplayToEvent {
+    height: 2em;
+}
+
+.editCosplay {
+    height: 2em;
+}
+
+.cosplayForm__title {
+    font-size: 1.8em;
+    text-decoration: underline;
 }

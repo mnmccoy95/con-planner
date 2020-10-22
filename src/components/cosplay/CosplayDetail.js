@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from "react"
 import { CosplayContext } from "./CosplayProvider"
 import { useParams, useHistory } from "react-router-dom"
+import { TaskList } from "../task/TaskList"
+import { ItemList } from "../item/ItemList"
 
 export const CosplayDetail = () => {
     const { removeCosplay, getCosplayById } = useContext(CosplayContext)
@@ -30,6 +32,8 @@ export const CosplayDetail = () => {
     }
 
     return (
+        <div className="cosplayDetailPageContainer">
+            <div>
         <section className="cosplayDetail">
             <div className="cosplay-detail-character">{cosplay.character}
             <button className="deleteCosplay delete" onClick={
@@ -46,8 +50,13 @@ export const CosplayDetail = () => {
             }}>✏️</button>
             </div>
             <div className="cosplay-detail-series">{cosplay.series}</div>
-        <div className="cosplay-detail-completion">{completionStatus()}</div>
-            
+            <div className="cosplay-detail-completion">{completionStatus()}</div>
         </section>
+        <TaskList />
+        </div>
+        <div>
+        <ItemList />
+        </div>
+        </div>
     )
 }

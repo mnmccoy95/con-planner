@@ -40,7 +40,7 @@ export const TaskCard = ({ taskObj }) => {
                     // 'completed' (true)
                     setTaskcomplete(e); // change taskObj complete
                 }}/>
-            <label htmlFor={`taskObj${taskObj.id}`}>{`${taskObj.name}`}</label>
+            <label htmlFor={`taskObj`} className="taskObj">{`${taskObj.name}`}</label>
             <div className="taskActions">
             <button 
                     type="button" 

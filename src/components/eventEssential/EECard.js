@@ -6,7 +6,7 @@ export const EECard = ({ EE }) => {
 
     return (
         <section className="essentialEvent">
-            <div className="essential__name">
+            <div className="essential__name__EC">
             <button className="deleteEssentialEvent delete" onClick={() => {
                 removeEE(EE)
                 getEEs(EE.eventId)

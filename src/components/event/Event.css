@@ -18,6 +18,8 @@
 .add-event {
     margin-left: 1em;
     margin-top: 10px;
+    height: 2em;
+    width: 2em;
 }
 
 .events__future {
@@ -25,7 +27,7 @@
 }
 
 .eventTitle {
-    font-size: 2em;
+    font-size: 2.5em;
     color: rgba(255, 255, 255, 0.877);
 }
 
@@ -35,7 +37,7 @@
 }
 
 .event-list-head {
-    font-size: 1.3em;
+    font-size: 1.5em;
     text-decoration: underline;
     text-align: center;
     color: rgba(255, 255, 255, 0.877);
@@ -57,6 +59,9 @@
 .eventForm__title {
     text-align: center;
     margin-bottom: 2px;
+    flex-basis: 100%;
+    font-size: 1.8em;
+    text-decoration: underline;
 }
 
 .form-group {
@@ -66,6 +71,7 @@
 
 .btn-primary {
     margin: 0 auto;
+
 }
 
 fieldset {
@@ -74,9 +80,11 @@ fieldset {
 
 .eventForm {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    flex-direction: row;
     justify-content: center;
     padding-bottom: 2em;
+    width: 100%;
 }
 
 .btn-primary{
@@ -101,4 +109,24 @@ fieldset {
 
 .event__name {
     font-size: 1.5em;
+    text-decoration: none;
+}
+
+.deleteEvent__detail {
+    margin-left: 1em;
+}
+
+.deleteEvent {
+    height: 2em;
+}
+
+.eventAddSave {
+    flex-basis: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.formContainer {
+    margin-right: 2em;
+    margin-left: 2em;
 }

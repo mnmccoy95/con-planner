@@ -69,7 +69,7 @@ export const ItemEdit = (props) => {
     
     return (
         <form className="ItemForm" onSubmit={constructItemObject}>
-            <h2 className="ItemForm__title">{itemId ? <>Save Item</> : <>Add Item</>}</h2>
+            <h2 className="ItemForm__title">Edit Piece</h2>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="itemName">Item: </label>

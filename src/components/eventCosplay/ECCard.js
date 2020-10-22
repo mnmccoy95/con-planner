@@ -17,7 +17,7 @@ export const ECCard = ({ cosplay }) => {
         <>
         {homeGrabber()}
         <section className="cosplayEvent">
-            <div className="character__name">
+            <div className="character__name__EC">
             <button className="deleteCosplayEvent delete" onClick={() => {
                 removeEC(cosplay.id, parseInt(id))
               }}>🗑️</button>
