@@ -42,10 +42,10 @@ export const Login = props => {
                 <div>Password does not match</div>
                 <button className="button--close" onClick={e => passwordDialog.current.close()}>Close</button>
             </dialog>
-            <section>
+            <section className="loginscreen">
                 <form className="form--login" onSubmit={handleLogin}>
-                    <h1>Con Planner</h1>
-                    <h2>Please sign in</h2>
+                    <h1>Pros of Cons</h1>
+                    <h2>Sign in to get plannin'!</h2>
                     <fieldset>
                         <label htmlFor="inputEmail"> Email address </label>
                         <input ref={email} type="email"
@@ -63,14 +63,14 @@ export const Login = props => {
                             required />
                     </fieldset>
                     <fieldset>
-                        <button type="submit">
+                        <button type="submit" className="add signin">
                             Sign in
                         </button>
                     </fieldset>
                 </form>
             </section>
             <section className="link--register">
-                <Link to="/register">Cosplay with us!</Link>
+                <Link className="registerLink" to="/register">Cosplay with us!</Link>
             </section>
         </main>
     )
