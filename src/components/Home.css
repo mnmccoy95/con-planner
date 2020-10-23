@@ -29,3 +29,18 @@
     flex-wrap: wrap;
     justify-content: center;
 }
+
+.noEventHeader {
+    color:  rgba(255, 255, 255, 0.877);
+    align-self: center;
+}
+
+.noEventContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.addEventInfo {
+    color:  rgba(255, 255, 255, 0.877);
+    align-self: center;
+}

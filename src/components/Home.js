@@ -70,8 +70,10 @@ export const Home = () => {
             )} else {
                 return (
                     <>
-                    <h2>No upcoming events :(</h2>
-                    {cosplayFinder}
+                    <div className="noEventContainer">
+                    <h2 className="noEventHeader">No upcoming events :(</h2>
+                    {cosplayFinder()}
+                    </div>
                     </>
                 )
             }
@@ -79,8 +81,11 @@ export const Home = () => {
         } else {
             return (
                 <>
-                <h2>Welcome to Con Planner!</h2>
-                {cosplayFinder}
+                <div className="noEventContainer">
+                <h2 className="noEventHeader">Welcome to Con Planner!</h2>
+                <div className="addEventInfo">Your next event will be here when added!</div>
+                {cosplayFinder()}
+                </div>
                 </>
             )
         }
