@@ -8,7 +8,7 @@ export const CosplayCard = ({ cosplay }) => {
     const { removeCosplay } = useContext(CosplayContext)
 
     const modalDisplay = () => {
-        const modal = document.querySelector("#myModal")
+        const modal = document.querySelector("#myModalCos")
         modal.style.display = "block"
         modal.value = cosplay.id
     }

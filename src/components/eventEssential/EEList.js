@@ -37,13 +37,16 @@ export const EEList = () => {
 
     const modalEss = document.querySelector("#myModalEssential")
     const modalCos = document.querySelector("#myModal")
+    const modalCos2 = document.querySelector("#myModalCos")
 
     window.onclick = function(event) {
-        if (event.target == modalEss) {
-          modalEss.style.display = "none";
-        } else if (event.target == modalCos) {
-          modalCos.style.display = "none";
-        }
+      if (event.target == modalEss) {
+        modalEss.style.display = "none";
+      } else if (event.target == modalCos) {
+        modalCos.style.display = "none";
+      } else if (event.target == modalCos2) {
+        modalCos2.style.display = "none";
+      }
     }
 
     const EESaver = () => {
