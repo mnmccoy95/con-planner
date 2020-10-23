@@ -22,6 +22,13 @@ export const EssentialList = () => {
 
     const history = useHistory()
 
+    const modalEss = document.querySelector("#myModal")
+    window.onclick = function(event) {
+        if (event.target == modalEss) {
+            modalEss.style.display = "none";
+        }
+    }
+
     const EESaver = () => {
         if(parseInt(event.current.value) !== 0) {
             const modal = document.querySelector("#myModal")

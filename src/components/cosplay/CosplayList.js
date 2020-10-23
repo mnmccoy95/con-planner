@@ -22,6 +22,14 @@ export const CosplayList = () => {
 
     const history = useHistory()
 
+    const modalCos = document.querySelector("#myModal")
+
+    window.onclick = function(event) {
+      if (event.target == modalCos) {
+          modalCos.style.display = "none";
+      }
+    }
+    
     const ECSaver = () => {
       if(parseInt(event.current.value) !== 0) {
         const modal = document.querySelector("#myModal")

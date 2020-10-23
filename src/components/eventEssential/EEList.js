@@ -35,6 +35,17 @@ export const EEList = () => {
         homeGrabber()
     }, [getEvents])
 
+    const modalEss = document.querySelector("#myModalEssential")
+    const modalCos = document.querySelector("#myModal")
+
+    window.onclick = function(event) {
+        if (event.target == modalEss) {
+          modalEss.style.display = "none";
+        } else if (event.target == modalCos) {
+          modalCos.style.display = "none";
+        }
+    }
+
     const EESaver = () => {
       if(parseInt(essential.current.value) !== 0) {
         const modal = document.querySelector("#myModalEssential")
