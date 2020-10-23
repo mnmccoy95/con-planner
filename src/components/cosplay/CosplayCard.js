@@ -6,7 +6,7 @@ import { CosplayContext } from "./CosplayProvider"
 export const CosplayCard = ({ cosplay }) => {
 
     const { removeCosplay } = useContext(CosplayContext)
-
+  
     const modalDisplay = () => {
         const modal = document.querySelector("#myModalCos")
         modal.style.display = "block"
@@ -14,6 +14,24 @@ export const CosplayCard = ({ cosplay }) => {
     }
     
     const history = useHistory()
+
+    const button = () => {
+        if(window.location.href.includes("cosplay")){
+            return (
+                <button className="deleteCosplay delete"onClick={
+                    () => {
+                        removeCosplay(cosplay)
+                            .then(() => {
+                                if (window.location.href.includes("cosplays")){
+                                history.push("/cosplays")}
+                                else {
+                                }
+                            })
+                    }
+                }>🗑️</button>
+            )
+        }
+    }
 
     return (
     <section className="cosplay">
@@ -24,14 +42,7 @@ export const CosplayCard = ({ cosplay }) => {
             </Link>
         </div>
         <div className="buttons">
-        <button className="deleteCosplay delete"onClick={
-                () => {
-                    removeCosplay(cosplay)
-                        .then(() => {
-                            history.push("/cosplays")
-                        })
-                }
-            }>🗑️</button>
+        {button()}
         <button className="addCosplayToEvent add" onClick={() => {
             modalDisplay()
         }}>📅</button>
