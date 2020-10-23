@@ -49,7 +49,11 @@ export const HomeCard = () => {
 
     const cosplayFinder = () => {
         if(cosplays.length !== 0){
-            return <div className="homeCosplays">
+          const futureCosplays = cosplays.filter(cosplay => {
+            return cosplay.complete !== true
+          })
+          if(futureCosplays.length !== 0){
+            return (<div className="homeCosplays">
                 <div id="myModalCos" className="modal">
             <div className="modal-content">
               <button id="close" className="delete" onClick={() => {
@@ -87,7 +91,15 @@ export const HomeCard = () => {
               })
                 }
                 </div>
-                </div>
+                </div>)
+          } else {
+            return (
+              <div className="homeCosplays">
+                <div className="homeProgressTitle">Unfinished Cosplays</div>
+                <div className="allHomeCosplays">You have none!</div>
+              </div>
+            )
+          }
 
         }
     }

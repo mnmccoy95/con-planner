@@ -25,7 +25,6 @@ import { HotelProvider } from "./hotel/HotelProvider"
 import { HotelForm } from "./hotel/HotelForm"
 import { BudgetProvider } from "./budget/BudgetProvider"
 import { BudgetForm } from "./budget/BudgetForm"
-import { Logout } from "./Logout"
 
 export const ApplicationViews = (props) => {
     return (
@@ -167,10 +166,6 @@ export const ApplicationViews = (props) => {
                 </Route>
 
             </EssentialProvider>
-
-            <Route exact path="/logout">
-                <Logout />
-            </Route>
 
         </>
     )
