@@ -22,9 +22,17 @@ export const CosplayList = () => {
 
     const history = useHistory()
 
+    const modalCos = document.querySelector("#myModalCos")
+
+    window.onclick = function(event) {
+      if (event.target == modalCos) {
+          modalCos.style.display = "none";
+      }
+    }
+    
     const ECSaver = () => {
       if(parseInt(event.current.value) !== 0) {
-        const modal = document.querySelector("#myModal")
+        const modal = document.querySelector("#myModalCos")
         getAllECs()
         .then((response) => {
           const existing = response.find(relationship => {
@@ -45,10 +53,10 @@ export const CosplayList = () => {
 
     return (
       <>
-          <div id="myModal" className="modal">
+          <div id="myModalCos" className="modal">
             <div className="modal-content">
               <button id="close" className="delete" onClick={() => {
-                document.querySelector("#myModal").style.display = "none"
+                document.querySelector("#myModalCos").style.display = "none"
               }}>&times;</button>
               <fieldset>
                 <div className="form-group">
@@ -80,13 +88,30 @@ export const CosplayList = () => {
                 </button>
           </div>
           <div className="allCosplays">
+            <div className="inProgress">
+              <div className="progressTitle">In Progress</div>
+              <div className="allInProgress">
             {
-          cosplays.map(cosplay => {
-            return <CosplayCard key={cosplay.id} cosplay={cosplay} />
-          })
+              cosplays.map(cosplay => {
+                if(cosplay.complete !== true){
+                return <CosplayCard key={cosplay.id} cosplay={cosplay} />
+                }
+              })
             }
-            <div className="placeHolder"></div>
-            <div className="placeHolder"></div>
+            </div>
+            </div>
+            <div className="completeCosplays">
+            <div className="progressTitle">Finished</div>
+              <div className="allComplete">
+            {
+              cosplays.map(cosplay => {
+                if(cosplay.complete === true){
+                return <CosplayCard key={cosplay.id} cosplay={cosplay} />
+                }
+              })
+            }
+            </div>
+            </div>
           </div>
         </div>
       </>

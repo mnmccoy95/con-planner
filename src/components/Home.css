@@ -5,3 +5,42 @@
 .eventDetail {
     background-color: rgba(255, 255, 255, 0.877);
 }
+
+.homeCosplays {
+    border: solid black 1px;
+    border-radius: 20px;
+    width: 300px;
+    padding: 1em;
+    background-color: rgba(255, 255, 255, 0.877);
+}
+
+.homeProgressTitle {
+    display: flex;
+    flex-direction: row;
+    font-size: 1.7em;
+    text-align: center;
+    border-bottom: solid 1px;
+    justify-content: center;
+}
+
+.allHomeCosplays {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.noEventHeader {
+    color:  rgba(255, 255, 255, 0.877);
+    align-self: center;
+}
+
+.noEventContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.addEventInfo {
+    color:  rgba(255, 255, 255, 0.877);
+    align-self: center;
+}
