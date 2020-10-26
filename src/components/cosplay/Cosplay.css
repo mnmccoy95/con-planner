@@ -62,9 +62,10 @@
 .cosplayDetail {
     border: solid 1px;
     border-radius: 20px;
-    width: 300px;
+    max-width: 300px;
     padding: 1em;
     background-color: rgba(255, 255, 255, 0.877);
+    flex-shrink: 1;
 }
 
 .character__name {

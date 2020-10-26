@@ -216,7 +216,7 @@ export const BudgetCard = () => {
     return (
         <div className="budget">
             <div className="budgetHeader">
-            <div className="yourBudget">Your Budget</div>
+            <div className="yourBudget">Budget</div>
             {getid()}
             </div>
             {budgetInfo()}
