@@ -4,27 +4,62 @@ import "./NavBar.css"
 
 export const NavBar = (props) => {
     const history = useHistory();
+
+    function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if(x){
+        if (x.className === "navbar") {
+          x.className += " responsive";
+        } else {
+          x.className = "navbar";
+        }
+        }
+    }
+
+    function myFunction2() {
+        var x = document.getElementById("myTopnav");
+        if(x){
+        if (x.className === "navbar") {
+        } else {
+          x.className = "navbar";
+        }
+        }
+    }
+
+    // When the user scrolls the page, execute myFunction
+    window.onscroll = function() {myFunction3()};
+
+    // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+    function myFunction3() {
+        // Get the navbar
+        var navbar = document.getElementById("myTopnav");
+        // Get the offset position of the navbar
+        var sticky = navbar.offsetTop;
+        if (window.pageYOffset > sticky) {
+            navbar.classList.add("sticky")
+        } else {
+            navbar.classList.remove("sticky");
+        }
+    }
+
     return (
-        <ul className="navbar">
-            <li className="navbar__item active">
-                <Link className="navbar__link" to="/">Home</Link>
-            </li>
-            <li className="navbar__item active">
-                <Link className="navbar__link" to="/events">Events</Link>
-            </li>
-            <li className="navbar__item active">
-                <Link className="navbar__link" to="/cosplays">Cosplays</Link>
-            </li>
-            <li className="navbar__item active">
-                <Link className="navbar__link" to="/essentials">Essentials</Link>
-            </li>
-            <li className="navbar__item active">
-                <Link className="navbar__link" to="/" onClick={()=>{
+        <>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+        <div className="navbar" id="myTopnav">
+                <Link className="navbarHome" onClick={e => myFunction2()} to="/">Home</Link>
+                <Link className="navbarEtc" onClick={e => myFunction()} to="/events">Events</Link>
+                <Link className="navbarEtc" onClick={e => myFunction()} to="/cosplays">Cosplays</Link>
+                <Link className="navbarEtc" onClick={e => myFunction()} to="/essentials">Essentials</Link>
+                <Link className="navbarEtc" onClick={e => myFunction()} to="/" onClick={()=>{
                     const userId = localStorage.getItem("cosplayerId");
                     localStorage.clear(userId);
                     history.push("/");}
                 }>Logout</Link>
-            </li>
-        </ul>
+            <a href={() => false} className="icon" onClick={e => myFunction()}>
+                <i className="fa fa-bars"></i>
+            </a>
+        </div>
+        
+        </>
     )
 }

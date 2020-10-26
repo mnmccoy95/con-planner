@@ -141,7 +141,7 @@ export const HotelForm = (props) => {
                 <div className="form-group">
                     <label htmlFor="hotelPeople">Number of People in Room: </label>
                     <input type="text" id="hotelPeople" name="people" pattern="^[0-9]*$" className="form-control" 
-                    placeholder="# People (for budgeting purposes)" 
+                    placeholder="# People (for budgeting)" 
                     onChange={handleControlledInputChange} 
                     defaultValue={hotel?.people}/>
                 </div>
