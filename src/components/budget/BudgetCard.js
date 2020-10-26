@@ -17,8 +17,11 @@ export const BudgetCard = () => {
         if(typeof(id) === "string"){
         } else {
             const futureEvents = events.filter(event =>{
-                if(event.startDate >= Date.now()){
-                    return event }
+                if(event.startDate <= Date.now() && event.endDate > Date.now()){
+                    return event 
+                } else if (event.startDate >= Date.now()){
+                    return event
+                }
             })
             if(futureEvents){
             id = futureEvents[0].id
@@ -215,6 +218,7 @@ export const BudgetCard = () => {
 
     return (
         <div className="budget">
+            {homeGrabber()}
             <div className="budgetHeader">
             <div className="yourBudget">Budget</div>
             {getid()}

@@ -29,9 +29,9 @@ export const EventProvider = (props) => {
                       comparison = -1;
                     }
                     return comparison *1;
-                  }
-                  response.sort(compare)
-                  setEvents(response)
+                }
+                response.sort(compare)
+                setEvents(response)
             })
     }
 

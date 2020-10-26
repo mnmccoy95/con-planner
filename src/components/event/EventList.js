@@ -32,6 +32,11 @@ export const EventList = () => {
               <div className="events__future">
                 <div className="event-list-head">Upcoming Events</div>
                 <div className="allFuture">
+                {
+                events.map(event => {
+                  if(event.startDate < Date.now() && event.endDate >= Date.now()){
+                    return <EventCard key={event.id} event={event} />}
+                })}
                   {
                 events.map(event => {
                   if(event.startDate >= Date.now()){

@@ -13,7 +13,7 @@ export const HomeCard = () => {
 
     useEffect(() => {
         getAllECs()
-    }, [])
+    }, [events])
 
     const event = useRef(null)
     const existDialog = useRef()
@@ -106,9 +106,12 @@ export const HomeCard = () => {
 
     if(events.length !== 0){
         const futureEvents = events.filter(event =>{
-            if(event.startDate >= Date.now()){
-                return event }
-            })
+            if(event.startDate <= Date.now() && event.endDate > Date.now()){
+                return event 
+            } else if (event.startDate >= Date.now()){
+                return event
+            }
+          })
 
         const badgeStatus = () => {
             if(futureEvents[0].badgeStatus === true){
