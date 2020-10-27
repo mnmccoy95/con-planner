@@ -33,7 +33,7 @@ export const CosplayDetail = () => {
     }
 
     return (
-        <div className="cosplayDetailPageContainer">
+        <div className="cosplayDetailPageContainer margin">
             <dialog className="logout--dialog" ref={existDialog}>
             <div>Are you sure you want to delete?</div>
             <button className="logout--yes" onClick={() => {

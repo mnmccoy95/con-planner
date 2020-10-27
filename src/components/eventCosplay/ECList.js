@@ -108,6 +108,9 @@ export const ECList = () => {
                 <button className="createEC add" onClick={() => {
                     ECSaver()
                 }}type="button" id="event-form-submit">Save to Event</button>
+                <button id="close" className="delete" onClick={() => {
+                    document.querySelector("#myModal").style.display = "none"
+                }}>Close</button>
                 <dialog className="dialog dialog--auth" ref={existDialog}>
                 <div>You're already bringing that!</div>
                 <button className="button--close" onClick={e => existDialog.current.close()}>Close</button>

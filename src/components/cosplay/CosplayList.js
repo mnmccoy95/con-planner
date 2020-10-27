@@ -80,7 +80,7 @@ export const CosplayList = () => {
               </dialog>
             </div>
           </div>
-          <div className="cosplays">
+          <div className="cosplays margin">
           <div className="cosplayHeader">
             <div className="cosplayTitle">Cosplays</div>
             <button className="addNewCosplay add" onClick={() => {history.push("/cosplays/create")}}>

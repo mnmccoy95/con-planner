@@ -1,0 +1,25 @@
+body {
+    background-color: black;
+}
+
+.homeContainer {
+    margin-top: 51px;
+}
+
+.eventForm {
+    margin-top: 51px;
+}
+
+.margin {
+    margin-top: 51px;
+}
+
+.suitcase-container {
+    margin-top: 51px;
+}
+
+@media screen and (max-width: 600px) {
+.suitcase-container {
+    margin-top: 0px;
+}
+}

@@ -64,7 +64,7 @@ export const TaskForm = (props) => {
     }
 
     return (
-        <form className="TaskForm" onSubmit={constructTaskObject}>
+        <form className="TaskForm margin" onSubmit={constructTaskObject}>
             <h2 className="TaskForm__title">Add New Task</h2>
             <fieldset>
                 <div className="form-group">

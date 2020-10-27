@@ -51,7 +51,7 @@ export const EssentialList = () => {
     }
 
     return (
-        <div className="essentials">
+        <div className="essentials margin">
             <div id="myModal" className="modal">
                 <div className="modal-content">
                 <button id="close" 

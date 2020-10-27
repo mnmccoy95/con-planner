@@ -87,7 +87,7 @@ export const HotelForm = (props) => {
         }
     
     return (
-        <form className="hotelForm" onSubmit={constructHotelObject}>
+        <form className="hotelForm margin" onSubmit={constructHotelObject}>
             <h2 className="hotelForm__title">Event Hotel Info</h2>
             <div className="formContainer">
             <fieldset>

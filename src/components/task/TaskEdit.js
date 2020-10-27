@@ -58,7 +58,7 @@ export const TaskEdit = (props) => {
     }
     
     return (
-        <form className="TaskForm" onSubmit={constructTaskObject}>
+        <form className="TaskForm margin" onSubmit={constructTaskObject}>
             <h2 className="TaskForm__title">Edit Task</h2>
             <fieldset>
                 <div className="form-group">

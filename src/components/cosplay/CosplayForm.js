@@ -78,7 +78,7 @@ export const CosplayForm = (props) => {
         }
     
     return (
-        <form className="cosplayForm" onSubmit={constructCosplayObject}>
+        <form className="cosplayForm margin" onSubmit={constructCosplayObject}>
             <h2 className="cosplayForm__title">{cosplayId ? <>Edit Cosplay</> : <>Add New Cosplay</>}</h2>
             <fieldset>
                 <div className="form-group">

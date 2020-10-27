@@ -20,7 +20,7 @@ export const EventList = () => {
     //future events are listed soonest to latest
     return (
 
-        <div className="eventsContainer">
+        <div className="eventsContainer margin">
           <div className="events">
             <div className="event-head">
               <div className="eventTitle">Events</div>

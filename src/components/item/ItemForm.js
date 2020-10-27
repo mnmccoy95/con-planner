@@ -81,7 +81,7 @@ export const ItemForm = (props) => {
     }
 
     return (
-        <form className="ItemForm" onSubmit={constructItemObject}>
+        <form className="ItemForm margin" onSubmit={constructItemObject}>
             <h2 className="ItemForm__title">Add New Piece</h2>
             <fieldset>
                 <div className="form-group">
