@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react"
+import React, { useContext, useState, useRef } from "react"
 import { useHistory} from 'react-router-dom';
 import { TaskContext } from "./TaskProvider";
 
@@ -8,6 +8,7 @@ export const TaskCard = ({ taskObj }) => {
     const [taskItem, setTaskItem] = useState(taskObj)
 
     const history = useHistory()
+    const existDialog = useRef()
     
 
     /**
@@ -28,6 +29,13 @@ export const TaskCard = ({ taskObj }) => {
 
     return(
         <section className="taskObj">
+            <dialog className="logout--dialog" ref={existDialog}>
+            <div>Are you sure you want to delete?</div>
+            <button className="logout--yes" onClick={() => {
+                deleteTask(taskObj)
+            }}>Delete</button>
+            <button className="logout--no" onClick={e => existDialog.current.close()}>Close</button>
+            </dialog>
             <input 
                 type="checkbox" 
                 id={`check--${taskObj.id}`} 
@@ -48,7 +56,7 @@ export const TaskCard = ({ taskObj }) => {
                     id={`deleteTask--${taskObj.id}`} 
                     onClick={
                         () => {
-                            deleteTask(taskObj)
+                            existDialog.current.showModal()
                     }}>🗑️</button>
             <button 
                 type="button" 

@@ -1,10 +1,12 @@
-import React, {useContext} from "react"
+import React, {useContext, useRef} from "react"
 import { ECContext } from "./ECProvider"
 import { useParams } from 'react-router-dom';
 
 export const ECCard = ({ cosplay }) => {
     const { removeEC } = useContext(ECContext)
     let {id} = useParams()
+    const existDialog = useRef()
+
     
     const homeGrabber = () => {
         if(typeof(id) === "string"){
@@ -17,9 +19,16 @@ export const ECCard = ({ cosplay }) => {
         <>
         {homeGrabber()}
         <section className="cosplayEvent">
+        <dialog className="logout--dialog" ref={existDialog}>
+            <div>Are you sure you want to delete?</div>
+            <button className="logout--yes" onClick={() => {
+                removeEC(cosplay.id, parseInt(id))
+            }}>Delete</button>
+            <button className="logout--no" onClick={e => existDialog.current.close()}>Close</button>
+        </dialog>
             <div className="character__name__EC">
             <button className="deleteCosplayEvent delete" onClick={() => {
-                removeEC(cosplay.id, parseInt(id))
+                existDialog.current.showModal()
               }}>🗑️</button>
                 { cosplay.character }
             </div>
