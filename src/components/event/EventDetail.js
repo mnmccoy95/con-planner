@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react"
+import React, { useContext, useEffect, useState, useRef } from "react"
 import { EventContext } from "./EventProvider"
 import { useParams, useHistory } from "react-router-dom"
 import { HotelCard } from "../hotel/HotelCard"
@@ -10,7 +10,8 @@ export const EventDetail = () => {
 	const [event, setEvent] = useState({})
 	
 	const {id} = useParams();
-	const history = useHistory();
+    const history = useHistory();
+    const existDialog = useRef()
 
     useEffect(() => {
         getEventById(id)
@@ -43,14 +44,21 @@ export const EventDetail = () => {
 
     return (
         <div className="eventDetailPageContainer">
+            <dialog className="logout--dialog" ref={existDialog}>
+            <div>Are you sure you want to delete?</div>
+            <button className="logout--yes" onClick={() => {
+                deleteEvent(event.id)
+                .then(() => {
+                    history.push("/events")
+                })   
+            }}>Delete</button>
+            <button className="logout--no" onClick={e => existDialog.current.close()}>Close</button>
+        </dialog>
         <section className="eventDetail">
             <div className="event__name__detail">{event.name}
             <button className="deleteEvent__detail delete" onClick={
                 () => {
-                    deleteEvent(event.id)
-                        .then(() => {
-                            history.push("/events")
-                        })
+                    existDialog.current.showModal()
                 }
             }>🗑️</button>
             

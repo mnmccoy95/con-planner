@@ -1,9 +1,10 @@
-import React from "react"
+import React, {useRef} from "react"
 import { Link, useHistory } from "react-router-dom"
 import "./NavBar.css"
 
 export const NavBar = (props) => {
     const history = useHistory();
+    const existDialog = useRef()
 
     function myFunction() {
         var x = document.getElementById("myTopnav");
@@ -50,15 +51,23 @@ export const NavBar = (props) => {
                 <Link className="navbarEtc" onClick={e => myFunction()} to="/events">Events</Link>
                 <Link className="navbarEtc" onClick={e => myFunction()} to="/cosplays">Cosplays</Link>
                 <Link className="navbarEtc" onClick={e => myFunction()} to="/essentials">Essentials</Link>
-                <Link className="navbarEtc" onClick={e => myFunction()} to="/" onClick={()=>{
-                    const userId = localStorage.getItem("cosplayerId");
-                    localStorage.clear(userId);
-                    history.push("/");}
+                <Link className="navbarEtc" onClick={e => myFunction()} to="#" onClick={()=>{
+                    existDialog.current.showModal()
+                }
                 }>Logout</Link>
             <a href={() => false} className="icon" onClick={e => myFunction()}>
                 <i className="fa fa-bars"></i>
             </a>
         </div>
+        <dialog className="logout--dialog" ref={existDialog}>
+            <div>Are you sure you want to logout?</div>
+            <button className="logout--yes" onClick={() => {
+                    const userId = localStorage.getItem("cosplayerId");
+                    localStorage.clear(userId);
+                    history.push("/");
+                }}>Logout</button>
+            <button className="logout--no" onClick={e => existDialog.current.close()}>Close</button>
+        </dialog>
         
         </>
     )

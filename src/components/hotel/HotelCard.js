@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react"
+import React, { useContext, useEffect, useRef } from "react"
 import { HotelContext } from "./HotelProvider"
 import { useHistory, useParams } from 'react-router-dom';
 import "./Hotel.css"
@@ -7,6 +7,7 @@ export const HotelCard = () => {
 
     const { hotel, getHotelByEvent, removeHotel } = useContext(HotelContext)
     const {id} = useParams();
+    const existDialog = useRef()
 	
     useEffect(() => {
         getHotelByEvent(parseInt(id))
@@ -23,12 +24,19 @@ export const HotelCard = () => {
         } else {
             return ( 
                 <>
+                <dialog className="logout--dialog" ref={existDialog}>
+                <div>Are you sure you want to delete?</div>
+                <button className="logout--yes" onClick={() => {
+                    removeHotel(hotel[0])
+                    .then(() => {
+                        getHotelByEvent(parseInt(id))
+                    })
+                }}>Delete</button>
+                <button className="logout--no" onClick={e => existDialog.current.close()}>Close</button>
+                </dialog>
                 <button className="deleteHotel delete" onClick={
                     () => {
-                        removeHotel(hotel[0])
-                            .then(() => {
-                                getHotelByEvent(parseInt(id))
-                            })
+                        existDialog.current.showModal()
                     }
                 }>🗑️</button>
                 <button className="editHotel edit" onClick={() => { history.push(`/events/hotel/edit/${id}`) }}>✏️</button>

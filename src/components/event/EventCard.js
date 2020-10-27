@@ -1,4 +1,4 @@
-import React, {useContext} from "react"
+import React, {useContext, useRef} from "react"
 import { Link, useHistory } from "react-router-dom"
 import {EventContext} from "./EventProvider"
 
@@ -8,9 +8,20 @@ export const EventCard = ({ event }) => {
     const { deleteEvent } = useContext(EventContext)
 
     const history = useHistory()
+    const existDialog = useRef()
 
     return (
     <section className="event">
+        <dialog className="logout--dialog" ref={existDialog}>
+            <div>Are you sure you want to delete?</div>
+            <button className="logout--yes" onClick={() => {
+                deleteEvent(event.id)
+                .then(() => {
+                    history.push("/events")
+                })   
+            }}>Delete</button>
+            <button className="logout--no" onClick={e => existDialog.current.close()}>Close</button>
+        </dialog>
         <div className="event__name">
             <Link to={`/events/detail/${event.id}`}>
                 { event.name }
@@ -19,10 +30,7 @@ export const EventCard = ({ event }) => {
         <div>
         <button className="deleteEvent delete" onClick={
                 () => {
-                    deleteEvent(event.id)
-                        .then(() => {
-                            history.push("/events")
-                        })
+                    existDialog.current.showModal()
                 }
             }>🗑️</button>
             

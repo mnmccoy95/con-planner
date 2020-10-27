@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react"
+import React, { useContext, useEffect, useState, useRef } from "react"
 import { CosplayContext } from "./CosplayProvider"
 import { useParams, useHistory } from "react-router-dom"
 import { TaskList } from "../task/TaskList"
@@ -10,7 +10,8 @@ export const CosplayDetail = () => {
 	const [cosplay, setCosplay] = useState({})
 	
 	const {id} = useParams();
-	const history = useHistory();
+    const history = useHistory();
+    const existDialog = useRef()
 
     useEffect(() => {
         getCosplayById(id)
@@ -33,15 +34,23 @@ export const CosplayDetail = () => {
 
     return (
         <div className="cosplayDetailPageContainer">
+            <dialog className="logout--dialog" ref={existDialog}>
+            <div>Are you sure you want to delete?</div>
+            <button className="logout--yes" onClick={() => {
+                removeCosplay(cosplay)
+                .then(() => {
+                    history.push("/cosplays")
+                })   
+            }}>Delete</button>
+            <button className="logout--no" onClick={e => existDialog.current.close()}>Close</button>
+        </dialog>
             <div>
         <section className="cosplayDetail">
             <div className="cosplay-detail-character">{cosplay.character}
             <button className="deleteCosplay delete" onClick={
                 () => {
-                    removeCosplay(cosplay)
-                        .then(() => {
-                            history.push("/cosplays")
-                        })
+                    existDialog.current.showModal()
+                    
                 }
             }>🗑️</button>
             

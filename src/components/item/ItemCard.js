@@ -1,9 +1,10 @@
-import React, { useContext, useParams } from "react"
+import React, { useContext, useRef } from "react"
 import { useHistory} from 'react-router-dom';
 import { ItemContext } from "./ItemProvider";
 
 export const ItemCard = ({ item }) => {
     const { deleteItem } = useContext(ItemContext)
+    const existDialog = useRef()
     
 
     const history = useHistory()
@@ -32,6 +33,13 @@ export const ItemCard = ({ item }) => {
 
     return(
     <section className="item">
+        <dialog className="logout--dialog" ref={existDialog}>
+            <div>Are you sure you want to delete?</div>
+            <button className="logout--yes" onClick={() => {
+                deleteItem(item)
+            }}>Delete</button>
+            <button className="logout--no" onClick={e => existDialog.current.close()}>Close</button>
+        </dialog>
         <div className="item__name">
             { item.name } 
         </div>
@@ -41,7 +49,7 @@ export const ItemCard = ({ item }) => {
             {Making()}
         </div>
         <button className="deleteItem delete" onClick={() => {
-                deleteItem(item)
+                existDialog.current.showModal()
             }}>🗑️</button>
         <button className="itemEdit edit" onClick={() => {
                 history.push(`/cosplays/items/edit/${item.id}`)

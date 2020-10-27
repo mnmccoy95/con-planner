@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react"
+import React, { useContext, useEffect, useState, useRef } from "react"
 import { BudgetContext } from "./BudgetProvider"
 import { HotelContext } from "../hotel/HotelProvider"
 import { EventContext } from "../event/EventProvider"
@@ -12,6 +12,8 @@ export const BudgetCard = () => {
     const { events, getEvents, getEventById } = useContext(EventContext)
     const [event, setEvent] = useState(EventContext)
     let {id} = useParams();
+    const existDialog = useRef()
+
 
     useEffect(() => {
         getEvents()
@@ -38,12 +40,19 @@ export const BudgetCard = () => {
         } else {
             return ( 
                 <>
+                <dialog className="logout--dialog" ref={existDialog}>
+                    <div>Are you sure you want to delete?</div>
+                    <button className="logout--yes" onClick={() => {
+                        removeBudget(budget[0])
+                        .then(() => {
+                            getBudgetByEvent(parseInt(id))
+                        })   
+                        }}>Delete</button>
+                    <button className="logout--no" onClick={e => existDialog.current.close()}>Close</button>
+                </dialog>
                 <button className="deleteBudget delete" onClick={
                     () => {
-                        removeBudget(budget[0])
-                            .then(() => {
-                                getBudgetByEvent(parseInt(id))
-                            })
+                        existDialog.current.showModal()
                     }
                 }>🗑️</button>
                 <button className="editBudget edit" onClick={() => { history.push(`/events/budget/edit/${id}`) }}>✏️</button>
