@@ -1,7 +1,6 @@
 import React, {useContext, useRef, useEffect} from "react"
 import {EventContext} from "./event/EventProvider"
 import {ECList} from "./eventCosplay/ECList"
-import {BudgetCard} from "./budget/BudgetCard"
 import {CosplayContext} from "./cosplay/CosplayProvider"
 import {CosplayCard} from "./cosplay/CosplayCard"
 import {ECContext} from "./eventCosplay/ECProvider"
@@ -144,7 +143,6 @@ export const HomeCard = () => {
                 </section>
                 <div className="hidden">{futureEvents[0].id}</div>
                 </div>
-                <BudgetCard />
                 {cosplayFinder()}
                 </div>
                 <ECList/>
