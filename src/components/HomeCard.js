@@ -1,7 +1,6 @@
 import React, {useContext, useRef, useEffect} from "react"
 import {EventContext} from "./event/EventProvider"
 import {ECList} from "./eventCosplay/ECList"
-import {BudgetCard} from "./budget/BudgetCard"
 import {CosplayContext} from "./cosplay/CosplayProvider"
 import {CosplayCard} from "./cosplay/CosplayCard"
 import {ECContext} from "./eventCosplay/ECProvider"
@@ -13,7 +12,7 @@ export const HomeCard = () => {
 
     useEffect(() => {
         getAllECs()
-    }, [])
+    }, [events])
 
     const event = useRef(null)
     const existDialog = useRef()
@@ -106,9 +105,12 @@ export const HomeCard = () => {
 
     if(events.length !== 0){
         const futureEvents = events.filter(event =>{
-            if(event.startDate >= Date.now()){
-                return event }
-            })
+            if(event.startDate <= Date.now() && event.endDate > Date.now()){
+                return event 
+            } else if (event.startDate >= Date.now()){
+                return event
+            }
+          })
 
         const badgeStatus = () => {
             if(futureEvents[0].badgeStatus === true){
@@ -141,7 +143,6 @@ export const HomeCard = () => {
                 </section>
                 <div className="hidden">{futureEvents[0].id}</div>
                 </div>
-                <BudgetCard />
                 {cosplayFinder()}
                 </div>
                 <ECList/>

@@ -13,21 +13,7 @@ export const BudgetCard = () => {
     const [event, setEvent] = useState(EventContext)
     let {id} = useParams();
 
-    const homeGrabber = () => {
-        if(typeof(id) === "string"){
-        } else {
-            const futureEvents = events.filter(event =>{
-                if(event.startDate >= Date.now()){
-                    return event }
-            })
-            if(futureEvents){
-            id = futureEvents[0].id
-            }
-        }
-    }
-
     useEffect(() => {
-        homeGrabber()
         getEvents()
         getBudgetByEvent(parseInt(id))
         getHotelByEvent(parseInt(id))
@@ -43,7 +29,6 @@ export const BudgetCard = () => {
 
     const history = useHistory()
     const getid = () => {
-        homeGrabber()
         if(budget.length === 0){
             return (
                 <button className="addNewBudget add" onClick={() => {history.push(`/events/budget/create/${id}`)}}>

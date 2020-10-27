@@ -20,8 +20,11 @@ export const EEList = () => {
       if(typeof(id) === "string"){
       } else {
           const futureEvents = events.filter(event =>{
-              if(event.startDate >= Date.now()){
-                  return event }
+            if(event.startDate <= Date.now() && event.endDate > Date.now()){
+              return event 
+          } else if (event.startDate >= Date.now()){
+              return event
+          }
           })
           if(futureEvents){
           id = futureEvents[0].id
