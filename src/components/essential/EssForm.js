@@ -96,12 +96,13 @@ export const EssentialForm = (props) => {
                 </div>
             </fieldset>
             <div id="container-saved">Saved!</div>
-            <button className="btn btn-primary add" disabled={isLoading} type="submit"> Save</button>
-            <button className="btn btn-primary delete"
+            <button className="btn btn-primary add tooltip" disabled={isLoading} type="submit"> Save
+            {essentialId ? <></> : <span class="tooltiptext">Enter/Click for Quicksave!</span>} </button>
+            <button className="btn btn-primary delete tooltip"
                 onClick={event => {
                     history.push("/essentials")
                 }}>
-            Return</button>
+            Return<span class="tooltiptext">Click to Return to Essentials!</span></button>
             
         </form>
     )
