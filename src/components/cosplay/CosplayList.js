@@ -74,9 +74,9 @@ export const CosplayList = () => {
               <button className="addEC add" onClick={() => {
                 ECSaver()
               }}type="button" id="event-form-submit">Save to Event</button>
-              <dialog className="dialog dialog--auth" ref={existDialog}>
+              <dialog className="logout--dialog" ref={existDialog}>
                 <div>You're already bringing that!</div>
-                <button className="button--close" onClick={e => existDialog.current.close()}>Close</button>
+                <button className="logout--no" onClick={e => existDialog.current.close()}>Close</button>
               </dialog>
             </div>
           </div>

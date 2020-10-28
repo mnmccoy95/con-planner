@@ -50,9 +50,9 @@ export const Register = (props) => {
     return (
         <main className="registerFormPage">
 
-            <dialog className="dialog dialog--password" ref={passwordDialog}>
+            <dialog className="logout--dialog" ref={passwordDialog}>
                 <div>Passwords do not match</div>
-                <button className="button--close" onClick={e => passwordDialog.current.close()}>Close</button>
+                <button className="logout--no" onClick={e => passwordDialog.current.close()}>Close</button>
             </dialog>
 
             <form className="form--login" onSubmit={handleRegister}>

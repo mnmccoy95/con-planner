@@ -111,9 +111,9 @@ export const ECList = () => {
                 <button id="close" className="delete" onClick={() => {
                     document.querySelector("#myModal").style.display = "none"
                 }}>Close</button>
-                <dialog className="dialog dialog--auth" ref={existDialog}>
+                <dialog className="logout--dialog" ref={existDialog}>
                 <div>You're already bringing that!</div>
-                <button className="button--close" onClick={e => existDialog.current.close()}>Close</button>
+                <button className="logout--no" onClick={e => existDialog.current.close()}>Close</button>
               </dialog>
             </div>
         </div>
