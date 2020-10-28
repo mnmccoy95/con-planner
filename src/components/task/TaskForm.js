@@ -39,6 +39,16 @@ export const TaskForm = (props) => {
     }, [])
 
     const constructTaskObject = (evt) => {
+        const savedContainer = document.querySelector(`#container-saved`)
+        if(savedContainer){
+            if(savedContainer.style.opacity == 0) {
+                savedContainer.style.opacity = 1
+                setTimeout(function(){
+                    savedContainer.style.opacity = 0
+                  },700);
+            }
+        }
+
         evt.preventDefault()
         //disable the button - no extra clicks
         setIsLoading(true);
@@ -92,6 +102,7 @@ export const TaskForm = (props) => {
                     }}/>
                 </div>
             </fieldset>
+            <div id="container-saved">Saved!</div>
             <button className="btn btn-primary add" type="submit" disabled={isLoading}>Save</button>
             <button className="btn btn-primary delete"
                 disabled={isLoading}
