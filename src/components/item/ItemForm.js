@@ -147,15 +147,15 @@ export const ItemForm = (props) => {
                 </div>
             </fieldset>
             <div id="container-saved">Saved!</div>
-            <button className="btn btn-primary add" id="submit" disabled={isLoading} 
+            <button className="btn btn-primary add tooltip" id="submit" disabled={isLoading} 
                 type="submit"
-                >Save</button>
-            <button className="btn btn-primary delete"
+                >Save <span class="tooltiptext">Enter/Click for Quicksave!</span> </button>
+            <button className="btn btn-primary delete tooltip"
                 disabled={isLoading}
                 onClick={event => {
                     history.push(`/cosplays/detail/${cosplayId}`)
                     }}
-                >Return</button>
+                >Return <span class="tooltiptext">Click to Return to Cosplay!</span></button>
             
         </form>
     )

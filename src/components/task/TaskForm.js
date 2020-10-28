@@ -103,12 +103,14 @@ export const TaskForm = (props) => {
                 </div>
             </fieldset>
             <div id="container-saved">Saved!</div>
-            <button className="btn btn-primary add" type="submit" disabled={isLoading}>Save</button>
-            <button className="btn btn-primary delete"
+            <button className="btn btn-primary add tooltip" type="submit" disabled={isLoading}>Save
+                <span class="tooltiptext">Enter/Click for Quicksave!</span>
+            </button>
+            <button className="btn btn-primary delete tooltip"
                 disabled={isLoading}
                 onClick={event => {
                     history.push(`/cosplays/detail/${cosplayId}`)
-                }}>Return</button>
+                }}>Return<span class="tooltiptext">Click to Return to Cosplay!</span></button>
             
         </form>
     )
