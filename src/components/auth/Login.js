@@ -4,18 +4,22 @@ import { useHistory } from 'react-router-dom'
 import "./Login.css"
 
 export const Login = props => {
+
+    //define relevant info
     const history = useHistory()
     const email = useRef()
     const password = useRef()
     const existDialog = useRef()
     const passwordDialog = useRef()
 
+    //checks if user exists in database
     const existingUserCheck = () => {
         return fetch(`http://localhost:8088/users?email=${email.current.value}`)
             .then(_ => _.json())
             .then(user => user.length ? user[0] : false)
     }
 
+    //logs in user given that they exist and password is correct
     const handleLogin = (e) => {
         e.preventDefault()
 
@@ -32,6 +36,7 @@ export const Login = props => {
             })
     }
 
+    //defines html for login form
     return (
         <main className="container--login">
             <dialog className="logout--dialog" ref={existDialog}>

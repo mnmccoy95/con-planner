@@ -3,7 +3,9 @@ import { CosplayContext } from "./CosplayProvider"
 import { useHistory, useParams } from 'react-router-dom';
 
 export const CosplayForm = (props) => {
+    //defines functions to be used
     const { addCosplay, getCosplayById, editCosplay } = useContext(CosplayContext)
+    //defines logged in userId
     const userId = parseInt(localStorage.getItem("cosplayerId"))
 
     //for edit, hold on to state of cosplay in this view
@@ -11,7 +13,9 @@ export const CosplayForm = (props) => {
     //wait for data before button is active
     const [isLoading, setIsLoading] = useState(true);
 
+    //defines cosplay to be edited
     const {cosplayId} = useParams();
+    //for navigating pages
     const history = useHistory();
 
     //when field changes, update state. This causes a re-render and updates the view.
@@ -27,11 +31,11 @@ export const CosplayForm = (props) => {
         setCosplay(newCosplay)
     }
     
+    //changes cosplay completion status based on checkbox
     const setCompletionStatus = (event) => {
         const newCosplay = { ...cosplay } // spread operator, spreads an object into separate arguments
         // evaluate whatever is in the [], accesses cosplay dynamically
         newCosplay[event.target.name] = cosplay.complete ? false : true; // what is in the form, named exactly like it is in state
-        //update state with each keystroke
         setCosplay(newCosplay) //  causes re-render
     }
 
@@ -48,35 +52,35 @@ export const CosplayForm = (props) => {
         }
     }, [])
     
-
+    //if cosplayId in url, updates cosplay
+    //otherwise, save new cosplay
     const constructCosplayObject = (evt) => {
         evt.preventDefault()
-            //disable the button - no extra clicks
-            setIsLoading(true);
-            if (cosplayId){
-                //PUT - update
-                //ref pic could go here
-                editCosplay({
-                    id: cosplay.id,
-                    userId: userId,
-                    character: cosplay.character,
-                    series: cosplay.series,
-                    complete: cosplay.complete
-                })
-                .then(() => history.push(`/cosplays/detail/${cosplay.id}`))
-            }else {
-                //POST - add
-                //ref pic could go here
-                addCosplay({
-                    userId: userId,
-                    character: cosplay.character,
-                    series: cosplay.series,
-                    complete: cosplay.complete
-                })
-                .then(() => history.push("/cosplays"))
-            }
+        //disable the button - no extra clicks
+        setIsLoading(true);
+        if (cosplayId){
+            //PUT - update
+            editCosplay({
+                id: cosplay.id,
+                userId: userId,
+                character: cosplay.character,
+                series: cosplay.series,
+                complete: cosplay.complete
+            })
+            .then(() => history.push(`/cosplays/detail/${cosplay.id}`))
+        }else {
+            //POST - add
+            addCosplay({
+                userId: userId,
+                character: cosplay.character,
+                series: cosplay.series,
+                complete: cosplay.complete
+            })
+            .then(() => history.push("/cosplays"))
         }
+    }
     
+    //defines html for cosplay form
     return (
         <form className="cosplayForm margin" onSubmit={constructCosplayObject}>
             <h2 className="cosplayForm__title">{cosplayId ? <>Edit Cosplay</> : <>Add New Cosplay</>}</h2>

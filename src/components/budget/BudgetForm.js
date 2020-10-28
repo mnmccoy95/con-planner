@@ -3,6 +3,7 @@ import { BudgetContext } from "./BudgetProvider"
 import { useHistory, useParams } from 'react-router-dom';
 
 export const BudgetForm = (props) => {
+    //defines relevant functions
     const { addBudget, getBudgetByEventId, editBudget } = useContext(BudgetContext)
 
     //for edit, hold on to state of budget in this view
@@ -29,6 +30,7 @@ export const BudgetForm = (props) => {
 
     //getBudgetByEvent
     useEffect(() => {
+        //used for checking if editing or adding
         if (window.location.href.includes("edit")){
             if(eventId){
             getBudgetByEventId(eventId)
@@ -42,63 +44,63 @@ export const BudgetForm = (props) => {
 
     }, [])
     
+    //changes hotel added status based on checkbox
     const setHotelStatus = (event) => {
         const newBudget = { ...budget } // spread operator, spreads an object into separate arguments
-        // evaluate whatever is in the [], accesses hotel dynamically
+        // evaluate whatever is in the [], accesses budget dynamically
         newBudget[event.target.name] = budget.hotelAdd ? false : true; // what is in the form, named exactly like it is in state
-        //update state with each keystroke
         setBudget(newBudget) //  causes re-render
     }
 
+    //changes hotel person division status based on checkbox
     const setPersonStatus = (event) => {
         const newBudget = { ...budget } // spread operator, spreads an object into separate arguments
-        // evaluate whatever is in the [], accesses hotel dynamically
+        // evaluate whatever is in the [], accesses budget dynamically
         newBudget[event.target.name] = budget.perPerson ? false : true; // what is in the form, named exactly like it is in state
-        //update state with each keystroke
         setBudget(newBudget) //  causes re-render
     }
 
+    //changes badge status based on checkbox
     const setBadgeStatus = (event) => {
         const newBudget = { ...budget } // spread operator, spreads an object into separate arguments
-        // evaluate whatever is in the [], accesses hotel dynamically
+        // evaluate whatever is in the [], accesses budget dynamically
         newBudget[event.target.name] = budget.badgeAdd ? false : true; // what is in the form, named exactly like it is in state
-        //update state with each keystroke
         setBudget(newBudget) //  causes re-render
     }
 
     const constructBudgetObject = (evt) => {
         evt.preventDefault()
-            //disable the button - no extra clicks
+        //disable the button - no extra clicks
             setIsLoading(true);
-            if (window.location.href.includes("edit")){
-                //PUT - update
-                editBudget({
-                    id: budget.id,
-                    eventId: parseInt(eventId),
-                    allowance: parseFloat(budget.allowance),
-                    foodExpenses: parseFloat(budget.foodExpenses),
-                    merchExpenses: parseFloat(budget.merchExpenses),
-                    travelExpenses: parseFloat(budget.travelExpenses),
-                    hotelAdd: budget.hotelAdd,
-                    perPerson: budget.perPerson,
-                    badgeAdd: budget.badgeAdd
-                })
-                .then(() => history.push(`/events/detail/${eventId}`))
-            }else {
-                //POST - add
-                addBudget({
-                    eventId: parseInt(eventId),
-                    allowance: parseFloat(budget.allowance),
-                    foodExpenses: parseFloat(budget.foodExpenses),
-                    merchExpenses: parseFloat(budget.merchExpenses),
-                    travelExpenses: parseFloat(budget.travelExpenses),
-                    hotelAdd: budget.hotelAdd,
-                    perPerson: budget.perPerson,
-                    badgeAdd: budget.badgeAdd
-                })
-                .then(() => history.push(`/events/detail/${eventId}`))
-            }
+        if (window.location.href.includes("edit")){
+            //PUT - update
+            editBudget({
+                id: budget.id,
+                eventId: parseInt(eventId),
+                allowance: parseFloat(budget.allowance),
+                foodExpenses: parseFloat(budget.foodExpenses),
+                merchExpenses: parseFloat(budget.merchExpenses),
+                travelExpenses: parseFloat(budget.travelExpenses),
+                hotelAdd: budget.hotelAdd,
+                perPerson: budget.perPerson,
+                badgeAdd: budget.badgeAdd
+            })
+            .then(() => history.push(`/events/detail/${eventId}`))
+        }else {
+            //POST - add
+            addBudget({
+                eventId: parseInt(eventId),
+                allowance: parseFloat(budget.allowance),
+                foodExpenses: parseFloat(budget.foodExpenses),
+                merchExpenses: parseFloat(budget.merchExpenses),
+                travelExpenses: parseFloat(budget.travelExpenses),
+                hotelAdd: budget.hotelAdd,
+                perPerson: budget.perPerson,
+                badgeAdd: budget.badgeAdd
+            })
+            .then(() => history.push(`/events/detail/${eventId}`))
         }
+    }
     
     return (
         <form className="budgetForm margin" onSubmit={constructBudgetObject}>

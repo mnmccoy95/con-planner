@@ -3,7 +3,9 @@ import { EssentialContext } from "./EssProvider"
 import { useHistory, useParams } from 'react-router-dom';
 
 export const EssentialForm = (props) => {
+    //defines functions to be used
     const { addEssential, getEssentialById, editEssential } = useContext(EssentialContext)
+    //gets logged in userId
     const userId = parseInt(localStorage.getItem("cosplayerId"))
 
     //for edit, hold on to state of essential in this view
@@ -11,7 +13,9 @@ export const EssentialForm = (props) => {
     //wait for data before button is active
     const [isLoading, setIsLoading] = useState(true);
 
+    //defines essential to be edited, given it is in url
     const {essentialId} = useParams();
+    //used for navigating pages
     const history = useHistory();
 
     //when field changes, update state. This causes a re-render and updates the view.
@@ -40,8 +44,13 @@ export const EssentialForm = (props) => {
         }
     }, [])
     
+    //if essentialId is in url, updates essential
+    //if not, adds new essential
     const constructEssentialObject = (evt) => {
+
+        //defines container to be animated
         const savedContainer = document.querySelector(`#container-saved`)
+        //shows animated save icon, fade in/out on form submission
         if(savedContainer){
             if(savedContainer.style.opacity == 0) {
                 savedContainer.style.opacity = 1
@@ -52,10 +61,10 @@ export const EssentialForm = (props) => {
         }
 
         evt.preventDefault()
-            //disable the button - no extra clicks
-            setIsLoading(true);
-            const clearer = document.querySelector("#essentialName")
-            if(clearer.value !== "" && essential.name !== ""){
+        //disable the button - no extra clicks
+        setIsLoading(true);
+        const clearer = document.querySelector("#essentialName")
+        if(clearer.value !== "" && essential.name !== ""){
             if (essentialId){
                 //PUT - update
                 editEssential({
@@ -79,10 +88,12 @@ export const EssentialForm = (props) => {
         
                     setIsLoading(false);
                 })
-            }}
+            }
+        }
             
     }
     
+    //defines html for essential form
     return (
         <form className="essentialForm margin" onSubmit={constructEssentialObject}>
             <h2 className="essentialForm__title">{essentialId ? <>Edit Essential</> : <>Add New Essential</>}</h2>

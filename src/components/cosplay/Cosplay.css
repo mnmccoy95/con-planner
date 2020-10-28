@@ -13,6 +13,7 @@
 
 .cosplayTitle {
     font-size: 2.5em;
+    color: rgba(255, 255, 255, 0.877);
 }
 
 .addNewCosplay {
@@ -71,10 +72,6 @@
 .character__name {
     font-size: 1.5em;
     text-align: center;
-}
-
-.cosplayTitle {
-    color: rgba(255, 255, 255, 0.877);
 }
 
 .deleteCosplay {

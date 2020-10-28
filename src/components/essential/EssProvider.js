@@ -10,15 +10,18 @@ export const EssentialContext = createContext()
  This component establishes what data can be used.
  */
 export const EssentialProvider = (props) => {
+    //defines state and logged in user
     const [essentials, setEssentials] = useState([])
     const userId = parseInt(localStorage.getItem("cosplayerId"))
 
+    //gets user's essentials
     const getEssentials = () => {
         return fetch(`http://localhost:8088/essentials?userId=${userId}`)
             .then(res => res.json())
             .then(setEssentials)
     }
 
+    //adds essential to database
     const addEssential = essential => {
         return fetch("http://localhost:8088/essentials", {
             method: "POST",
@@ -30,11 +33,13 @@ export const EssentialProvider = (props) => {
             .then(getEssentials)
     }
 
+    //gets particular essential from database
     const getEssentialById = (id) => {
         return fetch(`http://localhost:8088/essentials/${id}`)
             .then(res => res.json())
     }
 
+    //deletes essential in database
     const removeEssential = essential => {
         return fetch(`http://localhost:8088/essentials/${essential.id}`, {
             method: "DELETE"
@@ -42,6 +47,7 @@ export const EssentialProvider = (props) => {
             .then(getEssentials)
     }
 
+    //updates essential in database
     const editEssential = essential => {
         return fetch(`http://localhost:8088/essentials/${essential.id}`, {
             method: "PUT",
