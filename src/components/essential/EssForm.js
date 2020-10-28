@@ -41,6 +41,16 @@ export const EssentialForm = (props) => {
     }, [])
     
     const constructEssentialObject = (evt) => {
+        const savedContainer = document.querySelector(`#container-saved`)
+        if(savedContainer){
+            if(savedContainer.style.opacity == 0) {
+                savedContainer.style.opacity = 1
+                setTimeout(function(){
+                    savedContainer.style.opacity = 0
+                  },700);
+            }
+        }
+
         evt.preventDefault()
             //disable the button - no extra clicks
             setIsLoading(true);
@@ -85,6 +95,7 @@ export const EssentialForm = (props) => {
                     defaultValue={essential.name}/>
                 </div>
             </fieldset>
+            <div id="container-saved">Saved!</div>
             <button className="btn btn-primary add" disabled={isLoading} type="submit"> Save</button>
             <button className="btn btn-primary delete"
                 onClick={event => {
