@@ -43,7 +43,7 @@ export const EventDetail = () => {
     }
 
     return (
-        <div className="eventDetailPageContainer">
+        <div className="eventDetailPageContainer margin">
             <dialog className="logout--dialog" ref={existDialog}>
             <div>Are you sure you want to delete?</div>
             <button className="logout--yes" onClick={() => {

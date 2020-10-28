@@ -2,10 +2,10 @@
 .navbar {
     overflow: hidden;
     background-color: rgba(207, 51, 255, 0.945);
-    margin: 0em;
     padding: 0em;
-    position: relative;
+    position: fixed;
     width: 100%;
+    z-index: 1;
 }
   
 .navbar a {
@@ -33,10 +33,17 @@
       float: right;
       display: block;
     }
+    .navbar {
+      position: fixed;
+      margin-bottom: 1em;
+    }
 }
   
 @media screen and (max-width: 600px) {
-    .navbar.responsive {position: relative;}
+    .navbar.responsive {
+      position: fixed;
+      margin-bottom: 1em;
+    }
     .navbar.responsive .icon {
       position: absolute;
       right: 0;
@@ -48,17 +55,3 @@
       text-align: left;
     }
 }
-
-/* The sticky class is added to the navbar with JS when it reaches its scroll position */
-.sticky {
-    position: fixed;
-    top: 0;
-    width: 100%;
-  }
-  
-  /* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
-  .sticky + .content {
-    padding-top: 60px;
-  }
-
-  

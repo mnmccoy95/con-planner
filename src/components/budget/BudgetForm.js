@@ -101,7 +101,7 @@ export const BudgetForm = (props) => {
         }
     
     return (
-        <form className="budgetForm" onSubmit={constructBudgetObject}>
+        <form className="budgetForm margin" onSubmit={constructBudgetObject}>
             <h2 className="budgetForm__title">Your Budget</h2>
             <fieldset>
                 <div className="form-group">

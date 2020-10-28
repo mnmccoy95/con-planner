@@ -74,7 +74,7 @@ export const EssentialForm = (props) => {
     }
     
     return (
-        <form className="essentialForm" onSubmit={constructEssentialObject}>
+        <form className="essentialForm margin" onSubmit={constructEssentialObject}>
             <h2 className="essentialForm__title">{essentialId ? <>Edit Essential</> : <>Add New Essential</>}</h2>
             <fieldset>
                 <div className="form-group">

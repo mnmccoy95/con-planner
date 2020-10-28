@@ -41,6 +41,7 @@ export const EEList = () => {
     const modalEss = document.querySelector("#myModalEssential")
     const modalCos = document.querySelector("#myModal")
     const modalCos2 = document.querySelector("#myModalCos")
+    const dialogBox = document.querySelector(".logout-dialog")
 
     window.onclick = function(event) {
       if (event.target == modalEss) {
@@ -49,6 +50,9 @@ export const EEList = () => {
         modalCos.style.display = "none";
       } else if (event.target == modalCos2) {
         modalCos2.style.display = "none";
+      } else if (event.target == dialogBox){
+        console.log("hewwo")
+        dialogBox.style.display ="none"
       }
     }
 
@@ -102,9 +106,12 @@ export const EEList = () => {
               <button className="createEE add" onClick={() => {
                 EESaver()
               }}type="button" id="event-form-submit">Save to Event</button>
-              <dialog className="dialog dialog--auth" ref={existDialog}>
+              <button id="close" className="delete" onClick={() => {
+                document.querySelector("#myModalEssential").style.display = "none"
+              }}>Close</button>
+              <dialog className="logout--dialog" ref={existDialog}>
                 <div>You're already bringing that!</div>
-                <button className="button--close" onClick={e => existDialog.current.close()}>Close</button>
+                <button className="logout--no" onClick={e => existDialog.current.close()}>Close</button>
               </dialog>
             </div>
           </div>

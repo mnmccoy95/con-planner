@@ -34,13 +34,13 @@ export const Login = props => {
 
     return (
         <main className="container--login">
-            <dialog className="dialog dialog--auth" ref={existDialog}>
+            <dialog className="logout--dialog" ref={existDialog}>
                 <div>User does not exist</div>
-                <button className="button--close" onClick={e => existDialog.current.close()}>Close</button>
+                <button className="logout--no" onClick={e => existDialog.current.close()}>Close</button>
             </dialog>
-            <dialog className="dialog dialog--password" ref={passwordDialog}>
+            <dialog className="logout--dialog" ref={passwordDialog}>
                 <div>Password does not match</div>
-                <button className="button--close" onClick={e => passwordDialog.current.close()}>Close</button>
+                <button className="logout--no" onClick={e => passwordDialog.current.close()}>Close</button>
             </dialog>
             <section className="loginscreen">
                 <form className="form--login" onSubmit={handleLogin}>

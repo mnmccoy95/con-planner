@@ -27,6 +27,7 @@ import { BudgetProvider } from "./budget/BudgetProvider"
 import { BudgetForm } from "./budget/BudgetForm"
 
 export const ApplicationViews = (props) => {
+    
     return (
         <>
             {/* Render the location list when http://localhost:3000/ */}

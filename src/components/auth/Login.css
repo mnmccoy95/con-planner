@@ -54,11 +54,6 @@ fieldset {
     color:  rgba(255, 255, 255, 0.877);
 }
 
-.button--close {
-    position: relative;
-    bottom: -2rem;
-}
-
 .dialog {
     min-width: 15rem;
     min-height: 5rem;
@@ -89,5 +84,10 @@ fieldset {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 100%;
+    width: 100%;   
+}
+
+.logout--dialog {
+    border-color: white;
+    border-radius: 5%;
 }
