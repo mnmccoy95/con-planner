@@ -3,11 +3,15 @@ import { ECContext } from "./ECProvider"
 import { useParams } from 'react-router-dom';
 
 export const ECCard = ({ cosplay }) => {
+    //defines function to be used
     const { removeEC } = useContext(ECContext)
+    //defines event id
     let {id} = useParams()
+    //used for verifying delete
     const existDialog = useRef()
 
-    
+    //checks if currently on the home page
+    //if so, gets the relevant event id from a hidden container
     const homeGrabber = () => {
         if(typeof(id) === "string"){
         } else {
@@ -15,6 +19,7 @@ export const ECCard = ({ cosplay }) => {
         }
     }
 
+    //defines html for each cosplay in the specific event
     return (
         <>
         {homeGrabber()}

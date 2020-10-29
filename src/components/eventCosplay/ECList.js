@@ -8,13 +8,19 @@ import { EEList } from "../eventEssential/EEList"
 import "./EC.css"
 
 export const ECList = () => {
+    //defines info/functions to be used
     const { ECs, getECs, addEC, getAllECs } = useContext(ECContext)
     const { cosplays, getCosplays, getCosplayByIdWithItems } = useContext(CosplayContext)
     const { events, addEvent } = useContext(EventContext)
+    //sets the state of the cosplay-event relationships
     const [cosplayEvents, setCosplayEvents] = useState([])
+    //defiens the id of the specific event
     let {id} = useParams()
+    //sets the url string that is used for a cosplay fetch call
     let url = ""
 
+    //checks if current page is home or event
+    //if on home page, sets event id to the closest occurring event
     const homeGrabber = () => {
         if(typeof(id) === "string"){
         } else {
@@ -31,9 +37,14 @@ export const ECList = () => {
         }
     }
     
+    //defines info to be used for creating new event-cosplay relationships
     const cosplay = useRef(null)
     const existDialog = useRef()
 
+    //gets all event-cosplay relationships for specific event
+    //gets all cosplayd for the current user
+    //checks if current page is home
+    //resets the url that is used in cosplay fetch call
     useEffect(() => {
         getECs(parseInt(id))
         getCosplays()
@@ -42,6 +53,8 @@ export const ECList = () => {
         url = ""
     }, [addEvent])
 
+    //creates an array of all cosplayIds that are associated with the event
+    //creates a url to fetch those cosplays and their associated items
     useEffect(() => {
         url = ""
         const cosplayIds = ECs.map((EC) => {
@@ -61,17 +74,22 @@ export const ECList = () => {
         
     }, [getECs, ECs])
 
+    //saves new event-cosplay relationship
     const ECSaver = () => {
+        //verifies the relationship won't be saved if no cosplay is chosen
         if(parseInt(cosplay.current.value) !== 0) {
             const modal = document.querySelector("#myModal")
+            //verifies that relationship does not already exist
             getAllECs()
             .then((response) => {
               const existing = response.find(relationship => {
                 return relationship.eventId === parseInt(modal.value) && relationship.cosplayId === parseInt(cosplay.current.value)
               })
+              //if the relationship exists, notify user and do not save
               if(existing) {
                 existDialog.current.showModal()
               }
+              //save event-cosplay relationship and reset dropdown value
               else {
                 addEC({
                   eventId: parseInt(modal.value),
@@ -84,6 +102,7 @@ export const ECList = () => {
         }
     }
 
+    //defines html for event-cosplay list
     return (
         <>
         {homeGrabber()}

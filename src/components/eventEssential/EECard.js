@@ -2,9 +2,11 @@ import React, {useContext, useRef} from "react"
 import { EEContext } from "./EEProvider"
 
 export const EECard = ({ EE }) => {
+    //defines fucntions to be used
     const { getEEs, removeEE } = useContext(EEContext)
     const existDialog = useRef()
 
+    //defines html for event-essential relationship
     return (
         <section className="essentialEvent">
             <dialog className="logout--dialog" ref={existDialog}>

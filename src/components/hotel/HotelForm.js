@@ -3,6 +3,7 @@ import { HotelContext } from "./HotelProvider"
 import { useHistory, useParams } from 'react-router-dom';
 
 export const HotelForm = (props) => {
+    //defines functions to be used
     const { addHotel, getHotelByEventId, editHotel } = useContext(HotelContext)
 
     //for edit, hold on to state of hotel in this view
@@ -10,7 +11,9 @@ export const HotelForm = (props) => {
     //wait for data before button is active
     const [isLoading, setIsLoading] = useState(true);
 
+    //defines relevant event Id
     const {eventId} = useParams();
+    //used for navigating pages
     const history = useHistory();
 
     //when field changes, update state. This causes a re-render and updates the view.
@@ -30,11 +33,10 @@ export const HotelForm = (props) => {
         const newHotel = { ...hotel } // spread operator, spreads an object into separate arguments
         // evaluate whatever is in the [], accesses hotel dynamically
         newHotel[event.target.name] = hotel.purchased ? false : true; // what is in the form, named exactly like it is in state
-        //update state with each keystroke
         setHotel(newHotel) //  causes re-render
     }
 
-    //getHotelByEvent
+    //checks if page is for edit or add and gets relevant info
     useEffect(() => {
         if (window.location.href.includes("edit")){
             if(eventId){
@@ -49,43 +51,44 @@ export const HotelForm = (props) => {
 
     }, [])
     
-
+    //saves/updates hotel info entered by user
     const constructHotelObject = (event) => {
-            event.preventDefault()
-            //disable the button - no extra clicks
-            setIsLoading(true);
-            if (window.location.href.includes("edit")){
-                //PUT - update
-                editHotel({
-                    id: hotel.id,
-                    eventId: parseInt(eventId),
-                    name: hotel.name,
-                    address: hotel.address,
-                    city: hotel.city,
-                    state: hotel.state,
-                    zip: hotel.zip,
-                    purchased: hotel.purchased,
-                    price: parseFloat(hotel.price),
-                    people: parseInt(hotel.people)
-                })
-                .then(() => history.push(`/events/detail/${eventId}`))
-            }else {
-                //POST - add
-                addHotel({
-                    eventId: parseInt(eventId),
-                    name: hotel.name,
-                    address: hotel.address,
-                    city: hotel.city,
-                    state: hotel.state,
-                    zip: hotel.zip,
-                    purchased: hotel.purchased,
-                    price: parseFloat(hotel.price),
-                    people: parseInt(hotel.people)
-                })
-                .then(() => history.push(`/events/detail/${eventId}`))
-            }
+        event.preventDefault()
+        //disable the button - no extra clicks
+        setIsLoading(true);
+        if (window.location.href.includes("edit")){
+            //PUT - update
+            editHotel({
+                id: hotel.id,
+                eventId: parseInt(eventId),
+                name: hotel.name,
+                address: hotel.address,
+                city: hotel.city,
+                state: hotel.state,
+                zip: hotel.zip,
+                purchased: hotel.purchased,
+                price: parseFloat(hotel.price),
+                people: parseInt(hotel.people)
+            })
+            .then(() => history.push(`/events/detail/${eventId}`))
+        }else {
+            //POST - add
+            addHotel({
+                eventId: parseInt(eventId),
+                name: hotel.name,
+                address: hotel.address,
+                city: hotel.city,
+                state: hotel.state,
+                zip: hotel.zip,
+                purchased: hotel.purchased,
+                price: parseFloat(hotel.price),
+                people: parseInt(hotel.people)
+            })
+            .then(() => history.push(`/events/detail/${eventId}`))
         }
+    }
     
+    //defines html for hotel form
     return (
         <form className="hotelForm margin" onSubmit={constructHotelObject}>
             <h2 className="hotelForm__title">Event Hotel Info</h2>

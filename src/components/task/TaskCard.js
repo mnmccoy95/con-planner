@@ -3,11 +3,16 @@ import { useHistory} from 'react-router-dom';
 import { TaskContext } from "./TaskProvider";
 
 export const TaskCard = ({ taskObj }) => {
+    //defines functions to be used
     const { deleteTask, editTask, getTasksByCosplay } = useContext(TaskContext);
 
+    //sets tasks state
     const [taskItem, setTaskItem] = useState(taskObj)
 
+    //used for navigating pages
     const history = useHistory()
+
+    //used to display delete dialog
     const existDialog = useRef()
     
 
@@ -21,20 +26,20 @@ export const TaskCard = ({ taskObj }) => {
 
         // evaluate whatever is in the [], accesses .taskObj dynamically
         newTask[event.target.name] = taskItem.complete ? false : true; // what is in the form, named exactly like it is in state
-        //update state with each keystroke
         setTaskItem(newTask) //  causes re-render
-        editTask(newTask)
+        editTask(newTask) //saves status to database
         .then(getTasksByCosplay(newTask.cosplayId))
     }
 
+    //defines and returns html for an individual task
     return(
         <section className="taskObj">
             <dialog className="logout--dialog" ref={existDialog}>
-            <div>Are you sure you want to delete?</div>
-            <button className="logout--yes" onClick={() => {
-                deleteTask(taskObj)
-            }}>Delete</button>
-            <button className="logout--no" onClick={e => existDialog.current.close()}>Close</button>
+                <div>Are you sure you want to delete?</div>
+                <button className="logout--yes" onClick={() => {
+                    deleteTask(taskObj)
+                }}>Delete</button>
+                <button className="logout--no" onClick={e => existDialog.current.close()}>Close</button>
             </dialog>
             <input 
                 type="checkbox" 
@@ -50,27 +55,23 @@ export const TaskCard = ({ taskObj }) => {
                 }}/>
             <label htmlFor={`taskObj`} className="taskObj">{`${taskObj.name}`}</label>
             <div className="taskActions">
-            <button 
+                <button 
                     type="button" 
                     className="taskBtn-delete delete" 
                     id={`deleteTask--${taskObj.id}`} 
                     onClick={
                         () => {
                             existDialog.current.showModal()
-                    }}>🗑️</button>
-            <button 
-                type="button" 
-                className="taskBtn-edit edit" 
-                id={`editTask--${taskObj.id}`}
-                onClick={
-                    () => {
-                        history.push(`/cosplays/tasks/edit/${taskObj.id}`)
-                }}>✏️</button>
-
-                     
+                }}>🗑️</button>
+                <button 
+                    type="button" 
+                    className="taskBtn-edit edit" 
+                    id={`editTask--${taskObj.id}`}
+                    onClick={
+                        () => {
+                            history.push(`/cosplays/tasks/edit/${taskObj.id}`)
+                }}>✏️</button>   
             </div>   
         </section>
     )
-
-
 }
