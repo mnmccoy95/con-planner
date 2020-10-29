@@ -5,7 +5,7 @@ import { NavBar } from "./nav/NavBar"
 import { Login } from "./auth/Login"
 import { Register } from "./auth/Register"
 
-
+//verifies that a user is logged in before directing them to the rest of the site
 export const ConPlanner = () => (
     <>
         <Route render={() => {

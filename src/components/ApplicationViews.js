@@ -26,8 +26,8 @@ import { HotelForm } from "./hotel/HotelForm"
 import { BudgetProvider } from "./budget/BudgetProvider"
 import { BudgetForm } from "./budget/BudgetForm"
 
+//defines all pages that can be navigated to
 export const ApplicationViews = (props) => {
-    
     return (
         <>
             {/* Render the location list when http://localhost:3000/ */}
@@ -167,7 +167,6 @@ export const ApplicationViews = (props) => {
                 </Route>
 
             </EssentialProvider>
-
         </>
     )
 }

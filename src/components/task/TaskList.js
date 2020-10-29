@@ -6,14 +6,20 @@ import "./Task.css"
 
 export const TaskList = () => {
 
+    //defines info and function to be used
     const { tasks, getTasksByCosplay } = useContext(TaskContext)
+    //defines relevant cosplayId
     const {id} = useParams();
-	
+    
+    //gets relevant tasks based on cosplayId
     useEffect(() => {
         getTasksByCosplay(parseInt(id))
     }, [])
 
+    //used for navigating pages
     const history = useHistory()
+
+    //if cosplayId exists, display button for adding more tasks for that id
     const getid = () => {
         if(id){
             const newId = parseInt(id)
@@ -25,6 +31,7 @@ export const TaskList = () => {
         }
     }
 
+    //defines and returns base html for task list
     return (
         <div className="tasks">
             <div className="taskHeader">

@@ -3,6 +3,7 @@ import { ItemContext } from "./ItemProvider"
 import { useHistory, useParams } from 'react-router-dom';
 
 export const ItemEdit = (props) => {
+    //defines functions to be used
     const { getItemById, editItem } = useContext(ItemContext)
 
     //for edit, hold on to state of item in this view
@@ -10,8 +11,11 @@ export const ItemEdit = (props) => {
     //wait for data before button is active
     const [isLoading, setIsLoading] = useState(true);
 
+    //defines itemId to be edited
     const {itemId} = useParams()
-    const history = useHistory();
+
+    //used for navigating pages
+    const history = useHistory()
 
     //when field changes, update state. This causes a re-render and updates the view.
     //Controlled component
@@ -26,22 +30,23 @@ export const ItemEdit = (props) => {
         setItem(newItem)
     }
 
+    //changes completion status based on checkbox
     const setCompletionStatus = (event) => {
         const newItem = { ...item } // spread operator, spreads an object into separate arguments
         // evaluate whatever is in the [], accesses item dynamically
         newItem[event.target.name] = item.complete ? false : true; // what is in the form, named exactly like it is in state
-        //update state with each keystroke
         setItem(newItem) //  causes re-render
     }
 
+    //changes making status based on checkbox
     const setMakingStatus = (event) => {
         const newItem = { ...item } // spread operator, spreads an object into separate arguments
         // evaluate whatever is in the [], accesses item dynamically
         newItem[event.target.name] = item.making ? false : true; // what is in the form, named exactly like it is in state
-        //update state with each keystroke
         setItem(newItem) //  causes re-render
     }
     
+    //gets relevant item info from itemId
     useEffect(() => {
         getItemById(itemId)
         .then(item => {
@@ -50,7 +55,7 @@ export const ItemEdit = (props) => {
         })
     }, [])
     
-
+    //updates item in database
     const constructItemObject = (evt) => {
         evt.preventDefault()
         //disable the button - no extra clicks
@@ -67,6 +72,7 @@ export const ItemEdit = (props) => {
         .then(() => history.push(`/cosplays/detail/${item.cosplayId}`))    
     }
     
+    //defines and returns html for item edit form
     return (
         <form className="ItemForm margin" onSubmit={constructItemObject}>
             <h2 className="ItemForm__title">Edit Piece</h2>

@@ -3,6 +3,8 @@ import { useHistory } from 'react-router-dom'
 import "./Login.css"
 
 export const Register = (props) => {
+
+    //defines relevant info to be used
     const history = useHistory()
     const firstName = useRef()
     const lastName = useRef()
@@ -11,12 +13,14 @@ export const Register = (props) => {
     const verifyPassword = useRef()
     const passwordDialog = useRef()
 
+    //checks database for entered email
     const existingUserCheck = () => {
         return fetch(`http://localhost:8088/users?email=${email.current.value}`)
             .then(_ => _.json())
             .then(user => !!user.length)
     }
 
+    //registers/logs in user given that passwords match and user does not already exist
     const handleRegister = (e) => {
         e.preventDefault()
 
@@ -47,6 +51,7 @@ export const Register = (props) => {
         }
     }
 
+    //defines html for register page
     return (
         <main className="registerFormPage">
 

@@ -3,7 +3,9 @@ import { EventContext } from "./EventProvider"
 import { useHistory, useParams } from 'react-router-dom';
 
 export const EventForm = (props) => {
+    //defines functions to be used
     const { getEvents, addEvent, getEventById, updateEvent } = useContext(EventContext)
+    //defines logged in user
     const userId = parseInt(localStorage.getItem("cosplayerId"))
 
 
@@ -12,8 +14,10 @@ export const EventForm = (props) => {
     //wait for data before button is active
     const [isLoading, setIsLoading] = useState(true);
 
-    const {eventId} = useParams();
-    const history = useHistory();
+    //holds relevant eventId if in url
+    const {eventId} = useParams()
+    //used for navigating pages
+    const history = useHistory()
 
     //when field changes, update state. This causes a re-render and updates the view.
     //Controlled component
@@ -28,11 +32,11 @@ export const EventForm = (props) => {
         setEvent(newEvent)
     }
 
+    //sets badge status based on checkbox
     const setBadgeStatus = (evt) => {
         const newEvent = { ...event } // spread operator, spreads an object into separate arguments
         // evaluate whatever is in the [], accesses event dynamically
         newEvent[evt.target.name] = event.badgeStatus ? false : true; // what is in the form, named exactly like it is in state
-        //update state with each keystroke
         setEvent(newEvent) //  causes re-render
     }
     
@@ -65,6 +69,7 @@ export const EventForm = (props) => {
             if (eventId){
                 getEventById(eventId)
                 .then(event => {
+                    //converts date from miliseconds to readable format
                     event.startDate = new Date(event.startDate).customFormat( "#YYYY#-#MM#-#DD#")
                     event.endDate = new Date(event.endDate).customFormat( "#YYYY#-#MM#-#DD#")
                     setEvent(event)
@@ -76,48 +81,50 @@ export const EventForm = (props) => {
         })
     }, [])
 
+    //saves/updates event depending if id is in url
     const constructEventObject = (evt) => {
-            evt.preventDefault()
-            //disable the button - no extra clicks
-            setIsLoading(true);
-            //javascript saves dates weird so I add a few hours to adjust time zone for proper displaying
-            //if depolying app, I'd have to change this based on the user's timezone
-            let start = Date.parse(event.startDate)+21600000
-            let end = Date.parse(event.endDate)+21600000
-            if (eventId){
-                //PUT - update
-                updateEvent({
-                    id: event.id,
-                    name: event.name,
-                    userId: userId,
-                    eventAddress: event.eventAddress,
-                    eventCity: event.eventCity,
-                    eventState: event.eventState,
-                    eventZip: event.eventZip,
-                    startDate: start,
-                    endDate: end,
-                    badgeStatus: event.badgeStatus,
-                    badgePrice: parseFloat(event.badgePrice)
-                })
-                .then(() => history.push(`/events/detail/${event.id}`))
-            }else {
-                //POST - add
-                addEvent({
-                    name: event.name,
-                    userId: userId,
-                    eventAddress: event.eventAddress,
-                    eventCity: event.eventCity,
-                    eventState: event.eventState,
-                    eventZip: event.eventZip,
-                    startDate: start,
-                    endDate: end,
-                    badgeStatus: event.badgeStatus,
-                    badgePrice: parseFloat(event.badgePrice)
-                })
-                .then(() => history.push("/events"))
-            }
+        evt.preventDefault()
+        //disable the button - no extra clicks
+        setIsLoading(true);
+        //javascript saves dates weird so I add a few hours to adjust time zone for proper displaying
+        //if depolying app, I'd have to change this based on the user's timezone
+        let start = Date.parse(event.startDate)+21600000
+        let end = Date.parse(event.endDate)+21600000
+        if (eventId){
+            //PUT - update
+            updateEvent({
+                id: event.id,
+                name: event.name,
+                userId: userId,
+                eventAddress: event.eventAddress,
+                eventCity: event.eventCity,
+                eventState: event.eventState,
+                eventZip: event.eventZip,
+                startDate: start,
+                endDate: end,
+                badgeStatus: event.badgeStatus,
+                badgePrice: parseFloat(event.badgePrice)
+            })
+            .then(() => history.push(`/events/detail/${event.id}`))
+        } else {
+            //POST - add
+            addEvent({
+                name: event.name,
+                userId: userId,
+                eventAddress: event.eventAddress,
+                eventCity: event.eventCity,
+                eventState: event.eventState,
+                eventZip: event.eventZip,
+                startDate: start,
+                endDate: end,
+                badgeStatus: event.badgeStatus,
+                badgePrice: parseFloat(event.badgePrice)
+            })
+            .then(() => history.push("/events"))
         }
+    }
     
+    //defines html for event form
     return (
         <form className="eventForm" onSubmit={constructEventObject}>
             <h2 className="eventForm__title">{eventId ? <>Save Event</> : <>Add New Event</>}</h2>

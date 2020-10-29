@@ -3,6 +3,7 @@ import { ItemContext } from "./ItemProvider"
 import { useHistory, useParams } from 'react-router-dom';
 
 export const ItemForm = (props) => {
+    //defines function to be used
     const { addItem } = useContext(ItemContext)
 
     //for edit, hold on to state of item in this view
@@ -10,7 +11,9 @@ export const ItemForm = (props) => {
     //wait for data before button is active
     const [isLoading, setIsLoading] = useState(true);
 
+    //defines cosplay that item will be associated with
     const {cosplayId} = useParams()
+    //used for navigating pages
     const history = useHistory();
 
     //when field changes, update state. This causes a re-render and updates the view.
@@ -26,28 +29,30 @@ export const ItemForm = (props) => {
         setItem(newItem)
     }
 
+    //changes completion status based on checkbox
     const setCompletionStatus = (event) => {
         const newItem = { ...item } // spread operator, spreads an object into separate arguments
         // evaluate whatever is in the [], accesses item dynamically
         newItem[event.target.name] = item.complete ? false : true; // what is in the form, named exactly like it is in state
-        //update state with each keystroke
         setItem(newItem) //  causes re-render
     }
 
+    //changes making status based on checkbox
     const setMakingStatus = (event) => {
         const newItem = { ...item } // spread operator, spreads an object into separate arguments
         // evaluate whatever is in the [], accesses item dynamically
         newItem[event.target.name] = item.making ? false : true; // what is in the form, named exactly like it is in state
-        //update state with each keystroke
         setItem(newItem) //  causes re-render
     }
     
+    //sets loading to false on page render
     useEffect(() => {
         setIsLoading(false)
     }, [])
     
-
+    //saves item object
     const constructItemObject = (evt) => {
+        //displays saved animation fade in/out on save
         const savedContainer = document.querySelector(`#container-saved`)
         if(savedContainer){
             if(savedContainer.style.opacity == 0) {
@@ -58,6 +63,7 @@ export const ItemForm = (props) => {
             }
         }
 
+        //does not allow form to be submitted empty
         evt.preventDefault()
         //disable the button - no extra clicks
         setIsLoading(true);
@@ -86,11 +92,13 @@ export const ItemForm = (props) => {
             item.cost = ""
             item.complete = false
             item.making = false
+            //reset loading status so another entry can be made
             setIsLoading(false);
         })
 
     }
 
+    //defines and returns html for item form
     return (
         <form className="ItemForm margin" onSubmit={constructItemObject}>
             <h2 className="ItemForm__title">Add New Piece</h2>

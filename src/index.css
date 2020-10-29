@@ -21,22 +21,6 @@ body {
   width: 0px;
 }
 
-/* Track */
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #888;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
-
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -111,7 +95,7 @@ code {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
 }
- .delete:hover, .delete:focus {
+.delete:hover, .delete:focus {
   color: #fff;
   outline: 0;
 }
@@ -144,7 +128,7 @@ code {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
 }
- .edit:hover, .edit:focus {
+.edit:hover, .edit:focus {
   color: #fff;
   outline: 0;
 }
@@ -177,7 +161,7 @@ code {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
 }
- .add:hover, .add:focus {
+.add:hover, .add:focus {
   color: #fff;
   outline: 0;
 }

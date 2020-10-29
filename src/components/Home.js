@@ -6,19 +6,19 @@ import { HomeCard } from "./HomeCard"
 
 
 export const Home = () => {
-    // This state changes when `getEvents()` is invoked below
-    const { getEvents } = useContext(EventContext)
-    const { getCosplays } = useContext(CosplayContext)
+  //defines functions to be used
+  const { getEvents } = useContext(EventContext)
+  const { getCosplays } = useContext(CosplayContext)
 
-	//useEffect - reach out to the world for something
-    useEffect(() => {
-      getEvents()
-      getCosplays()
-    }, [])
+	//gets all events and cosplays on initial render
+  useEffect(() => {
+    getEvents()
+    getCosplays()
+  }, [])
 
-    return(
+  return(
     <>
       < HomeCard />
     </>
-    )
+  )
 }

@@ -10,14 +10,17 @@ export const ItemContext = createContext()
  This component establishes what data can be used.
  */
 export const ItemProvider = (props) => {
+    //sets initial state
     const [items, setItems] = useState([])
 
+    //gets all items for a particular cosplay
     const getItemsByCosplay = (cosplayId) => {
         return fetch(`http://localhost:8088/items?cosplayId=${parseInt(cosplayId)}`)
             .then(res => res.json())
             .then(setItems)
     }
 
+    //adds new item to database
     const addItem = item => {
         return fetch("http://localhost:8088/items", {
             method: "POST",
@@ -29,11 +32,13 @@ export const ItemProvider = (props) => {
             .then(getItemsByCosplay)
     }
 
+    //gets specific item from databse
     const getItemById = (id) => {
         return fetch(`http://localhost:8088/items/${id}`)
             .then(res => res.json())
     }
 
+    //deletes specific item from database
     const deleteItem = (item) => {
         return fetch(`http://localhost:8088/items/${item.id}`, {
             method: "DELETE"
@@ -41,6 +46,7 @@ export const ItemProvider = (props) => {
             .then(()=>{getItemsByCosplay(item.cosplayId)})
     }
 
+    //updates specific item in database
     const editItem = item => {
         return fetch(`http://localhost:8088/items/${item.id}`, {
             method: "PUT",
