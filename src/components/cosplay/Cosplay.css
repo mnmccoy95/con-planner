@@ -78,6 +78,10 @@
     height: 2em;
 }
 
+.detail {
+ margin-left: 1em;
+}
+
 .addCosplayToEvent {
     height: 2em;
 }
