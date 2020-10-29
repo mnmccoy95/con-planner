@@ -175,7 +175,7 @@ export const HomeCard = () => {
       //return this html
       return (
         <>
-        <div className="noEventContainer">
+        <div className="noEventContainer margin">
           <h2 className="noEventHeader">No upcoming events :(</h2>
           {cosplayFinder()}
         </div>
@@ -186,7 +186,7 @@ export const HomeCard = () => {
     //if no events have been saved by user, return this
     return (
       <>
-      <div className="noEventContainer">
+      <div className="noEventContainer margin">
         <h2 className="noEventHeader">Welcome to Con Planner!</h2>
         <div className="addEventInfo">Your next event will be here when added!</div>
         {cosplayFinder()}

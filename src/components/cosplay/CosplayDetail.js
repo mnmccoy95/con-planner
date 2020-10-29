@@ -53,7 +53,7 @@ export const CosplayDetail = () => {
             <div>
             <section className="cosplayDetail">
                 <div className="cosplay-detail-character">{cosplay.character}
-                <button className="deleteCosplay delete" onClick={
+                <button className="deleteCosplay detail delete" onClick={
                     () => {
                         existDialog.current.showModal()
                         
