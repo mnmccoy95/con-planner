@@ -10,12 +10,24 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Azure subscription 1 (0971d1bb-305e-41b5-8473-fed72dd91161)'
+    appType: 'webApp'
+    WebAppName: 'Pros-Of-Cons'
+    packageForLinux: '$(System.DefaultWorkingDirectory)'
 - task: NodeTool@0
   inputs:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
 
 - script: |
+- task: NodeTool@0
+  inputs:
+    versionSpec: '6.x'
+    checkLatest: true
+    force32bit: true
     npm install
     npm run build
   displayName: 'npm install and build'
