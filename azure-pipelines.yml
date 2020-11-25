@@ -17,19 +17,9 @@ steps:
     appType: 'webApp'
     WebAppName: 'Pros-Of-Cons'
     packageForLinux: '$(System.DefaultWorkingDirectory)'
-- task: NodeTool@0
-  inputs:
-    versionSpec: '10.x'
-  displayName: 'Install Node.js'
 
-- script: |
 - task: NodeTool@0
   inputs:
     versionSpec: '6.x'
     checkLatest: true
     force32bit: true
-    npm install
-    npm run build
-  displayName: 'npm install and build'
-
-- task: PublishBuildArtifacts@1
