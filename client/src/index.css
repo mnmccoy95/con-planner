@@ -1,0 +1,320 @@
+body {
+  margin: 0;
+  font-family: 'Manrope', sans-serif;
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; */
+  background: url(./imgs/1.jpg) no-repeat center center fixed;
+  background-size: cover;
+  min-width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+
+/* toolbar styling */
+/* width */
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+#root {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 5%;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* styling for ALL delete buttons */
+.delete {
+  box-sizing: border-box;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-color:  rgba(255, 255, 255, 0.945);
+  border: 2px solid #e74c3c;
+  border-radius: 0.6em;
+  color: #e74c3c;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+}
+.delete:hover, .delete:focus {
+  color: #fff;
+  outline: 0;
+}
+
+.delete {
+  -webkit-transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+  transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+}
+.delete:hover {
+  box-shadow: 0 0 40px 40px #e74c3c inset;
+}
+
+/* styling for ALL edit buttons */
+.edit {
+  box-sizing: border-box;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-color: rgba(255, 255, 255, 0.945);
+  border: 2px solid #ecd56b;
+  border-radius: 0.6em;
+  color:  #ecd56b;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+}
+.edit:hover, .edit:focus {
+  color: #fff;
+  outline: 0;
+}
+
+.edit {
+  -webkit-transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+  transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+}
+.edit:hover {
+  box-shadow: 0 0 40px 40px   #ecd56b inset;
+}
+
+/* styling for ALL add buttons */
+.add {
+  box-sizing: border-box;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-color: rgba(255, 255, 255, 0.945);
+  border: 2px solid #49c44f;
+  border-radius: 0.6em;
+  color:#49c44f;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+}
+.add:hover, .add:focus {
+  color: #fff;
+  outline: 0;
+}
+
+.add {
+  -webkit-transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+  transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+}
+.add:hover {
+  box-shadow: 0 0 40px 40px  #49c44f inset;
+}
+
+.eventForm {
+  color: rgba(255, 255, 255, 0.877);
+}
+
+.cosplayForm {
+  color: rgba(255, 255, 255, 0.877);
+}
+
+.essentialForm {
+  color: rgba(255, 255, 255, 0.877);
+}
+
+.budgetForm {
+  color: rgba(255, 255, 255, 0.877);
+}
+
+.ItemForm {
+  color: rgba(255, 255, 255, 0.877);
+}
+
+.TaskForm {
+  color: rgba(255, 255, 255, 0.877);
+}
+
+label {
+  font-size: 1.1em;
+}
+
+label:not(.taskObj) {
+  font-size: 1.4em;
+}
+
+.cosplayDetailPageContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-shrink: 1;
+}
+
+input[type=checkbox]
+{
+  /* Double-sized Checkboxes */
+  -ms-transform: scale(2); /* IE */
+  -moz-transform: scale(2); /* FF */
+  -webkit-transform: scale(2); /* Safari and Chrome */
+  -o-transform: scale(2); /* Opera */
+  transform: scale(2);
+  padding: 10px;
+  margin: 10px;
+
+}
+
+/* styling for ALL confirm buttons */
+.logout--yes {
+  box-sizing: border-box;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-color: rgba(255, 255, 255, 0.945);
+  border: 2px solid #49c44f;
+  border-radius: 0.6em;
+  color:#49c44f;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 2;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+}
+
+.logout--yes:hover {
+  color: #fff;
+  outline: 0;
+}
+
+.logout--yes:focus {
+  outline: 0;
+}
+
+.logout--yes {
+  -webkit-transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+  transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+}
+.logout--yes:hover {
+  box-shadow: 0 0 40px 40px  #49c44f inset;
+}
+
+/* styling for ALL close buttons */
+.logout--no {
+  box-sizing: border-box;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-color: rgba(255, 255, 255, 0.945);
+  border: 2px solid  #e74c3c;
+  border-radius: 0.6em;
+  color:  #e74c3c;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 2;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+}
+
+.logout--no:hover {
+  color: #fff;
+  outline: 0;
+}
+
+.logout--no:focus {
+  outline: 0;
+}
+
+.logout--no {
+  -webkit-transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+  transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+}
+.logout--no:hover {
+  box-shadow: 0 0 40px 40px   #e74c3c inset;
+}
+
+.createEE {
+  line-height: 2;
+}
+
+.createEC {
+  line-height: 2;
+}
+
+#close {
+  line-height: 2;
+  min-width: 2em;
+}
+
+.addEC {
+  line-height: 2;
+}

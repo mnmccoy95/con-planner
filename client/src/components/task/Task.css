@@ -1,0 +1,49 @@
+.tasks {
+    border: solid 1px;
+    border-radius: 20px;
+    padding: 1em;
+    max-width: 300px;
+    background-color: rgba(255, 255, 255, 0.877);
+    flex-shrink: 1;
+}
+
+.taskHeader {
+    display: flex;
+    flex-direction: row;
+    font-size: 1.3em;
+    text-align: center;
+    border-bottom: solid 1px;
+    justify-content: center;
+}
+
+.addNewTask {
+    margin-left: 1em;
+    height: 2em;
+    width: 2em;
+}
+
+.taskObj {
+    margin-bottom: 0.5em;
+    flex-basis: 50%;
+}
+
+.allTasks {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: space-between;
+}
+
+.taskBtn-delete {
+    height: 2em;
+}
+
+.taskBtn-edit {
+    height: 2em;
+}
+
+.TaskForm__title {
+    font-size: 1.8em;
+    text-decoration: underline;
+}
+

@@ -1,0 +1,75 @@
+.essHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+}
+
+.essTitle {
+    font-size: 2.5em;
+    color: rgba(255, 255, 255, 0.877);
+    font-weight: bold;
+}
+
+.addEss {
+    margin-left: 1em;
+    margin-top: 10px;
+    height: 2em;
+    width: 2em;
+}
+
+.essentials {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.allEss {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1000px;
+}
+
+.essential {
+    margin: 5px;
+    border: solid black 1px;
+    border-radius: 20px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    min-width: 50px;
+    background-color: rgba(255, 255, 255, 0.877);
+}
+
+.buttons {
+    align-self: center;
+}
+
+.essential__name {
+    font-size: 1.5em;
+}
+
+.deleteEssential {
+    height: 2em;
+}
+
+.essEdit {
+    height: 2em;
+}
+
+.addEssEvent {
+    height: 2em;
+}
+
+.essentialForm__title {
+    font-size: 1.8em;
+    text-decoration: underline;
+}

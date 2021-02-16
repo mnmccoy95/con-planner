@@ -1,0 +1,126 @@
+#myModal {
+    display: none
+}
+
+.cosplayHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+}
+
+.cosplayTitle {
+    font-size: 2.5em;
+    color: rgba(255, 255, 255, 0.877);
+}
+
+.addNewCosplay {
+    margin-left: 1em;
+    margin-top: 10px;
+    width: 2em;
+    height: 2em;
+}
+
+.cosplays {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.allCosplays {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.cosplay {
+    margin: 5px;
+    border: solid black 1px;
+    border-radius: 20px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0.877);
+}
+
+.cosplay-detail-character {
+    display: flex;
+    flex-direction: row;
+    font-size: 1.3em;
+    text-align: center;
+    border-bottom: solid 1px;
+    justify-content: center;
+    
+}
+
+.cosplayDetail {
+    border: solid 1px;
+    border-radius: 20px;
+    max-width: 300px;
+    padding: 1em;
+    background-color: rgba(255, 255, 255, 0.877);
+    flex-shrink: 1;
+}
+
+.character__name {
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.deleteCosplay {
+    height: 2em;
+}
+
+.detail {
+ margin-left: 1em;
+}
+
+.addCosplayToEvent {
+    height: 2em;
+}
+
+.editCosplay {
+    height: 2em;
+}
+
+.cosplayForm__title {
+    font-size: 1.8em;
+    text-decoration: underline;
+}
+
+.inProgress {
+    flex-basis: 50%;
+    border-right: 1px white solid;
+}
+
+.progressTitle {
+    font-size: 1.5em;
+    text-decoration: underline;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.877);
+}
+
+.allInProgress {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.completeCosplays {
+    flex-basis: 50%;
+}
+
+.allComplete {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}

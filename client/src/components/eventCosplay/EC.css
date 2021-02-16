@@ -1,0 +1,78 @@
+.modal-content {
+    width: 350px;
+}
+
+.suitcase-container {
+    border: solid 1px;
+    border-radius: 20px;
+    padding: 1em;
+    max-width: 300px;
+    background-color: rgba(255, 255, 255, 0.877);
+    flex-shrink: 1;
+}
+
+.suitcase-header {
+    display: flex;
+    flex-direction: row;
+    font-size: 1.7em;
+    text-align: center;
+    border-bottom: solid 1px;
+    justify-content: center;
+}
+
+.item__list {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+.character__name__EC {
+    font-size: 1.1em;
+    font-weight: thick;
+    text-decoration: underline;
+}
+
+.addEventCosplay {
+    margin-left: 1em;
+    width: 2em;
+}
+
+.deleteCosplayEvent {
+    margin-right: 0.5em;
+    height: 2em;
+}
+
+.deleteEssentialEvent {
+    margin-right: 0.5em;
+    height: 2em;
+}
+
+.addEssentialEvent {
+    margin-left: 1em;
+    width: 2em;
+}
+
+.event-essential-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-basis: 50%;
+    padding-bottom: 1em;
+}
+
+.essentialEvent {
+    flex-basis: 50%;
+}
+
+.allEventCosplays {
+    margin-bottom: 1em;
+}
+
+.essential__name__EC {
+    font-size: 1.1em;
+    font-weight: thick;
+}
+
+.cosplayEvent {
+    margin-bottom: 10px;
+}
