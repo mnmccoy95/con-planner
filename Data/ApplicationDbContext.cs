@@ -18,5 +18,6 @@ namespace con_planner.Data
         public DbSet<Task> Tasks { get; set; }
         public DbSet<EventEssential> EventEssentials { get; set; }
         public DbSet<EventCosplay> EventCosplays { get; set; }
+        public DbSet<Hotel> Hotels { get; set; }
     }
 }

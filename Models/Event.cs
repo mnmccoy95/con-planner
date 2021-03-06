@@ -18,5 +18,9 @@ namespace con_planner.Models
         public DateTime EndDate { get; set; }
         public bool? BadgeStatus { get; set; }
         public decimal BadgePrice { get; set; }
+        public Budget Budget { get; set; }
+        public List<Cosplay> Cosplays { get; set; }
+        public List<Essential> Essentials { get; set; }
+        public Hotel Hotel { get; set; }
     }
 }

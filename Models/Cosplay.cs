@@ -12,5 +12,7 @@ namespace con_planner.Models
         public string Series { get; set; }
         public int UserId { get; set; }
         public User User { get; set; }
+        public List<Item> Items { get; set; }
+        public List<Task> Tasks { get; set; }
     }
 }

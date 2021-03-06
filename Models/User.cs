@@ -8,7 +8,7 @@ namespace con_planner.Models
     public class User
     {
         public int Id { get; set; }
-        public string FireBaseUserId { get; set; }
+        public string FirebaseUserId { get; set; }
         public string Email { get; set; }
     }
 }
